@@ -11,6 +11,8 @@ description: Use when 处理前端接口文档、OpenAPI、Swagger、Apifox、YA
 
 这个 skill 默认先产出契约文档和接入规则，不直接实现页面。只有接口契约已确认，且用户明确要求生成代码时，才可以生成 types、service、mock 等接口层代码；仍然不负责实现业务页面，也不替代 OpenAPI 代码生成工具。
 
+如果当前任务同时涉及设计稿，接口契约生成后应进入 `frontend-design-api-alignment`，先对齐设计字段、接口字段、状态、权限和差异决策，再进入实现。
+
 ## 执行原则
 
 - 先确认接口来源，再生成前端契约。

@@ -1,0 +1,4 @@
+interface:
+  display_name: "设计接口对齐"
+  short_description: "对齐前端设计拆解和接口契约的字段、状态、权限与差异"
+  default_prompt: "Use $frontend-design-api-alignment 对齐设计拆解和接口契约，输出字段映射、状态映射、差异清单和实现决策，不写代码。"
