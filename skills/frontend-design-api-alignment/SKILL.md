@@ -24,6 +24,8 @@ description: Use when 对齐前端设计拆解和接口契约；比较 Figma 字
 
 如果缺少设计拆解或接口契约，先要求补齐对应上游产物，不要直接对齐空白信息。
 
+如果设计拆解明确说明页面是纯静态展示、无接口依赖、无后端状态和权限依赖，可以在对齐文档中标记 `api-not-required`。此时不强制等待接口契约，但仍需列出静态数据来源、状态豁免原因和视觉验收点。
+
 ## 硬性边界
 
 - 不写页面代码。
@@ -32,6 +34,7 @@ description: Use when 对齐前端设计拆解和接口契约；比较 Figma 字
 - 不根据 mock 反推真实接口结构。
 - 不把产品语义冲突伪装成前端 adapter。
 - 不清楚的信息必须标记为 `Needs design decision`、`Needs product decision` 或 `Needs backend decision`。
+- 只有明确 `api-not-required` 时，才允许没有接口契约进入后续实现。
 
 ## 工作流程
 
@@ -112,10 +115,10 @@ description: Use when 对齐前端设计拆解和接口契约；比较 Figma 字
 只有满足全部条件，才建议进入 `figma-titan-to-code` 或 `writing-plans`：
 
 - 关键展示字段都有来源或明确决策。
-- loading、empty、error、permission 等关键状态有处理规则。
-- 搜索、筛选、分页、排序能力已确认。
-- 接口缺失项已决策为后端补齐、产品调整或前端移除。
-- adapter 规则明确放在 service/adapter 层。
+- loading、empty、error、permission 等关键状态有处理规则，或已明确 `api-not-required` 的豁免原因。
+- 搜索、筛选、分页、排序能力已确认，或确认页面不需要这些能力。
+- 接口缺失项已决策为后端补齐、产品调整、前端移除，或页面已标记 `api-not-required`。
+- adapter 规则明确放在 service/adapter 层；静态页面则明确不需要 adapter。
 
 ## 与其他 skill 的关系
 
