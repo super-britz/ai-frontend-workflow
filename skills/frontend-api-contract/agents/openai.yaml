@@ -1,0 +1,4 @@
+interface:
+  display_name: "前端接口契约"
+  short_description: "把接口文档沉淀为前端可执行契约、类型定义和接入规则"
+  default_prompt: "Use $frontend-api-contract 根据接口文档生成前端接口契约、类型、service、mock 和状态处理规则。"

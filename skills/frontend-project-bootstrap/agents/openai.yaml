@@ -1,0 +1,4 @@
+interface:
+  display_name: "前端项目初始化"
+  short_description: "初始化前端仓库的 AI 协作规则、组件边界和验收护栏"
+  default_prompt: "Use $frontend-project-bootstrap 初始化这个前端仓库的 Codex/Superpowers 协作规则、组件边界和验收护栏。"
