@@ -1,0 +1,4 @@
+interface:
+  display_name: "前端视觉验收"
+  short_description: "验证前端页面的设计还原、响应式、核心状态和截图验收"
+  default_prompt: "Use $frontend-visual-verification 验证这个页面的设计还原、响应式和核心状态。"
