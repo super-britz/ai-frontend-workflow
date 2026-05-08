@@ -1,0 +1,4 @@
+interface:
+  display_name: "前端设计拆解"
+  short_description: "拆解 Figma 设计稿的页面结构、组件映射、状态和验收点"
+  default_prompt: "Use $frontend-design-breakdown 拆解这个 Figma 页面，输出页面结构、组件映射、状态清单和视觉验收点，不写代码。"

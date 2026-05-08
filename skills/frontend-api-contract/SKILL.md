@@ -9,7 +9,7 @@ description: Use when 处理前端接口文档、OpenAPI、Swagger、Apifox、YA
 
 把后端接口文档沉淀成前端可执行的接口契约。重点是让 Agent 明确字段、类型、service、mock、状态处理和未决问题，避免根据 UI 或臆测生成接口代码。
 
-这个 skill 负责接口契约和接入规则，不负责实现后端接口，也不替代 OpenAPI 代码生成工具。
+这个 skill 默认先产出契约文档和接入规则，不直接实现页面。只有接口契约已确认，且用户明确要求生成代码时，才可以生成 types、service、mock 等接口层代码；仍然不负责实现业务页面，也不替代 OpenAPI 代码生成工具。
 
 ## 执行原则
 
@@ -20,6 +20,8 @@ description: Use when 处理前端接口文档、OpenAPI、Swagger、Apifox、YA
 - 不把接口请求散落在页面组件里，必须遵守项目已有 request/service 分层。
 - 不重复定义已有类型；先搜索已有 types、services、mocks 和相邻页面。
 - 不清楚的信息标记为 `Needs backend decision`，不要自行补全。
+- 未确认契约前，不创建或修改业务页面代码。
+- 如需生成代码，只生成接口层：types、service、mock、fixtures 或测试，不写页面展示逻辑。
 
 ## 工作流程
 
@@ -93,7 +95,31 @@ description: Use when 处理前端接口文档、OpenAPI、Swagger、Apifox、YA
 
 可使用 `assets/templates/api-integration-checklist.md`。
 
-### 5. 定义质量门禁
+### 5. 可选生成接口层代码
+
+只有满足全部条件才进入本步骤：
+
+- 用户明确要求生成接口层代码。
+- `docs/ai/api-contract.md` 已确认或未决项不影响本次接口。
+- 项目已有 request/service/types/mock 约定已识别。
+- 不需要靠 UI 或 mock 反推字段。
+
+允许生成：
+
+- TypeScript 类型
+- service 方法
+- mock / fixtures
+- service 测试或类型测试
+
+禁止生成：
+
+- 页面组件
+- 业务表单逻辑
+- 路由和权限配置
+- 设计还原代码
+- 未确认字段的兼容逻辑
+
+### 6. 定义质量门禁
 
 接口相关改动完成前必须检查：
 
@@ -104,7 +130,7 @@ description: Use when 处理前端接口文档、OpenAPI、Swagger、Apifox、YA
 - 新增逻辑有单元测试、service 测试或关键路径 E2E。
 - 可用的 lint、typecheck、test、build 已运行。
 
-### 6. 汇报结果
+### 7. 汇报结果
 
 最终回复必须包含：
 
