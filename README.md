@@ -19,6 +19,18 @@ mkdir -p ~/.codex/skills
 cp -R skills/* ~/.codex/skills/
 ```
 
+也可以使用脚本安装：
+
+```bash
+./scripts/install-skills.sh
+```
+
+更新本仓库并重新安装：
+
+```bash
+./scripts/update-skills.sh
+```
+
 安装后可以这样调用：
 
 ```text
@@ -37,6 +49,26 @@ Use $codex-review-frontend review 这次前端改动。
 4. 页面实现完成后，使用 `frontend-visual-verification` 做真实浏览器、响应式和状态验收。
 5. 合并前使用 `codex-review-frontend` 做前端专项 Review。
 6. 项目级规则放在业务仓库的 `AGENTS.md` 和 `docs/ai/`，本仓库只维护跨项目可复用的 skills。
+
+业务项目可以参考：
+
+- `examples/AGENTS.workflow.md`
+
+## 校验
+
+本仓库包含 GitHub Actions 校验，也可以本地运行：
+
+```bash
+./scripts/check-skills.sh
+```
+
+校验内容包括：
+
+- 每个 skill 必须有 `SKILL.md` 和 `agents/openai.yaml`
+- `SKILL.md` 的 `name` 必须与目录名一致
+- `default_prompt` 必须包含对应 `$skill-name`
+- README 必须列出每个 skill
+- 扫描常见 token、密钥和本地绝对路径
 
 ## 维护原则
 
