@@ -24,6 +24,7 @@ description: Use when 处理前端接口文档、OpenAPI、Swagger、Apifox、YA
 - 不清楚的信息标记为 `Needs backend decision`，不要自行补全。
 - 未确认契约前，不创建或修改业务页面代码。
 - 如需生成代码，只生成接口层：types、service、mock、fixtures 或测试，不写页面展示逻辑。
+- 接口契约必须写入文档；不要只把字段和结论留在聊天上下文。
 
 ## 工作流程
 
@@ -83,6 +84,8 @@ description: Use when 处理前端接口文档、OpenAPI、Swagger、Apifox、YA
 - loading、empty、error、permission、success 状态映射
 - 未决问题
 
+如果人工审核发现契约不准，直接修改 `api-contract.md`。涉及后端确认、产品取舍或 owner 的内容，写入 active change 的 `decisions.md`。
+
 ### 4. 生成前端接入规则
 
 需要写清 Agent 后续实现时应该如何接入：
@@ -103,7 +106,7 @@ description: Use when 处理前端接口文档、OpenAPI、Swagger、Apifox、YA
 只有满足全部条件才进入本步骤：
 
 - 用户明确要求生成接口层代码。
-- `docs/ai/api-contract.md` 已确认或未决项不影响本次接口。
+- `api-contract.md` 已确认或未决项不影响本次接口。
 - 项目已有 request/service/types/mock 约定已识别。
 - 不需要靠 UI 或 mock 反推字段。
 
@@ -155,6 +158,8 @@ description: Use when 处理前端接口文档、OpenAPI、Swagger、Apifox、YA
 ## 常见失败
 
 - 看着页面设计稿猜接口字段。
+- 只在聊天里整理接口字段，没有写入 `api-contract.md`。
+- 接口契约被指出不准后，只口头确认，不更新文件。
 - 直接复制 mock 当真实接口契约。
 - 在页面组件里散写 `axios.get('/xxx')`。
 - 为单个页面重复定义已有分页、错误码或响应包裹类型。

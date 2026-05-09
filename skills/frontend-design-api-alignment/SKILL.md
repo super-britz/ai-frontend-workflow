@@ -38,6 +38,7 @@ description: Use when 对齐前端设计拆解和接口契约；比较 Figma 字
 - 不把产品语义冲突伪装成前端 adapter。
 - 不清楚的信息必须标记为 `Needs design decision`、`Needs product decision` 或 `Needs backend decision`。
 - 只有明确 `api-not-required` 时，才允许没有接口契约进入后续实现。
+- 对齐结果必须写入文档；不要只把字段映射和冲突留在聊天上下文。
 
 ## 工作流程
 
@@ -103,8 +104,11 @@ description: Use when 对齐前端设计拆解和接口契约；比较 Figma 字
 
 使用 `assets/templates/design-api-alignment.md` 作为基础模板。
 
+如果人工审核发现字段映射、adapter 决策或差异分类不准，直接修改 `design-api-alignment.md`。需要产品、设计、后端或组件 owner 拍板的内容，写入 `decisions.md`。
+
 最终回复必须包含：
 
+- 产物文件路径
 - 对齐输入来源
 - 字段映射摘要
 - 状态映射摘要
@@ -123,6 +127,7 @@ description: Use when 对齐前端设计拆解和接口契约；比较 Figma 字
 - 接口缺失项已决策为后端补齐、产品调整、前端移除，或页面已标记 `api-not-required`。
 - 若启用 OpenSpec，`openspec/changes/<change-id>/decisions.md` 中的 `Implementation Gate` 必须是 `Approved`。
 - adapter 规则明确放在 service/adapter 层；静态页面则明确不需要 adapter。
+- `tasks.md` 应在事实文件稳定且 Implementation Gate 通过后再生成。
 
 ## 与其他 skill 的关系
 
@@ -140,6 +145,7 @@ description: Use when 对齐前端设计拆解和接口契约；比较 Figma 字
 frontend-design-breakdown
 → frontend-api-contract
 → frontend-design-api-alignment
+→ 人工审核 decisions.md
 → writing-plans
 → frontend-titan-implementation
 ```
@@ -147,6 +153,8 @@ frontend-design-breakdown
 ## 常见失败
 
 - 设计字段和接口字段没对上，就直接写页面。
+- 对齐结果只留在聊天里，没有写入 `design-api-alignment.md`。
+- `Needs decision` 没处理就生成 `tasks.md`。
 - 接口没有筛选参数，却做了看似可用的本地筛选。
 - mock 有字段就当真实接口有字段。
 - 把产品语义冲突塞进前端 adapter。

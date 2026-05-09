@@ -6,6 +6,7 @@
 - 需要按需求沉淀上下文或人工审核时，先运行 `Use $frontend-openspec-workflow 为这个前端需求设计 OpenSpec、Superpowers 和 frontend skills 的分层协作流程。`
 - 后续所有前端任务，先读取本文件、`AGENTS.md`、`docs/ai/` 和 active OpenSpec change 下的项目规则。
 - OpenSpec 负责项目事实和需求变更，Superpowers 负责执行过程和工程质量，frontend skills 负责前端专业判断。
+- 重要分析结果必须写入文件；聊天上下文不能替代 `docs/*.md`、`decisions.md` 或 `tasks.md`。
 
 ## Skill 调用顺序
 
@@ -27,14 +28,16 @@
 2. 若启用 OpenSpec，先创建或选择 active change，明确 scope、non-goals、验收标准。
 3. 有 Figma 时先用 `frontend-design-breakdown` 做设计拆解，不直接写页面。
 4. 有接口时先用 `frontend-api-contract` 生成接口契约，不根据 UI 猜字段。
-5. 用 `frontend-design-api-alignment` 对照设计拆解和接口契约，列出字段、状态、筛选、分页、权限、错误态差异；不明确项标记 `Needs decision`。
-6. 人工审核 `decisions.md`，只有 `Implementation Gate: Approved` 才允许实现。
-7. 进入实现后由 Superpowers 主导 `writing-plans`、worktree、TDD、review 和完成前验证。
-8. 实现时按需调用 `frontend-titan-implementation`，优先复用现有组件、service、types 和样式系统。
-9. 开发中发现事实变化，先更新 OpenSpec change 和 `decisions.md`，再继续实现。
-10. UI 改动必须做真实浏览器或截图验收，并把结论写入 `verification.md`。
-11. 合并前做前端专项 Review，并把阻塞风险写入 `review.md`。
-12. 验收后运行 OpenSpec validate/archive，把长期事实沉淀回 specs。
+5. 人工审核事实文件；拆解或契约不准时直接修改 `docs/design-breakdown.md`、`docs/api-contract.md` 或 `docs/design-api-alignment.md`。
+6. 有取舍、争议或 owner 的内容写入 `decisions.md`，不要只留在聊天里。
+7. 用 `frontend-design-api-alignment` 对照设计拆解和接口契约，列出字段、状态、筛选、分页、权限、错误态差异；不明确项标记 `Needs decision`。
+8. 人工审核 `decisions.md`，只有 `Implementation Gate: Approved` 才允许生成或更新 `tasks.md`。
+9. 进入实现后由 Superpowers 主导 `writing-plans`、worktree、TDD、review 和完成前验证。
+10. 实现时按需调用 `frontend-titan-implementation`，优先复用现有组件、service、types 和样式系统。
+11. 开发中发现事实变化，先更新 OpenSpec change 和 `decisions.md`，再继续实现。
+12. UI 改动必须做真实浏览器或截图验收，并把结论写入 `verification.md`。
+13. 合并前做前端专项 Review，并把阻塞风险写入 `review.md`。
+14. 验收后运行 OpenSpec validate/archive，把长期事实沉淀回 specs。
 
 ## 禁止事项
 
@@ -42,6 +45,8 @@
 - 不根据 mock 或 UI 猜真实接口结构。
 - 不在设计拆解和接口契约对齐前直接写业务页面。
 - 不在 `Implementation Gate` 未通过时进入页面实现。
+- 不在事实文件稳定和 `Implementation Gate` 通过前生成 `tasks.md`。
+- 不用聊天记录代替 OpenSpec change 文件。
 - 不用 build 通过代替视觉验收。
 - 不把未验证的页面改动标记为完成。
 - 不把项目特定临时规则写回公共 skill。

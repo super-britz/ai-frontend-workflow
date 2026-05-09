@@ -19,6 +19,14 @@ OpenSpec 先定义事实和变更边界
 → 验收后 OpenSpec validate / archive
 ```
 
+硬规则：
+
+```text
+facts 先稳定 → decisions 再确认 → tasks 最后生成
+```
+
+设计拆解、接口契约和设计接口对齐结果必须写入 OpenSpec change 或 `docs/ai/` 文件；聊天摘要不能作为 source of truth。
+
 ## Skills
 
 | Skill | 用途 |
@@ -70,11 +78,13 @@ Use $frontend-code-review review 这次前端改动。
 2. 明确需求边界时，用 OpenSpec 创建或选择 change；需要编排前端文档时使用 `frontend-openspec-workflow`。
 3. 有 Figma 页面任务时，使用 `frontend-design-breakdown` 只拆设计事实。
 4. 有接口文档或联调任务时，使用 `frontend-api-contract` 只拆接口事实。
-5. 使用 `frontend-design-api-alignment` 对齐设计和接口，产出冲突和人工决策。
-6. `Implementation Gate: Approved` 后，由 Superpowers 主导 `writing-plans`、TDD、worktree、review 和完成前验证。
-7. 实现阶段按需使用 `frontend-titan-implementation`、`frontend-visual-verification` 和 `frontend-code-review`。
-8. 开发中发现事实变化，先回写 OpenSpec change 和 `decisions.md`，再继续写代码。
-9. 验收通过后运行 OpenSpec validate/archive，把长期有效规则归档到 `openspec/specs/` 或项目稳定文档。
+5. 人工审核事实文件；拆解或契约不准时直接修改 `docs/design-breakdown.md`、`docs/api-contract.md` 或 `docs/design-api-alignment.md`。
+6. 有取舍、争议或 owner 的内容写入 `decisions.md`。
+7. 使用 `frontend-design-api-alignment` 对齐设计和接口，产出冲突和人工决策。
+8. `Implementation Gate: Approved` 后，再生成或更新 `tasks.md`，并由 Superpowers 主导 `writing-plans`、TDD、worktree、review 和完成前验证。
+9. 实现阶段按需使用 `frontend-titan-implementation`、`frontend-visual-verification` 和 `frontend-code-review`。
+10. 开发中发现事实变化，先回写 OpenSpec change 和 `decisions.md`，再继续写代码。
+11. 验收通过后运行 OpenSpec validate/archive，把长期有效规则归档到 `openspec/specs/` 或项目稳定文档。
 
 业务项目可以参考：
 
