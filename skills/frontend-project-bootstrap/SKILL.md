@@ -71,6 +71,7 @@ description: Use when 初始化或接入前端仓库的 AI 开发工作流；生
 - `figma-to-code.md`：设计稿实现是常见工作流时创建。
 - `visual-checklist.md`：UI 验收依赖截图、响应式或状态检查时创建。
 - `review-checklist.md`：需要前端专项 Review 标准时创建。
+- 需要按需求沉淀上下文和人工 Gate 时，引入 `frontend-openspec-workflow`，不要把每个需求的临时结论写进全局 `AGENTS.md`。
 
 模板位于 `assets/templates/`。
 
@@ -80,6 +81,7 @@ description: Use when 初始化或接入前端仓库的 AI 开发工作流；生
 
 - 前端改动后 Agent 需要运行哪些准确命令。
 - 页面任务必须覆盖哪些 UI 状态：默认、加载、空、错误、禁用、权限、成功。
+- 若启用 OpenSpec，必须写清 active change、`decisions.md` 和 `Implementation Gate: Approved` 的要求。
 - 是否有 Playwright、Cypress、截图或 E2E 验收能力。
 - 新增组件、hooks/composables、页面、services 时是否必须补测试。
 - 哪些文件、配置或公共区域不能随意改。

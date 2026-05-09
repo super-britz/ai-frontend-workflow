@@ -17,6 +17,9 @@ description: Use when 对齐前端设计拆解和接口契约；比较 Figma 字
 
 - `docs/ai/design-breakdown.md`
 - `docs/ai/api-contract.md`
+- `openspec/changes/<change-id>/docs/design-breakdown.md`
+- `openspec/changes/<change-id>/docs/api-contract.md`
+- `openspec/changes/<change-id>/decisions.md`
 - `docs/ai/component-map.md`
 - `docs/ai/component-usage.md`
 - `AGENTS.md`
@@ -96,7 +99,7 @@ description: Use when 对齐前端设计拆解和接口契约；比较 Figma 字
 
 ### 6. 输出对齐文档
 
-默认输出到 `docs/ai/design-api-alignment.md`，除非项目已有更合适的文档约定。
+如果存在 active OpenSpec change，优先输出到 `openspec/changes/<change-id>/docs/design-api-alignment.md`，并把必须人工确认的问题同步到 `openspec/changes/<change-id>/decisions.md`，状态保持 `Pending`。否则默认输出到 `docs/ai/design-api-alignment.md`，除非项目已有更合适的文档约定。
 
 使用 `assets/templates/design-api-alignment.md` 作为基础模板。
 
@@ -118,12 +121,14 @@ description: Use when 对齐前端设计拆解和接口契约；比较 Figma 字
 - loading、empty、error、permission 等关键状态有处理规则，或已明确 `api-not-required` 的豁免原因。
 - 搜索、筛选、分页、排序能力已确认，或确认页面不需要这些能力。
 - 接口缺失项已决策为后端补齐、产品调整、前端移除，或页面已标记 `api-not-required`。
+- 若启用 OpenSpec，`openspec/changes/<change-id>/decisions.md` 中的 `Implementation Gate` 必须是 `Approved`。
 - adapter 规则明确放在 service/adapter 层；静态页面则明确不需要 adapter。
 
 ## 与其他 skill 的关系
 
 - 前置设计拆解：`frontend-design-breakdown`
 - 前置接口契约：`frontend-api-contract`
+- OpenSpec 编排：`frontend-openspec-workflow`
 - 后续实现计划：`writing-plans`
 - 后续实现：`frontend-titan-implementation`
 - 后续验收：`frontend-visual-verification`

@@ -1,0 +1,4 @@
+interface:
+  display_name: "前端 OpenSpec 工作流"
+  short_description: "把 OpenSpec change 接入前端设计、接口、对齐、实现、验收和 Review 流程"
+  default_prompt: "Use $frontend-openspec-workflow 为这个前端需求创建或选择 OpenSpec change，并规划设计拆解、接口契约、对齐、人工 Gate、实现、验收和 Review 的文档落点。"

@@ -1,12 +1,13 @@
 # AI Frontend Workflow
 
-前端 AI 自动化开发工作流的团队级 skills 集合，用于把 Codex / Superpowers 接入前端项目，并沉淀项目初始化、设计还原、组件映射、接口契约和验收规则。
+前端 AI 自动化开发工作流的团队级 skills 集合，用于把 Codex / Superpowers / OpenSpec 接入前端项目，并沉淀项目初始化、需求变更文档、设计还原、组件映射、接口契约和验收规则。
 
 ## Skills
 
 | Skill | 用途 |
 | --- | --- |
 | `frontend-project-bootstrap` | 初始化前端仓库的 `AGENTS.md`、组件边界、设计还原和验收护栏 |
+| `frontend-openspec-workflow` | 为单个前端需求创建或选择 OpenSpec change，并规划文档落点、人工 Gate 和归档 |
 | `frontend-design-breakdown` | 写代码前拆解 Figma 设计稿的页面结构、组件映射、状态和验收点 |
 | `frontend-api-contract` | 把接口文档沉淀为前端可执行契约和接入规则，确认后再生成接口层代码 |
 | `frontend-design-api-alignment` | 对齐设计拆解和接口契约的字段、状态、权限、查询能力和差异决策 |
@@ -37,6 +38,7 @@ cp -R skills/* ~/.codex/skills/
 
 ```text
 Use $frontend-project-bootstrap 初始化这个前端仓库的 Codex/Superpowers 协作规则、组件边界和验收护栏。
+Use $frontend-openspec-workflow 为这个前端需求创建或选择 OpenSpec change，并规划设计拆解、接口契约、对齐、人工 Gate、实现、验收和 Review 的文档落点。
 Use $frontend-design-breakdown 拆解这个 Figma 页面，输出页面结构、组件映射、状态清单和视觉验收点，不写代码。
 Use $frontend-api-contract 根据接口文档生成前端接口契约、类型、service、mock 和状态处理规则。
 Use $frontend-design-api-alignment 对齐设计拆解和接口契约，输出字段映射、状态映射、差异清单和实现决策，不写代码。
@@ -48,13 +50,14 @@ Use $frontend-code-review review 这次前端改动。
 ## 推荐工作流
 
 1. 新项目或老项目接入 AI 前，先运行 `frontend-project-bootstrap`。
-2. 有 Figma 页面任务时，先使用 `frontend-design-breakdown` 做页面结构、组件映射、状态和验收点拆解，不写代码。
-3. 有接口文档或联调任务时，使用 `frontend-api-contract` 生成接口契约；契约确认后才生成 types、service、mock。
-4. 使用 `frontend-design-api-alignment` 对齐设计字段、接口字段、状态、权限、查询能力和差异决策。
-5. 对齐结果允许进入实现后，再使用 `frontend-titan-implementation` 实现页面。
-6. 页面实现完成后，使用 `frontend-visual-verification` 做真实浏览器、响应式和状态验收。
-7. 合并前使用 `frontend-code-review` 做前端专项 Review。
-8. 项目级规则放在业务仓库的 `AGENTS.md` 和 `docs/ai/`，本仓库只维护跨项目可复用的 skills。
+2. 需要按需求沉淀上下文或人工审核时，使用 `frontend-openspec-workflow` 创建或选择 `openspec/changes/<change-id>/`。
+3. 有 Figma 页面任务时，使用 `frontend-design-breakdown` 做页面结构、组件映射、状态和验收点拆解，不写代码。
+4. 有接口文档或联调任务时，使用 `frontend-api-contract` 生成接口契约；契约确认后才生成 types、service、mock。
+5. 使用 `frontend-design-api-alignment` 对齐设计字段、接口字段、状态、权限、查询能力和差异决策。
+6. 对齐结果和人工 Gate 允许进入实现后，再使用 `frontend-titan-implementation` 实现页面。
+7. 页面实现完成后，使用 `frontend-visual-verification` 做真实浏览器、响应式和状态验收。
+8. 合并前使用 `frontend-code-review` 做前端专项 Review。
+9. 完成后把长期有效规则归档到 `openspec/specs/` 或项目 `docs/ai/`，本仓库只维护跨项目可复用的 skills。
 
 业务项目可以参考：
 

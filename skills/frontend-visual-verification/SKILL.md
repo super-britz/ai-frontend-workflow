@@ -26,6 +26,7 @@ description: Use when 验证前端 UI、设计还原、Figma 对照、Playwright
 按需读取：
 
 - `AGENTS.md`、`docs/ai/visual-checklist.md`
+- active OpenSpec change：`docs/design-breakdown.md`、`docs/api-contract.md`、`docs/design-api-alignment.md`、`decisions.md`
 - Figma 链接、设计截图、PRD 或验收说明
 - 相关页面代码、路由、mock、接口契约
 - `package.json` 中的 dev、test、e2e、storybook、screenshot 命令
@@ -87,6 +88,8 @@ description: Use when 验证前端 UI、设计还原、Figma 对照、Playwright
 - 是否通过视觉验收
 
 如果生成截图或报告，写清文件路径。
+
+如果存在 active OpenSpec change，优先把验收结论写入 `openspec/changes/<change-id>/verification.md`；否则使用项目已有验收报告路径。
 
 ## 严重程度
 

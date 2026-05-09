@@ -33,6 +33,7 @@ description: Use when 处理前端接口文档、OpenAPI、Swagger、Apifox、YA
 
 - `package.json`、接口生成脚本、mock 脚本
 - `AGENTS.md`、`README.md`、`docs/`
+- OpenSpec change：`openspec/changes/<change-id>/proposal.md`、`design.md`、`decisions.md`
 - request 封装：`request`、`http`、`axios`、`fetch`、`client`
 - service 目录：`api/`、`services/`、`request/`
 - 类型目录：`types/`、`interfaces/`、`model/`
@@ -68,7 +69,7 @@ description: Use when 处理前端接口文档、OpenAPI、Swagger、Apifox、YA
 
 ### 3. 生成或更新接口契约文档
 
-默认生成到 `docs/ai/api-contract.md`，除非仓库已有接口文档约定。
+如果存在 active OpenSpec change，优先生成到 `openspec/changes/<change-id>/docs/api-contract.md`。否则默认生成到 `docs/ai/api-contract.md`，除非仓库已有接口文档约定。
 
 使用 `assets/templates/api-contract.md` 作为基础模板，必须写清：
 
@@ -144,6 +145,7 @@ description: Use when 处理前端接口文档、OpenAPI、Swagger、Apifox、YA
 
 ## 推荐默认值
 
+- OpenSpec 文档路径：`openspec/changes/<change-id>/docs/api-contract.md`
 - 仓库文档路径：`docs/ai/api-contract.md`
 - 接入检查清单：`docs/ai/api-integration-checklist.md`
 - 未确认字段统一写 `Needs backend decision`
