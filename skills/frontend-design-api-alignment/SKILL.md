@@ -112,7 +112,7 @@ description: Use when 对齐前端设计拆解和接口契约；比较 Figma 字
 
 ## 进入实现的条件
 
-只有满足全部条件，才建议进入 `figma-titan-to-code` 或 `writing-plans`：
+只有满足全部条件，才建议进入 `frontend-titan-implementation` 或 `writing-plans`：
 
 - 关键展示字段都有来源或明确决策。
 - loading、empty、error、permission 等关键状态有处理规则，或已明确 `api-not-required` 的豁免原因。
@@ -125,9 +125,9 @@ description: Use when 对齐前端设计拆解和接口契约；比较 Figma 字
 - 前置设计拆解：`frontend-design-breakdown`
 - 前置接口契约：`frontend-api-contract`
 - 后续实现计划：`writing-plans`
-- 后续实现：`figma-titan-to-code`
+- 后续实现：`frontend-titan-implementation`
 - 后续验收：`frontend-visual-verification`
-- 后续 Review：`codex-review-frontend`
+- 后续 Review：`frontend-code-review`
 
 推荐顺序：
 
@@ -136,7 +136,7 @@ frontend-design-breakdown
 → frontend-api-contract
 → frontend-design-api-alignment
 → writing-plans
-→ figma-titan-to-code
+→ frontend-titan-implementation
 ```
 
 ## 常见失败

@@ -1,0 +1,4 @@
+interface:
+  display_name: "前端代码 Review"
+  short_description: "审查前端改动的组件复用、接口契约、状态覆盖和验收质量"
+  default_prompt: "Use $frontend-code-review review 这次前端改动。"

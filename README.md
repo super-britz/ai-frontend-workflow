@@ -10,9 +10,9 @@
 | `frontend-design-breakdown` | 写代码前拆解 Figma 设计稿的页面结构、组件映射、状态和验收点 |
 | `frontend-api-contract` | 把接口文档沉淀为前端可执行契约和接入规则，确认后再生成接口层代码 |
 | `frontend-design-api-alignment` | 对齐设计拆解和接口契约的字段、状态、权限、查询能力和差异决策 |
-| `figma-titan-to-code` | 将 Figma 设计稿实现为基于 Ninebot Titan 组件体系的生产级前端代码 |
+| `frontend-titan-implementation` | 将 Figma 设计稿实现为基于 Ninebot Titan 组件体系的生产级前端代码 |
 | `frontend-visual-verification` | 验证前端页面的设计还原、响应式、核心状态和截图验收 |
-| `codex-review-frontend` | 审查前端改动的组件复用、接口契约、状态覆盖和验收质量 |
+| `frontend-code-review` | 审查前端改动的组件复用、接口契约、状态覆盖和验收质量 |
 
 ## 安装
 
@@ -40,9 +40,9 @@ Use $frontend-project-bootstrap 初始化这个前端仓库的 Codex/Superpowers
 Use $frontend-design-breakdown 拆解这个 Figma 页面，输出页面结构、组件映射、状态清单和视觉验收点，不写代码。
 Use $frontend-api-contract 根据接口文档生成前端接口契约、类型、service、mock 和状态处理规则。
 Use $frontend-design-api-alignment 对齐设计拆解和接口契约，输出字段映射、状态映射、差异清单和实现决策，不写代码。
-Use $figma-titan-to-code 根据这个 Figma 页面实现 Titan 前端页面。
+Use $frontend-titan-implementation 根据这个 Figma 页面实现 Titan 前端页面。
 Use $frontend-visual-verification 验证这个页面的设计还原、响应式和核心状态。
-Use $codex-review-frontend review 这次前端改动。
+Use $frontend-code-review review 这次前端改动。
 ```
 
 ## 推荐工作流
@@ -51,9 +51,9 @@ Use $codex-review-frontend review 这次前端改动。
 2. 有 Figma 页面任务时，先使用 `frontend-design-breakdown` 做页面结构、组件映射、状态和验收点拆解，不写代码。
 3. 有接口文档或联调任务时，使用 `frontend-api-contract` 生成接口契约；契约确认后才生成 types、service、mock。
 4. 使用 `frontend-design-api-alignment` 对齐设计字段、接口字段、状态、权限、查询能力和差异决策。
-5. 对齐结果允许进入实现后，再使用 `figma-titan-to-code` 实现页面。
+5. 对齐结果允许进入实现后，再使用 `frontend-titan-implementation` 实现页面。
 6. 页面实现完成后，使用 `frontend-visual-verification` 做真实浏览器、响应式和状态验收。
-7. 合并前使用 `codex-review-frontend` 做前端专项 Review。
+7. 合并前使用 `frontend-code-review` 做前端专项 Review。
 8. 项目级规则放在业务仓库的 `AGENTS.md` 和 `docs/ai/`，本仓库只维护跨项目可复用的 skills。
 
 业务项目可以参考：

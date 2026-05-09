@@ -1,9 +1,9 @@
 ---
-name: figma-titan-to-code
-description: 将 Figma 设计稿实现为基于 Ninebot Titan 组件体系的生产级前端代码。Use when Codex receives a Figma URL、Figma node、设计稿截图或“按设计稿实现页面/组件”的请求，并且当前仓库使用或应优先使用 @ninebot/pc-titan-components、@ninebot/pc-titan-templates、Element Plus fallback、Vue/Vite 后台页面模式。
+name: frontend-titan-implementation
+description: Use when 根据已确认的设计拆解、接口契约和设计接口对齐结果，将 Figma 设计稿实现为基于 Ninebot Titan 组件体系的生产级前端代码；适用于 Figma URL、Figma node、设计稿截图、Titan/Element Plus/Vue/Vite 后台页面实现。
 ---
 
-# Figma Titan To Code
+# 前端 Titan 实现
 
 ## 目标
 

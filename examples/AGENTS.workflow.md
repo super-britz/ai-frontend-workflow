@@ -14,9 +14,9 @@
 | Figma 设计拆解 | `frontend-design-breakdown` | `docs/ai/design-breakdown.md`、组件映射、状态清单、验收点 |
 | 接口文档/联调 | `frontend-api-contract` | `docs/ai/api-contract.md`、接口契约、接入规则 |
 | 设计接口对齐 | `frontend-design-api-alignment` | `docs/ai/design-api-alignment.md`、字段映射、状态映射、差异决策 |
-| 设计确认后实现 | `figma-titan-to-code` | 页面代码、状态覆盖、组件实现 |
+| 设计确认后实现 | `frontend-titan-implementation` | 页面代码、状态覆盖、组件实现 |
 | 页面完成验收 | `frontend-visual-verification` | 视觉验收结论、截图或问题清单 |
-| 合并前审查 | `codex-review-frontend` | Review findings、未验证风险 |
+| 合并前审查 | `frontend-code-review` | Review findings、未验证风险 |
 
 ## 标准开发链路
 
@@ -24,7 +24,7 @@
 2. 有 Figma 时先用 `frontend-design-breakdown` 做设计拆解，不直接写页面。
 3. 有接口时先用 `frontend-api-contract` 生成接口契约，不根据 UI 猜字段。
 4. 用 `frontend-design-api-alignment` 对照设计拆解和接口契约，列出字段、状态、筛选、分页、权限、错误态差异；不明确项标记 `Needs decision`。
-5. 对齐结果允许进入实现后，再用 `figma-titan-to-code` 实现页面。
+5. 对齐结果允许进入实现后，再用 `frontend-titan-implementation` 实现页面。
 6. 实现时优先复用现有组件、service、types 和样式系统。
 7. 完成后运行 lint、typecheck、test、build 等项目可用命令。
 8. UI 改动必须做真实浏览器或截图验收。

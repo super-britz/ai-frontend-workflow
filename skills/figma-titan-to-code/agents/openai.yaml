@@ -1,4 +1,0 @@
-interface:
-  display_name: "Figma 转 Titan"
-  short_description: "将 Figma 设计稿实现为 Titan 组件代码"
-  default_prompt: "使用 $figma-titan-to-code 将这个 Figma 设计实现为当前仓库中的 Titan 组件代码。"

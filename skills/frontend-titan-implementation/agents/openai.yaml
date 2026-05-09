@@ -1,0 +1,4 @@
+interface:
+  display_name: "前端 Titan 实现"
+  short_description: "基于已确认设计和接口实现 Titan 前端页面"
+  default_prompt: "Use $frontend-titan-implementation 根据已确认的设计拆解、接口契约和对齐结果实现 Titan 前端页面。"

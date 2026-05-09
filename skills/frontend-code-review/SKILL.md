@@ -1,6 +1,6 @@
 ---
-name: codex-review-frontend
-description: Use when review 前端改动、PR、diff、Codex Review、组件复用、组件库优先、Figma 还原、接口契约、TypeScript 类型、UI 状态、响应式、可访问性、测试和 Playwright 验收，或排查 AI 生成前端代码质量风险。
+name: frontend-code-review
+description: Use when review 前端改动、PR、diff、前端专项 Review、组件复用、组件库优先、Figma 还原、接口契约、TypeScript 类型、UI 状态、响应式、可访问性、测试和 Playwright 验收，或排查 AI 生成前端代码质量风险。
 ---
 
 # 前端专项 Review
