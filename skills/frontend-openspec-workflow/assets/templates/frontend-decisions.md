@@ -4,10 +4,10 @@
 
 | Gate | Status | Reviewer | Date | Evidence |
 | --- | --- | --- | --- | --- |
+| Scope Gate | Pending |  |  | `proposal.md` / `specs/` |
 | Design Review | Pending |  |  | `docs/design-breakdown.md` |
 | Contract Review | Pending |  |  | `docs/api-contract.md` |
 | Implementation Gate | Pending |  |  | `docs/design-api-alignment.md` |
-| Verification Gate | Pending |  |  | `verification.md` |
 | Merge Gate | Pending |  |  | `review.md` |
 
 ## Decision Log

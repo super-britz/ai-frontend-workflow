@@ -27,10 +27,10 @@
 
 | Gate | Status | Reviewer | Date | Notes |
 | --- | --- | --- | --- | --- |
+| Scope Gate | Pending |  |  |  |
 | Design Review | Pending |  |  |  |
 | Contract Review | Pending |  |  |  |
 | Implementation Gate | Pending |  |  |  |
-| Verification Gate | Pending |  |  |  |
 | Merge Gate | Pending |  |  |  |
 
 ## Active Inputs
