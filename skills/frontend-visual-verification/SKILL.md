@@ -26,7 +26,7 @@ description: Use when 验证前端 UI、设计还原、Figma 对照、Playwright
 按需读取：
 
 - `AGENTS.md`、`docs/ai/visual-checklist.md`
-- active OpenSpec change：`docs/design-breakdown.md`、`docs/api-contract.md`、`docs/design-api-alignment.md`、`decisions.md`
+- active OpenSpec change：`docs/design-requirements.md`、`docs/api-requirements.md`、`docs/alignment-requirements.md`、`decisions.md`
 - Figma 链接、设计截图、PRD 或验收说明
 - 相关页面代码、路由、mock、接口契约
 - `package.json` 中的 dev、test、e2e、storybook、screenshot 命令

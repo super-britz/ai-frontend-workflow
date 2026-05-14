@@ -15,17 +15,19 @@ description: Use when 对齐前端设计拆解和接口契约；比较 Figma 字
 
 优先读取：
 
-- `docs/ai/design-breakdown.md`
-- `docs/ai/api-contract.md`
-- `openspec/changes/<change-id>/docs/design-breakdown.md`
-- `openspec/changes/<change-id>/docs/api-contract.md`
+- `docs/ai/design-requirements.md`
+- `docs/ai/api-requirements.md`
+- `docs/ai/product-requirements.md`
+- `openspec/changes/<change-id>/docs/product-requirements.md`
+- `openspec/changes/<change-id>/docs/design-requirements.md`
+- `openspec/changes/<change-id>/docs/api-requirements.md`
 - `openspec/changes/<change-id>/decisions.md`
 - `docs/ai/component-map.md`
 - `docs/ai/component-usage.md`
 - `AGENTS.md`
 - Figma 链接、PRD、接口文档或用户补充说明
 
-如果缺少设计拆解或接口契约，先要求补齐对应上游产物，不要直接对齐空白信息。
+如果缺少产品需求、设计需求或接口需求，先要求补齐对应上游产物，不要直接对齐空白信息。
 
 如果设计拆解明确说明页面是纯静态展示、无接口依赖、无后端状态和权限依赖，可以在对齐文档中标记 `api-not-required`。此时不强制等待接口契约，但仍需列出静态数据来源、状态豁免原因和视觉验收点。
 
@@ -46,6 +48,7 @@ description: Use when 对齐前端设计拆解和接口契约；比较 Figma 字
 
 分别提取：
 
+- 产品字段和业务规则：业务对象、功能范围、校验、权限、引用保护和验收口径。
 - 设计字段：页面上出现的文案、字段、筛选项、表格列、详情项、表单项。
 - 接口字段：请求参数、响应字段、枚举、分页、错误码、权限字段。
 - 设计状态：default、loading、empty、error、permission、disabled、success。
@@ -100,16 +103,17 @@ description: Use when 对齐前端设计拆解和接口契约；比较 Figma 字
 
 ### 6. 输出对齐文档
 
-如果存在 active OpenSpec change，优先输出到 `openspec/changes/<change-id>/docs/design-api-alignment.md`，并把必须人工确认的问题同步到 `openspec/changes/<change-id>/decisions.md`，状态保持 `Pending`。否则默认输出到 `docs/ai/design-api-alignment.md`，除非项目已有更合适的文档约定。
+如果存在 active OpenSpec change，优先输出到 `openspec/changes/<change-id>/docs/alignment-requirements.md`，并把必须人工确认的问题同步到 `openspec/changes/<change-id>/decisions.md`，状态保持 `Pending`。否则默认输出到 `docs/ai/alignment-requirements.md`，除非项目已有更合适的文档约定。
 
-使用 `assets/templates/design-api-alignment.md` 作为基础模板。
+使用 `assets/templates/alignment-requirements.md` 作为基础模板。
 
-如果人工审核发现字段映射、adapter 决策或差异分类不准，直接修改 `design-api-alignment.md`。需要产品、设计、后端或组件 owner 拍板的内容，写入 `decisions.md`。
+如果人工审核发现字段映射、adapter 决策或差异分类不准，直接修改 `alignment-requirements.md`。需要产品、设计、后端或组件 owner 拍板的内容，写入 `decisions.md`。
 
 最终回复必须包含：
 
 - 产物文件路径
 - 对齐输入来源
+- 产品/设计/API 覆盖范围
 - 字段映射摘要
 - 状态映射摘要
 - 查询能力对齐结论
@@ -122,6 +126,7 @@ description: Use when 对齐前端设计拆解和接口契约；比较 Figma 字
 只有满足全部条件，才建议进入 `frontend-titan-implementation` 或 `writing-plans`：
 
 - 关键展示字段都有来源或明确决策。
+- 关键产品规则都有设计入口或明确决策。
 - loading、empty、error、permission 等关键状态有处理规则，或已明确 `api-not-required` 的豁免原因。
 - 搜索、筛选、分页、排序能力已确认，或确认页面不需要这些能力。
 - 接口缺失项已决策为后端补齐、产品调整、前端移除，或页面已标记 `api-not-required`。
@@ -153,7 +158,7 @@ frontend-design-breakdown
 ## 常见失败
 
 - 设计字段和接口字段没对上，就直接写页面。
-- 对齐结果只留在聊天里，没有写入 `design-api-alignment.md`。
+- 对齐结果只留在聊天里，没有写入 `alignment-requirements.md`。
 - `Needs decision` 没处理就生成 `tasks.md`。
 - 接口没有筛选参数，却做了看似可用的本地筛选。
 - mock 有字段就当真实接口有字段。
@@ -162,5 +167,5 @@ frontend-design-breakdown
 
 ## 资源
 
-- `assets/templates/design-api-alignment.md`
+- `assets/templates/alignment-requirements.md`
 - `assets/templates/alignment-decision-log.md`
