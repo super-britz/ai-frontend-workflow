@@ -14,8 +14,9 @@
 
 | 类型 | 路径/链接 | 状态 | 备注 |
 | --- | --- | --- | --- |
-| 设计拆解 | `docs/ai/design-breakdown.md` | 待确认 |  |
-| 接口契约 | `docs/ai/api-contract.md` | 待确认 |  |
+| 产品需求 | `docs/ai/product-requirements.md` | 待确认 |  |
+| 设计需求 | `docs/ai/design-requirements.md` | 待确认 |  |
+| 接口需求 | `docs/ai/api-requirements.md` | 待确认 |  |
 
 ## 无接口依赖说明
 

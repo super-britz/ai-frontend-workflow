@@ -70,9 +70,9 @@ description: Use when 处理前端接口文档、OpenAPI、Swagger、Apifox、YA
 
 ### 3. 生成或更新接口契约文档
 
-如果存在 active OpenSpec change，优先生成到 `openspec/changes/<change-id>/docs/api-contract.md`。否则默认生成到 `docs/ai/api-contract.md`，除非仓库已有接口文档约定。
+如果存在 active OpenSpec change，优先生成到 `openspec/changes/<change-id>/docs/api-requirements.md`。否则默认生成到 `docs/ai/api-requirements.md`，除非仓库已有接口文档约定。
 
-使用 `assets/templates/api-contract.md` 作为基础模板，必须写清：
+使用 `assets/templates/api-requirements.md` 作为基础模板，必须写清：
 
 - 文档来源与更新时间
 - 全局请求和响应约定
@@ -84,7 +84,7 @@ description: Use when 处理前端接口文档、OpenAPI、Swagger、Apifox、YA
 - loading、empty、error、permission、success 状态映射
 - 未决问题
 
-如果人工审核发现契约不准，直接修改 `api-contract.md`。涉及后端确认、产品取舍或 owner 的内容，写入 active change 的 `decisions.md`。
+如果人工审核发现契约不准，直接修改 `api-requirements.md`。涉及后端确认、产品取舍或 owner 的内容，写入 active change 的 `decisions.md`。
 
 ### 4. 生成前端接入规则
 
@@ -106,7 +106,7 @@ description: Use when 处理前端接口文档、OpenAPI、Swagger、Apifox、YA
 只有满足全部条件才进入本步骤：
 
 - 用户明确要求生成接口层代码。
-- `api-contract.md` 已确认或未决项不影响本次接口。
+- `api-requirements.md` 已确认或未决项不影响本次接口。
 - 项目已有 request/service/types/mock 约定已识别。
 - 不需要靠 UI 或 mock 反推字段。
 
@@ -148,8 +148,8 @@ description: Use when 处理前端接口文档、OpenAPI、Swagger、Apifox、YA
 
 ## 推荐默认值
 
-- OpenSpec 文档路径：`openspec/changes/<change-id>/docs/api-contract.md`
-- 仓库文档路径：`docs/ai/api-contract.md`
+- OpenSpec 文档路径：`openspec/changes/<change-id>/docs/api-requirements.md`
+- 仓库文档路径：`docs/ai/api-requirements.md`
 - 接入检查清单：`docs/ai/api-integration-checklist.md`
 - 未确认字段统一写 `Needs backend decision`
 - 类型命名：`XxxParams`、`XxxRequest`、`XxxResponse`、`XxxItem`
@@ -158,7 +158,7 @@ description: Use when 处理前端接口文档、OpenAPI、Swagger、Apifox、YA
 ## 常见失败
 
 - 看着页面设计稿猜接口字段。
-- 只在聊天里整理接口字段，没有写入 `api-contract.md`。
+- 只在聊天里整理接口字段，没有写入 `api-requirements.md`。
 - 接口契约被指出不准后，只口头确认，不更新文件。
 - 直接复制 mock 当真实接口契约。
 - 在页面组件里散写 `axios.get('/xxx')`。
@@ -168,7 +168,7 @@ description: Use when 处理前端接口文档、OpenAPI、Swagger、Apifox、YA
 
 ## 资源
 
-- `assets/templates/api-contract.md`
+- `assets/templates/api-requirements.md`
 - `assets/templates/api-integration-checklist.md`
 - `assets/templates/api-source-audit.md`
 - `assets/templates/mock-data-rules.md`

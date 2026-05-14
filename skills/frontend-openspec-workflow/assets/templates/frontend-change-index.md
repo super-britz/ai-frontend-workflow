@@ -16,16 +16,17 @@
 | OpenSpec specs | `specs/` | Pending |
 | Technical design | `design.md` | Pending |
 | Tasks | `tasks.md` | Pending |
-| Design breakdown | `docs/design-breakdown.md` | Pending |
-| API contract | `docs/api-contract.md` | Pending |
-| Design API alignment | `docs/design-api-alignment.md` | Pending |
+| Product requirements | `docs/product-requirements.md` | Pending |
+| Design requirements | `docs/design-requirements.md` | Pending |
+| API requirements | `docs/api-requirements.md` | Pending |
+| Alignment requirements | `docs/alignment-requirements.md` | Pending |
 | Decisions | `decisions.md` | Pending |
 | Verification | `verification.md` | Pending |
 | Review | `review.md` | Pending |
 
 ## Source Of Truth
 
-- 事实文件：`docs/design-breakdown.md`、`docs/api-contract.md`、`docs/design-api-alignment.md`
+- 事实文件：`docs/product-requirements.md`、`docs/design-requirements.md`、`docs/api-requirements.md`、`docs/alignment-requirements.md`
 - 决策文件：`decisions.md`
 - 执行文件：`tasks.md`
 
