@@ -150,6 +150,8 @@ openspec/changes/<change-id>/
 
 如果需求不需要 OpenSpec，继续使用 `docs/ai/*.md`，不要强行建 change。
 
+同一页面来自多个 Figma 文件、frame 或 node 时，优先把它们作为同一份 `docs/design-requirements.md` 的“设计来源索引”和“状态变体”管理；不要因为默认态、弹窗态、空态、错误态在不同 Figma 节点里就拆多个设计需求文件。只有不同完整页面、独立流程或可复用视觉规范才拆独立文件。
+
 ### 3. 审核和修正事实文件
 
 人工或团队可以直接编辑 change 里的事实文件：
