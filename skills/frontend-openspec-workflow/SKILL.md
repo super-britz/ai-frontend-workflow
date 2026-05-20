@@ -220,7 +220,15 @@ brainstorming
 → finishing-a-development-branch
 ```
 
-前端实现阶段再按需调用：
+前端实现阶段的强制规则：
+
+- 只要任务涉及 Figma 到 Titan/Element Plus 后台页面实现，必须先调用 `frontend-titan-implementation`，不能直接进入页面代码编写。
+- `frontend-titan-implementation` 必须完成准入检查：读取 active OpenSpec change 的 `docs/product-requirements.md`、`docs/design-requirements.md`、`docs/api-requirements.md`、`docs/alignment-requirements.md`、`decisions.md` 和 `tasks.md`。
+- 实现前必须读取精确 Figma node 的结构化设计上下文和截图；如果 Figma MCP 当前不可用，只能记录“待读取”或拆任务，不能开始声称按设计还原。
+- 仓库使用 Titan 时，必须读取并遵守 `frontend-titan-implementation/references/titan-component-map.md`；Titan 已覆盖的组件不允许直接用 Element Plus 替代。
+- 验证必须包含真实浏览器截图或快照，并对照 Figma 关键区域；构建通过只算代码验证，不算视觉验收。
+
+前端实现阶段技能顺序：
 
 ```text
 frontend-titan-implementation

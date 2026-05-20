@@ -11,6 +11,8 @@ description: Use when 根据已确认的设计拆解、接口契约和设计接�
 
 ## 实现准入
 
+当本 skill 被 `frontend-openspec-workflow`、`AGENTS.md` 或用户明确要求为强制步骤时，它不是可选优化，而是 Figma 到 Titan 页面实现的前置 Gate。未完成本节检查前，不得新增或修改页面实现代码。
+
 如果当前仓库的 `AGENTS.md`、`docs/ai/` 或用户要求中启用了本工作流，且任务不是明确的“跳过上游分析直接实现”，实现前必须先确认：
 
 - 已有 `docs/ai/product-requirements.md` 或 active OpenSpec change 中的 `docs/product-requirements.md`，或用户明确提供等价产品需求。
