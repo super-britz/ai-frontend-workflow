@@ -51,6 +51,7 @@ facts 先稳定 → decisions 再确认 → tasks 最后生成
 AGENTS.md
 CLAUDE.md
 .github/copilot-instructions.md
+scripts/setup-ai-skills.sh
 ```
 
 manifest 示例见：
