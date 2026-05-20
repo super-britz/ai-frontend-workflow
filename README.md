@@ -65,14 +65,7 @@ manifest 示例见：
 
 - `docs/install-rules.md`
 
-### Codex
-
-```bash
-mkdir -p ~/.codex/skills
-cp -R skills/* ~/.codex/skills/
-```
-
-也可以使用脚本安装：
+### 本仓库开发者安装
 
 ```bash
 ./scripts/install-skills.sh
