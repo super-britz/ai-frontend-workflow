@@ -1,0 +1,17 @@
+source:
+  repo: git@github.com:your-org/ai-frontend-workflow.git
+  version: v0.3.0
+
+skills:
+  - frontend-project-bootstrap
+  - frontend-openspec-workflow
+  - frontend-design-breakdown
+  - frontend-api-contract
+  - frontend-design-api-alignment
+  - frontend-visual-verification
+  - frontend-code-review
+
+agents:
+  codex: required
+  copilot: required
+  claude: required

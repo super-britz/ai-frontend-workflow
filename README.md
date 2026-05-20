@@ -42,6 +42,30 @@ facts 先稳定 → decisions 再确认 → tasks 最后生成
 
 ## 安装
 
+本仓库是团队 skills 的 source of truth；业务项目通过 manifest 声明依赖，不手工复制整份 `skills/`。
+
+业务项目推荐提交：
+
+```text
+.ai/skills.yaml
+AGENTS.md
+CLAUDE.md
+.github/copilot-instructions.md
+```
+
+manifest 示例见：
+
+- `examples/skills.manifest.yaml`
+- `examples/CLAUDE.md`
+- `examples/copilot-instructions.md`
+- `examples/business-project-template/`
+
+完整规则见：
+
+- `docs/install-rules.md`
+
+### Codex
+
 ```bash
 mkdir -p ~/.codex/skills
 cp -R skills/* ~/.codex/skills/
@@ -51,6 +75,50 @@ cp -R skills/* ~/.codex/skills/
 
 ```bash
 ./scripts/install-skills.sh
+```
+
+### 按业务项目 manifest 安装
+
+支持 Codex、VS Code 中的 GitHub Copilot、Claude Code：
+
+```bash
+./scripts/install-skills.sh --manifest /path/to/project/.ai/skills.yaml --agent all
+```
+
+只安装到某个 Agent：
+
+```bash
+./scripts/install-skills.sh --manifest /path/to/project/.ai/skills.yaml --agent codex
+./scripts/install-skills.sh --manifest /path/to/project/.ai/skills.yaml --agent copilot
+./scripts/install-skills.sh --manifest /path/to/project/.ai/skills.yaml --agent claude
+```
+
+查看本机安装状态：
+
+```bash
+./scripts/install-skills.sh --manifest /path/to/project/.ai/skills.yaml --agent all --status
+```
+
+安装脚本统一使用复制模式，不使用软链。修改本仓库 skill 后，需要重新执行安装脚本同步到对应 Agent 的运行时目录。
+
+### 业务项目接入模板
+
+将模板复制到业务项目根目录后，修改 `.ai/skills.yaml` 的 `source.repo` 和 `source.version`：
+
+```text
+examples/business-project-template/
+  .ai/skills.yaml
+  AGENTS.md
+  CLAUDE.md
+  .github/copilot-instructions.md
+  scripts/setup-ai-skills.sh
+```
+
+业务项目内执行：
+
+```bash
+./scripts/setup-ai-skills.sh --status
+./scripts/setup-ai-skills.sh
 ```
 
 更新本仓库并重新安装：
@@ -104,6 +172,7 @@ Use $frontend-code-review review 这次前端改动。
 - `SKILL.md` 的 `name` 必须与目录名一致
 - `default_prompt` 必须包含对应 `$skill-name`
 - README 必须列出每个 skill
+- 安装规则文档和业务项目 manifest 示例必须存在
 - 扫描常见 token、密钥和本地绝对路径
 
 ## 维护原则
@@ -112,3 +181,4 @@ Use $frontend-code-review review 这次前端改动。
 - 不提交 token、密钥、Cookie、真实用户数据或内部敏感接口地址。
 - 项目特定规则不要硬编码进 skill，应沉淀到项目仓库的 `AGENTS.md` 或 `docs/ai/`。
 - 修改 skill 后运行官方校验脚本，确保 `SKILL.md` 和 `agents/openai.yaml` 可被 Codex 识别。
+- 安装规则由本仓库统一维护；业务项目只声明版本、skills 和 Agent 支持范围。
