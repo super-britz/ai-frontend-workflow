@@ -1,17 +1,19 @@
 ---
-name: frontend-titan-implementation
-description: Use when 根据已确认的设计拆解、接口契约和设计接口对齐结果，将 Figma 设计稿实现为基于 Ninebot Titan 组件体系的生产级前端代码；适用于 Figma URL、Figma node、设计稿截图、Titan/Element Plus/Vue/Vite 后台页面实现。
+name: frontend-code-implementation
+description: Use when 根据已确认的设计拆解、接口契约和设计接口对齐结果，实现前端页面或组件代码；适用于 Figma URL、Figma node、设计稿截图、组件库优先、Vue/React/Vite/Next/Nuxt 页面实现。
 ---
 
-# 前端 Titan 实现
+# 前端代码实现
 
 ## 目标
 
-把 Figma 中的精确设计节点，翻译成当前仓库可维护、可联调、可验收的生产代码。实现时优先使用 Titan 组件和项目既有模式，而不是照搬 Figma 导出的 React/Tailwind/绝对定位结构。
+把 Figma 中的精确设计节点，或已确认的前端需求，翻译成当前仓库可维护、可联调、可验收的生产代码。实现时优先使用项目已有组件体系、业务模式和样式 token，而不是照搬 Figma 导出的 React/Tailwind/绝对定位结构。
+
+Titan 只是组件体系分支之一：当仓库使用 `@ninebot/pc-titan-components`、已有 `Ti*` 组件注册，或项目规则明确要求 Titan 时，才启用 Titan 映射表。其他项目按当前仓库的默认组件库和已有页面模式实现。
 
 ## 实现准入
 
-当本 skill 被 `frontend-openspec-workflow`、`AGENTS.md` 或用户明确要求为强制步骤时，它不是可选优化，而是 Figma 到 Titan 页面实现的前置 Gate。未完成本节检查前，不得新增或修改页面实现代码。
+当本 skill 被 `frontend-openspec-workflow`、`AGENTS.md` 或用户明确要求为强制步骤时，它不是可选优化，而是前端页面实现的前置 Gate。未完成本节检查前，不得新增或修改页面实现代码。
 
 如果当前仓库的 `AGENTS.md`、`docs/ai/` 或用户要求中启用了本工作流，且任务不是明确的“跳过上游分析直接实现”，实现前必须先确认：
 
@@ -30,18 +32,25 @@ description: Use when 根据已确认的设计拆解、接口契约和设计接�
 2. 获取 Figma 结构化设计上下文和同一节点截图；如果上下文过大，先读取节点结构，再缩小到关键子节点。
 3. 读取当前仓库规则，例如 `AGENTS.md`、`CLAUDE.md`、`.cursorrules`、README、docs 或 active OpenSpec change，并执行“实现准入”检查。
 4. 检查项目技术栈、组件库、路由、状态管理、请求封装、i18n、权限、mock 和页面模板。
-5. 如果仓库使用 `@ninebot/pc-titan-components` 或提到 Titan，读取 `references/titan-component-map.md`。
-6. 如果需要梳理仓库通用约定，读取 `references/repo-conventions.md`。
-7. 按已确认的设计拆解、接口契约和对齐结果实现页面；组件选择优先遵守 Titan 映射规则。
+5. 判断组件体系：
+   - 如果仓库使用 `@ninebot/pc-titan-components`、已有 `Ti*` 组件或项目规则要求 Titan，读取 `references/titan-component-map.md`。
+   - 如果仓库使用 Ant Design、Element Plus、Naive UI、Arco、Material UI、自研组件库或其他体系，先搜索目标仓库里的真实用法，再按项目既有模式实现。
+   - 如果没有明确组件库，优先复用本地已有业务组件；确实没有可复用组件时才写原生 HTML/CSS。
+6. 读取 `references/repo-conventions.md`，并补充目标仓库的真实约定。
+7. 按已确认的设计拆解、接口契约和对齐结果实现页面；组件选择优先遵守当前仓库组件体系。
 8. 接入真实数据、mock 数据、loading、empty、error、disabled、hover、focus、active 等必要状态。
 9. 用真实浏览器对照 Figma 截图验证桌面端和移动端表现。
 10. 完成前读取 `references/validation-checklist.md`，运行项目可用的最小验证命令，例如构建、类型检查、lint 或页面冒烟验证。
 
+## 组件选择
+
+- 默认优先级：项目已有业务组件 → 项目组件库 → 框架/基础 UI 库 → 原生 HTML/CSS。
+- 对任何组件库，都必须先搜索目标仓库中的真实用法，不根据设计稿外观臆测 props、事件或插槽契约。
+- 遇到弹窗、抽屉、表单、表格、上传、筛选、分页等常见交互容器时，优先复用相邻页面的提交流程和状态模式。
+- 当仓库启用 Titan 时，优先级变为：Titan 组件 → Element Plus fallback → 原生 HTML/自定义布局；Titan 已覆盖的组件不允许直接用 Element Plus 替代。
+
 ## 翻译原则
 
-- 优先使用 Titan 组件；Titan 没覆盖时再用 Element Plus；两者都不合适时才写原生 HTML 或自定义布局。
-- 对 Titan 组件先搜索目标仓库中的真实用法，不根据设计稿外观臆测其 props、事件或插槽契约。
-- 遇到弹窗、抽屉、表单等交互容器时，优先复用仓库已有提交流程；例如 `ti-dialog` 若已有 `@onSubmit` / `@onClose` 模式，不要默认改写自定义 `#footer`。
 - 表单校验应显式声明合适的 `trigger`，并通过表单实例的 `validate(...)` 驱动提交；不要依赖 `canSubmit` 一类按钮禁用态去替代表单错误反馈。
 - 将 Figma 图层视为设计意图，不把图层名称、像素值或自动生成结构当成最终代码。
 - 视觉细节和项目规则冲突时，优先项目规则，再通过间距、token 和局部样式让效果接近设计稿。
@@ -55,11 +64,11 @@ description: Use when 根据已确认的设计拆解、接口契约和设计接�
 - 如果 Figma 上下文过大或被截断，先缩小节点范围再继续。
 - 如果同一页面存在多个相似 variant，确认用户指定的 source of truth。
 - 如果缺少设计拆解、接口契约或设计接口对齐结论，先补齐上游产物，不要越级实现。
-- 如果 Titan 组件无法覆盖某个形态，先查项目既有页面，再选择 Element Plus fallback 或自定义实现。
+- 如果组件库无法覆盖某个形态，先查项目既有页面，再选择基础 UI fallback 或自定义实现。
 - 如果浏览器截图和 Figma 差异明显，优先检查组件选择、布局、尺寸、间距、排版，再检查颜色和交互态。
 
 ## 参考文件
 
-- `references/titan-component-map.md`：Figma 形态到 Titan/Element Plus 组件的映射规则。
+- `references/titan-component-map.md`：仅在仓库使用 Titan 时读取，提供 Figma 形态到 Titan/Element Plus 组件的映射规则。
 - `references/repo-conventions.md`：把设计稿适配到现有仓库时的通用检查点。
 - `references/validation-checklist.md`：完成前的视觉、交互、响应式和代码质量验收清单。

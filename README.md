@@ -36,7 +36,7 @@ facts 先稳定 → decisions 再确认 → tasks 最后生成
 | `frontend-design-breakdown` | 写代码前拆解 Figma 设计稿的页面结构、组件映射、状态和验收点 |
 | `frontend-api-contract` | 把接口文档沉淀为前端可执行契约和接入规则，确认后再生成接口层代码 |
 | `frontend-design-api-alignment` | 对齐设计拆解和接口契约的字段、状态、权限、查询能力和差异决策 |
-| `frontend-titan-implementation` | 将 Figma 设计稿实现为基于 Ninebot Titan 组件体系的生产级前端代码 |
+| `frontend-code-implementation` | 根据已确认设计、接口和组件体系实现生产级前端页面 |
 | `frontend-visual-verification` | 验证前端页面的设计还原、响应式、核心状态和截图验收 |
 | `frontend-code-review` | 审查前端改动的组件复用、接口契约、状态覆盖和验收质量 |
 
@@ -129,7 +129,7 @@ Use $frontend-openspec-workflow 为这个前端需求设计 OpenSpec、Superpowe
 Use $frontend-design-breakdown 拆解这个 Figma 页面，输出页面结构、组件映射、状态清单和视觉验收点，不写代码。
 Use $frontend-api-contract 根据接口文档生成前端接口契约、类型、service、mock 和状态处理规则。
 Use $frontend-design-api-alignment 对齐设计拆解和接口契约，输出字段映射、状态映射、差异清单和实现决策，不写代码。
-Use $frontend-titan-implementation 根据这个 Figma 页面实现 Titan 前端页面。
+Use $frontend-code-implementation 根据这个 Figma 页面实现前端页面。
 Use $frontend-visual-verification 验证这个页面的设计还原、响应式和核心状态。
 Use $frontend-code-review review 这次前端改动。
 ```
@@ -143,8 +143,8 @@ Use $frontend-code-review review 这次前端改动。
 5. 人工审核事实文件；拆解或契约不准时直接修改 `docs/design-breakdown.md`、`docs/api-contract.md` 或 `docs/design-api-alignment.md`。
 6. 有取舍、争议或 owner 的内容写入 `decisions.md`。
 7. 使用 `frontend-design-api-alignment` 对齐设计和接口，产出冲突和人工决策。
-8. `Implementation Gate: Approved` 后，再生成或更新 `tasks.md`，并由 Superpowers 主导 `writing-plans`、TDD、worktree、review 和完成前验证。
-9. 实现阶段按需使用 `frontend-titan-implementation`、`frontend-visual-verification` 和 `frontend-code-review`。
+8. `Implementation Gate: Approved` 后，再生成或更新 `tasks.md`；涉及前端页面实现时，`tasks.md` 第一项必须是由 Superpowers 计划执行 `frontend-code-implementation` handoff，并重新读取 active OpenSpec change。
+9. 实现阶段由 Superpowers 主导执行；页面代码修改前必须经过 `frontend-code-implementation` 准入，再用 `frontend-visual-verification` 和 `frontend-code-review` 验收。
 10. 开发中发现事实变化，先回写 OpenSpec change 和 `decisions.md`，再继续写代码。
 11. 验收通过后运行 OpenSpec validate/archive，把长期有效规则归档到 `openspec/specs/` 或项目稳定文档。
 

@@ -23,7 +23,7 @@ OpenSpec 不负责替你写完整流程，Superpowers 不负责长期沉淀项�
 | --- | --- | --- | --- |
 | OpenSpec | 需求边界、项目事实、变更生命周期 | `openspec/specs/`、`openspec/changes/<change>/`、proposal、design、tasks | 不替代工程执行纪律 |
 | Superpowers | 计划、TDD、worktree、review、verification、finish branch | plan、测试、代码、验证证据、PR/合并决策 | 不当长期事实库 |
-| frontend skills | 产品需求、设计需求、接口需求、对齐需求、Titan 实现、视觉验收、前端 Review | `docs/product-requirements.md`、`docs/design-requirements.md`、`docs/api-requirements.md`、`verification.md`、`review.md` | 不跨越人工 Gate |
+| frontend skills | 产品需求、设计需求、接口需求、对齐需求、代码实现准入、视觉验收、前端 Review | `docs/product-requirements.md`、`docs/design-requirements.md`、`docs/api-requirements.md`、`verification.md`、`review.md` | 不跨越人工 Gate |
 
 判断原则：**OpenSpec 说清楚做什么，Superpowers 管怎么可靠地做完，frontend skills 补齐前端领域专业性。**
 
@@ -44,7 +44,7 @@ OpenSpec change 中的文件应按“变更推进”和“事实沉淀”分层�
 - `proposal.md`：回答“为什么做、做什么、不做什么”，只写变更背景、范围、非目标和主要风险，不写字段级接口或 Figma 细节。
 - `design.md`：回答“工程上准备怎么做”，只写实现策略、模块拆分、数据流、风险控制和推进顺序，不重复产品正文、设计拆解正文或接口字段表。
 - `specs/**/spec.md`：回答“最终必须满足什么”，只写验收级 requirement / scenario，不写实现细节。
-- `tasks.md`：回答“现在做到哪一步”，只写执行清单和进度，不承担需求分析职责。
+- `tasks.md`：回答“现在做到哪一步”，只写执行清单和进度，不承担需求分析职责；涉及前端页面实现时，必须把 `frontend-code-implementation` handoff 作为代码修改前的第一项执行任务。
 - `decisions.md`：回答“有争议的地方最后怎么定”，只记录取舍、原因、owner、状态和 Gate 结果，不重复事实正文。
 - `verification.md`：记录验证动作、结果和阻塞项。
 - `review.md`：记录 review 发现、风险和结论。
@@ -78,6 +78,7 @@ OpenSpec change 中的文件应按“变更推进”和“事实沉淀”分层�
 - 接口字段和错误码不要散落在 `design.md`。
 - 未拍板的问题写进 `decisions.md`，不要只留在聊天里。
 - 在 `docs/*-requirements.md` 仍不稳定时，不要提前细化 `tasks.md`。
+- 不要把 `tasks.md` 当成可以直接写代码的许可；实现任务必须重新读取事实文件，并通过 `frontend-code-implementation` 完成实现准入。
 
 ## 推荐主流程
 
@@ -205,6 +206,15 @@ openspec/changes/<change-id>/
 
 不要在设计拆解或接口契约还在变的时候提前生成任务清单。
 
+生成 `tasks.md` 时必须使用 `assets/templates/frontend-tasks.md` 作为基础模板。只要任务涉及前端页面或组件实现，`tasks.md` 必须包含：
+
+- 第一项任务：调用 `frontend-code-implementation` 并完成实现准入检查。
+- 重新读取 active OpenSpec change 的事实文件、`decisions.md` 和 `tasks.md`。
+- 重新读取精确 Figma node 的结构化上下文和截图。
+- 明确 adapter/service/type、页面组件、状态覆盖、视觉验收和前端 Review 的执行项。
+
+这样处理的原因是：`alignment-requirements.md` 是事实和决策输入，不是实现上下文缓存；写代码时必须二次读取 source of truth，避免 Agent 只凭聊天记忆或过期任务列表实现。
+
 ### 6. Superpowers 执行开发
 
 Gate 通过后，执行由 Superpowers 主导：
@@ -222,16 +232,16 @@ brainstorming
 
 前端实现阶段的强制规则：
 
-- 只要任务涉及 Figma 到 Titan/Element Plus 后台页面实现，必须先调用 `frontend-titan-implementation`，不能直接进入页面代码编写。
-- `frontend-titan-implementation` 必须完成准入检查：读取 active OpenSpec change 的 `docs/product-requirements.md`、`docs/design-requirements.md`、`docs/api-requirements.md`、`docs/alignment-requirements.md`、`decisions.md` 和 `tasks.md`。
+- 只要任务涉及前端页面或组件实现，Superpowers 的实现计划必须把 `frontend-code-implementation` 作为第一个页面实现 checkpoint，不能直接进入页面代码编写。
+- `frontend-code-implementation` 必须完成准入检查：读取 active OpenSpec change 的 `docs/product-requirements.md`、`docs/design-requirements.md`、`docs/api-requirements.md`、`docs/alignment-requirements.md`、`decisions.md` 和 `tasks.md`。
 - 实现前必须读取精确 Figma node 的结构化设计上下文和截图；如果 Figma MCP 当前不可用，只能记录“待读取”或拆任务，不能开始声称按设计还原。
-- 仓库使用 Titan 时，必须读取并遵守 `frontend-titan-implementation/references/titan-component-map.md`；Titan 已覆盖的组件不允许直接用 Element Plus 替代。
+- `frontend-code-implementation` 必须先识别项目组件体系；仓库使用 Titan 时，才读取并遵守 `frontend-code-implementation/references/titan-component-map.md`。
 - 验证必须包含真实浏览器截图或快照，并对照 Figma 关键区域；构建通过只算代码验证，不算视觉验收。
 
 前端实现阶段技能顺序：
 
 ```text
-frontend-titan-implementation
+frontend-code-implementation
 frontend-visual-verification
 frontend-code-review
 ```
@@ -286,4 +296,5 @@ openspec archive <change-id> --skip-specs
 
 - `assets/templates/frontend-change-index.md`
 - `assets/templates/frontend-decisions.md`
+- `assets/templates/frontend-tasks.md`
 - `assets/templates/frontend-verification.md`

@@ -33,6 +33,7 @@ skills:
   - frontend-design-breakdown
   - frontend-api-contract
   - frontend-design-api-alignment
+  - frontend-code-implementation
   - frontend-visual-verification
   - frontend-code-review
 

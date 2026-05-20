@@ -29,6 +29,7 @@
 - `$frontend-design-breakdown`：写代码前拆解 Figma 或设计稿。
 - `$frontend-api-contract`：沉淀接口契约、类型、service 和 mock 规则。
 - `$frontend-design-api-alignment`：对齐设计字段和接口字段。
+- `$frontend-code-implementation`：根据已确认事实、Figma 上下文和项目组件体系实现前端页面。
 - `$frontend-visual-verification`：做页面截图、响应式和状态验收。
 - `$frontend-code-review`：做前端专项 Review。
 
@@ -51,4 +52,5 @@ pnpm build
 - 不根据 UI 猜接口字段；接口事实必须来自接口文档、OpenAPI、mock schema 或后端确认。
 - 页面任务至少考虑默认、加载、空、错误、禁用、权限和成功状态。
 - 涉及视觉还原时，必须做桌面和移动 viewport 验收。
+- 涉及前端页面实现时，`tasks.md` 的第一项实现任务必须是由 Superpowers 计划执行 `$frontend-code-implementation` handoff，并重新读取 active OpenSpec change 和 Figma 上下文。
 - 不把一次需求里的临时结论写进全局 rules；稳定事实再沉淀到项目文档。

@@ -64,7 +64,7 @@ description: Use when 拆解 Figma、设计稿、设计截图、页面原型、�
 - Titan / Element Plus / 项目组件的优先级
 - 无法匹配时标记 `Needs component decision`
 
-如果仓库使用 Titan，后续实现阶段交给 `frontend-titan-implementation` 读取 Titan 映射规则。
+如果仓库使用 Titan，后续实现阶段交给 `frontend-code-implementation` 读取 Titan 映射规则。
 
 ### 4. 列状态和交互
 
@@ -127,7 +127,7 @@ description: Use when 拆解 Figma、设计稿、设计截图、页面原型、�
 - OpenSpec 编排：`frontend-openspec-workflow`
 - 后续接口契约：`frontend-api-contract`
 - 后续设计接口对齐：`frontend-design-api-alignment`
-- 后续实现：`frontend-titan-implementation`
+- 后续实现：`frontend-code-implementation`
 - 后续验收：`frontend-visual-verification`
 - 后续 Review：`frontend-code-review`
 
@@ -138,7 +138,7 @@ frontend-design-breakdown
 → frontend-api-contract
 → frontend-design-api-alignment
 → writing-plans
-→ frontend-titan-implementation
+→ frontend-code-implementation
 → frontend-visual-verification
 → frontend-code-review
 ```

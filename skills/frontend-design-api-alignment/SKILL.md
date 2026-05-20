@@ -123,7 +123,7 @@ description: Use when 对齐前端设计拆解和接口契约；比较 Figma 字
 
 ## 进入实现的条件
 
-只有满足全部条件，才建议进入 `frontend-titan-implementation` 或 `writing-plans`：
+只有满足全部条件，才建议进入 `frontend-code-implementation` 或 `writing-plans`：
 
 - 关键展示字段都有来源或明确决策。
 - 关键产品规则都有设计入口或明确决策。
@@ -132,7 +132,7 @@ description: Use when 对齐前端设计拆解和接口契约；比较 Figma 字
 - 接口缺失项已决策为后端补齐、产品调整、前端移除，或页面已标记 `api-not-required`。
 - 若启用 OpenSpec，`openspec/changes/<change-id>/decisions.md` 中的 `Implementation Gate` 必须是 `Approved`。
 - adapter 规则明确放在 service/adapter 层；静态页面则明确不需要 adapter。
-- `tasks.md` 应在事实文件稳定且 Implementation Gate 通过后再生成。
+- `tasks.md` 应在事实文件稳定且 Implementation Gate 通过后再生成；涉及前端页面实现时，第一项实现任务必须是调用 `frontend-code-implementation` 并重新读取 source of truth。
 
 ## 与其他 skill 的关系
 
@@ -140,7 +140,7 @@ description: Use when 对齐前端设计拆解和接口契约；比较 Figma 字
 - 前置接口契约：`frontend-api-contract`
 - OpenSpec 编排：`frontend-openspec-workflow`
 - 后续实现计划：`writing-plans`
-- 后续实现：`frontend-titan-implementation`
+- 后续实现：`frontend-code-implementation`
 - 后续验收：`frontend-visual-verification`
 - 后续 Review：`frontend-code-review`
 
@@ -151,8 +151,8 @@ frontend-design-breakdown
 → frontend-api-contract
 → frontend-design-api-alignment
 → 人工审核 decisions.md
-→ writing-plans
-→ frontend-titan-implementation
+→ 生成包含 frontend-code-implementation handoff 的 tasks.md / writing-plans
+→ frontend-code-implementation
 ```
 
 ## 常见失败
