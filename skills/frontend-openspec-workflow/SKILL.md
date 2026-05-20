@@ -39,6 +39,19 @@ OpenSpec 不负责替你写完整流程，Superpowers 不负责长期沉淀项�
 
 OpenSpec change 中的文件应按“变更推进”和“事实沉淀”分层使用，避免一个文件同时承担产品、设计、接口、任务和决策职责。
 
+### 文件职责速查
+
+| 文件 | 职责 |
+| --- | --- |
+| `proposal.md` | 为什么做、做什么、不做什么 |
+| `docs/product-requirements.md` | 产品事实 |
+| `docs/design-requirements.md` | 设计事实 |
+| `docs/api-requirements.md` | 接口事实 |
+| `docs/alignment-requirements.md` | 产品 / 设计 / API 对齐结果 |
+| `decisions.md` | 已拍板和待拍板问题 |
+| `tasks.md` | 执行清单 |
+| `specs/**/spec.md` | 最终系统能力契约 |
+
 ### 变更推进文件
 
 - `proposal.md`：回答“为什么做、做什么、不做什么”，只写变更背景、范围、非目标和主要风险，不写字段级接口或 Figma 细节。

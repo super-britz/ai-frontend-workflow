@@ -136,6 +136,19 @@ Use $frontend-code-review review 这次前端改动。
 
 ## 推荐工作流
 
+OpenSpec change 文件职责速查：
+
+| 文件 | 职责 |
+| --- | --- |
+| `proposal.md` | 为什么做、做什么、不做什么 |
+| `docs/product-requirements.md` | 产品事实 |
+| `docs/design-requirements.md` | 设计事实 |
+| `docs/api-requirements.md` | 接口事实 |
+| `docs/alignment-requirements.md` | 产品 / 设计 / API 对齐结果 |
+| `decisions.md` | 已拍板和待拍板问题 |
+| `tasks.md` | 执行清单 |
+| `specs/**/spec.md` | 最终系统能力契约 |
+
 1. 新项目或老项目接入 AI 前，先运行 `frontend-project-bootstrap`。
 2. 明确需求边界时，用 OpenSpec 创建或选择 change；需要编排前端文档时使用 `frontend-openspec-workflow`。
 3. 有 Figma 页面任务时，使用 `frontend-design-breakdown` 只拆设计事实。

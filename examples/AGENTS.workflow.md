@@ -22,6 +22,19 @@
 | 页面完成验收 | `frontend-visual-verification` | `verification.md`、截图或问题清单 |
 | 合并前审查 | `frontend-code-review` | `review.md`、Review findings、未验证风险 |
 
+## OpenSpec 文件职责
+
+| 文件 | 职责 |
+| --- | --- |
+| `proposal.md` | 为什么做、做什么、不做什么 |
+| `docs/product-requirements.md` | 产品事实 |
+| `docs/design-requirements.md` | 设计事实 |
+| `docs/api-requirements.md` | 接口事实 |
+| `docs/alignment-requirements.md` | 产品 / 设计 / API 对齐结果 |
+| `decisions.md` | 已拍板和待拍板问题 |
+| `tasks.md` | 执行清单 |
+| `specs/**/spec.md` | 最终系统能力契约 |
+
 ## 标准开发链路
 
 1. 明确需求、设计来源、接口来源和验收标准。
