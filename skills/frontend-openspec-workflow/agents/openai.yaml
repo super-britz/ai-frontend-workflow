@@ -1,4 +1,4 @@
 interface:
   display_name: "前端 OpenSpec 工作流"
-  short_description: "用 OpenSpec 管事实和变更，Superpowers 管执行，前端 skills 管专业产物"
-  default_prompt: "Use $frontend-openspec-workflow 为这个前端需求设计 OpenSpec、Superpowers 和 frontend skills 的分层协作流程。"
+  short_description: "用 OpenSpec 管事实和变更，执行工具管实现，前端 skills 管专业产物"
+  default_prompt: "Use $frontend-openspec-workflow 为这个前端需求设计 OpenSpec、执行工具和 frontend skills 的分层协作流程。"

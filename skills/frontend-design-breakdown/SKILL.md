@@ -30,7 +30,7 @@ description: Use when 拆解 Figma、设计稿、设计截图、页面原型、�
 - Figma URL、node、frame 或设计截图
 - PRD、需求说明、交互说明
 - OpenSpec change：`openspec/changes/<change-id>/proposal.md`、`design.md`、`decisions.md`
-- 项目 `AGENTS.md`、`docs/ai/component-map.md`、`docs/ai/component-usage.md`
+- 项目 `AGENTS.md`、`docs/ai/component-usage.md`
 - 现有相似页面、组件库、设计 token 和视觉验收规则
 
 整理：

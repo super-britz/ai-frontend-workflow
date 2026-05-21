@@ -22,7 +22,6 @@ description: Use when 对齐前端设计拆解和接口契约；比较 Figma 字
 - `openspec/changes/<change-id>/docs/design-requirements.md`
 - `openspec/changes/<change-id>/docs/api-requirements.md`
 - `openspec/changes/<change-id>/decisions.md`
-- `docs/ai/component-map.md`
 - `docs/ai/component-usage.md`
 - `AGENTS.md`
 - Figma 链接、PRD、接口文档或用户补充说明

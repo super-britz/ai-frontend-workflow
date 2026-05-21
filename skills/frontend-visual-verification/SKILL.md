@@ -25,7 +25,7 @@ description: Use when 验证前端 UI、设计还原、Figma 对照、Playwright
 
 按需读取：
 
-- `AGENTS.md`、`docs/ai/visual-checklist.md`
+- `AGENTS.md`、项目视觉验收规则或组件使用约定（如存在）
 - active OpenSpec change：`docs/design-requirements.md`、`docs/api-requirements.md`、`docs/alignment-requirements.md`、`decisions.md`
 - Figma 链接、设计截图、PRD 或验收说明
 - 相关页面代码、路由、mock、接口契约

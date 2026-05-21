@@ -12,7 +12,7 @@ description: Use when review 前端改动、PR、diff、前端专项 Review、�
 ## 执行原则
 
 - 先确认 review 范围：当前 diff、指定提交、PR 或具体文件。
-- 先读项目规则：`AGENTS.md`、`docs/ai/`、active OpenSpec change、组件映射、接口契约、视觉验收清单。
+- 先读项目规则：`AGENTS.md`、`docs/ai/component-usage.md`、active OpenSpec change、接口契约、视觉验收结果和项目约定。
 - 只审查范围内的改动；不要把无关历史问题混进结论。
 - 发现问题必须给出文件和行号，说明影响和触发条件。
 - 优先报告会影响用户、数据、可维护性和交付验收的问题。
@@ -44,11 +44,9 @@ description: Use when review 前端改动、PR、diff、前端专项 Review、�
 优先查看：
 
 - `AGENTS.md`
-- `docs/ai/component-map.md`
 - `docs/ai/component-usage.md`
 - `docs/ai/api-requirements.md`
-- `docs/ai/visual-checklist.md`
-- `docs/ai/review-checklist.md`
+- `docs/ai/*-requirements.md`
 - `openspec/changes/<change-id>/docs/*`
 - `openspec/changes/<change-id>/decisions.md`
 - `openspec/changes/<change-id>/verification.md`
@@ -113,7 +111,7 @@ description: Use when review 前端改动、PR、diff、前端专项 Review、�
 
 没有发现问题时，明确说明“未发现阻塞性问题”，并列出仍未验证的风险。
 
-在 Codex app 中输出可定位代码评论时，使用 `::code-comment{...}`；普通聊天中使用文件路径和行号。
+在支持 `::code-comment{...}` 的客户端中，可用结构化代码评论；普通聊天中使用文件路径和行号。
 
 如果存在 active OpenSpec change，优先把 Review 摘要写入 `openspec/changes/<change-id>/review.md`。
 

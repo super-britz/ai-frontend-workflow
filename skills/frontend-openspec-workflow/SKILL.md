@@ -1,6 +1,6 @@
 ---
 name: frontend-openspec-workflow
-description: Use when 将 OpenSpec/OPSX、Superpowers 和前端专项 skills 组合到同一个前端需求流程；处理 openspec change、specs、proposal、tasks、decisions、validate、archive、人工 Gate、需求事实沉淀、执行纪律和前端设计接口实现边界。
+description: Use when 将 OpenSpec/OPSX、前端专项 skills 和任意 AI 辅助开发执行工具组合到同一个前端需求流程；处理 openspec change、specs、proposal、tasks、decisions、validate、archive、人工 Gate、需求事实沉淀、执行纪律和前端设计接口实现边界。
 ---
 
 # 前端 OpenSpec 工作流
@@ -11,21 +11,21 @@ description: Use when 将 OpenSpec/OPSX、Superpowers 和前端专项 skills 组
 
 ```text
 OpenSpec = 项目事实和需求变更账本
-Superpowers = 开发执行和工程质量引擎
-frontend skills = 前端专业判断和产物生成插件
+执行工作流 = 计划、实现、测试、验证和交付纪律
+frontend skills = 前端专业判断和产物生成模块
 ```
 
-OpenSpec 不负责替你写完整流程，Superpowers 不负责长期沉淀项目事实，frontend skills 不负责管理需求生命周期。三者是分层协作，不是互相替代。
+OpenSpec 不负责替你写完整流程，执行工作流不负责长期沉淀项目事实，frontend skills 不负责管理需求生命周期。三者是分层协作，不是互相替代。执行工作流可以来自当前环境中可用的任意 AI 助手或自动化工具，但不能绕过事实文件和 Gate。
 
 ## 职责边界
 
 | 层 | 主职责 | 典型产物 | 不做什么 |
 | --- | --- | --- | --- |
 | OpenSpec | 需求边界、项目事实、变更生命周期 | `openspec/specs/`、`openspec/changes/<change>/`、proposal、design、tasks | 不替代工程执行纪律 |
-| Superpowers | 计划、TDD、worktree、review、verification、finish branch | plan、测试、代码、验证证据、PR/合并决策 | 不当长期事实库 |
+| 执行工作流 | 计划、实现、测试、review、verification、finish branch | plan、测试、代码、验证证据、PR/合并决策 | 不当长期事实库 |
 | frontend skills | 产品需求、设计需求、接口需求、对齐需求、代码实现准入、视觉验收、前端 Review | `docs/product-requirements.md`、`docs/design-requirements.md`、`docs/api-requirements.md`、`verification.md`、`review.md` | 不跨越人工 Gate |
 
-判断原则：**OpenSpec 说清楚做什么，Superpowers 管怎么可靠地做完，frontend skills 补齐前端领域专业性。**
+判断原则：**OpenSpec 说清楚做什么，执行工作流管怎么可靠地做完，frontend skills 补齐前端领域专业性。**
 
 ## 硬性规则
 
@@ -103,7 +103,7 @@ OpenSpec change 中的文件应按“变更推进”和“事实沉淀”分层�
 openspec init
 ```
 
-然后用 `frontend-project-bootstrap` 写清项目级 AI 规则、组件边界、命令和验收要求。
+然后用 `frontend-project-bootstrap` 写清项目级 AI 辅助开发规则、组件使用机制、命令和验收要求。
 
 ### 1. 需求进入 OpenSpec
 
@@ -228,9 +228,9 @@ openspec/changes/<change-id>/
 
 这样处理的原因是：`alignment-requirements.md` 是事实和决策输入，不是实现上下文缓存；写代码时必须二次读取 source of truth，避免 Agent 只凭聊天记忆或过期任务列表实现。
 
-### 6. Superpowers 执行开发
+### 6. 执行开发
 
-Gate 通过后，执行由 Superpowers 主导：
+Gate 通过后，执行由当前环境可用的开发工具或 AI 助手主导。若环境支持下列能力，可按类似顺序使用；若不支持，也必须保留同等的计划、测试、review 和验证证据：
 
 ```text
 brainstorming
@@ -245,7 +245,7 @@ brainstorming
 
 前端实现阶段的强制规则：
 
-- 只要任务涉及前端页面或组件实现，Superpowers 的实现计划必须把 `frontend-code-implementation` 作为第一个页面实现 checkpoint，不能直接进入页面代码编写。
+- 只要任务涉及前端页面或组件实现，实现计划必须把 `frontend-code-implementation` 作为第一个页面实现 checkpoint，不能直接进入页面代码编写。
 - `frontend-code-implementation` 必须完成准入检查：读取 active OpenSpec change 的 `docs/product-requirements.md`、`docs/design-requirements.md`、`docs/api-requirements.md`、`docs/alignment-requirements.md`、`decisions.md` 和 `tasks.md`。
 - 实现前必须读取精确 Figma node 的结构化设计上下文和截图；如果 Figma MCP 当前不可用，只能记录“待读取”或拆任务，不能开始声称按设计还原。
 - `frontend-code-implementation` 必须先识别项目组件体系；仓库使用 Titan 时，才读取并遵守 `frontend-code-implementation/references/titan-component-map.md`。
@@ -263,7 +263,7 @@ frontend-code-review
 
 ### 7. 验证后回到 OpenSpec
 
-实现完成后先用 Superpowers 做证据式验证，再回到 OpenSpec 做一致性检查和归档：
+实现完成后先做证据式验证，再回到 OpenSpec 做一致性检查和归档：
 
 ```bash
 openspec validate <change-id> --strict
@@ -290,13 +290,13 @@ openspec archive <change-id> --skip-specs
 | 需求还不清楚 | OpenSpec explore/propose |
 | 需求边界和验收标准 | OpenSpec |
 | 页面怎么拆、接口怎么接 | frontend skills |
-| 怎么拆任务和写代码 | Superpowers |
-| 怎么证明完成 | Superpowers verification + frontend visual verification |
+| 怎么拆任务和写代码 | 当前开发执行工具 / AI 助手 |
+| 怎么证明完成 | 执行工具验证证据 + frontend visual verification |
 | 完成后沉淀事实 | OpenSpec archive |
 
 ## 常见失败
 
-- 让 OpenSpec `/opsx:apply` 和 Superpowers 同时主导实现，导致执行规则打架。
+- 让 OpenSpec `/opsx:apply` 和其他执行工具同时主导实现，导致执行规则打架。
 - 把设计拆解和接口契约合并，导致 AI 根据 UI 猜接口。
 - 设计拆解、接口契约或对齐结果只留在聊天里，没有写入 change 文件。
 - 拆解不准时只在聊天里纠正，没有直接修改事实文件。
