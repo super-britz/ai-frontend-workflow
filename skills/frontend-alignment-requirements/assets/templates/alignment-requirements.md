@@ -1,9 +1,10 @@
-# 设计接口对齐
+# 前端对齐需求
 
 ## 基本信息
 
 - 页面/模块：
-- 设计需求来源：
+- 产品需求来源：
+- UI/设计需求来源：
 - 接口需求来源：
 - 接口依赖：required / api-not-required
 - 对齐时间：
@@ -27,9 +28,9 @@
 
 ## 字段映射
 
-| 设计字段 | 设计文案 | 接口字段 | 类型 | 映射方式 | 处理层 | 状态 | 备注 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-|  |  |  |  | direct / format / combine / derive / frontend-only / missing-in-api / missing-in-design | service / adapter / component | 待确认 |  |
+| 产品语义 | UI/设计字段 | 设计文案 | 接口字段 | 类型 | 映射方式 | 处理层 | 状态 | 备注 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+|  |  |  |  |  | direct / format / combine / derive / frontend-only / missing-in-api / missing-in-design | service / adapter / component | 待确认 |  |
 
 ## 状态映射
 

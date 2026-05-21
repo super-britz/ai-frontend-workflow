@@ -71,7 +71,7 @@ description: Use when 初始化或接入前端仓库的 AI 辅助开发工作流
 
 - `component-usage.md`：组件库不完整、不稳定或容易被绕过时创建。
 - `component-usage.md` 是活文档，只沉淀已验证的项目级组件使用规则、封装约定、风险组件和升级条件。
-- 不创建 Figma、API、alignment、visual verification 或 review 的细节模板；这些由 `frontend-design-requirements`、`frontend-api-requirements`、`frontend-design-api-alignment`、`frontend-visual-verification` 和 `frontend-code-review` 负责。
+- 不创建 Figma、API、alignment、visual verification 或 review 的细节模板；这些由 `frontend-design-requirements`、`frontend-api-requirements`、`frontend-alignment-requirements`、`frontend-visual-verification` 和 `frontend-code-review` 负责。
 - 需要按需求沉淀上下文和人工 Gate 时，引入 `frontend-openspec-workflow`。OpenSpec 启用时，`openspec/changes/<change-id>/docs/*` 是需求级事实来源；`docs/ai/*` 只保存跨需求稳定规则和无 OpenSpec 场景下的轻量 fallback。
 
 模板位于 `assets/templates/`。

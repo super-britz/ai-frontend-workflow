@@ -8,7 +8,7 @@
 | --- | --- | --- |
 | OpenSpec | 项目事实、需求边界、变更生命周期 | `openspec init`、`openspec new change`、`openspec validate`、`openspec archive` |
 | Superpowers | 执行纪律、TDD、worktree、review、完成前验证 | `brainstorming`、`writing-plans`、`test-driven-development`、`verification-before-completion` |
-| Frontend skills | 设计拆解、接口契约、设计接口对齐、实现、视觉验收、前端 Review | `frontend-design-breakdown`、`frontend-api-contract`、`frontend-design-api-alignment` |
+| Frontend skills | 产品需求、设计需求、接口需求、产品/UI/API 对齐、实现、视觉验收、前端 Review | `frontend-product-requirements`、`frontend-design-requirements`、`frontend-api-requirements`、`frontend-alignment-requirements` |
 
 最稳的心智模型：
 
@@ -25,7 +25,7 @@ OpenSpec 先定义事实和变更边界
 facts 先稳定 → decisions 再确认 → tasks 最后生成
 ```
 
-设计拆解、接口契约和设计接口对齐结果必须写入 OpenSpec change 或 `docs/ai/` 文件；聊天摘要不能作为 source of truth。
+产品需求、设计需求、接口需求和产品/UI/API 对齐结果必须写入 OpenSpec change 或 `docs/ai/` 文件；聊天摘要不能作为 source of truth。
 
 ## Skills
 
@@ -33,10 +33,11 @@ facts 先稳定 → decisions 再确认 → tasks 最后生成
 | --- | --- |
 | `frontend-project-bootstrap` | 初始化前端仓库的 `AGENTS.md`、组件边界、设计还原和验收护栏 |
 | `frontend-openspec-workflow` | 为单个前端需求创建或选择 OpenSpec change，并规划文档落点、人工 Gate 和归档 |
-| `frontend-design-breakdown` | 写代码前拆解 Figma 设计稿的页面结构、组件映射、状态和验收点 |
-| `frontend-api-contract` | 把接口文档沉淀为前端可执行契约和接入规则，确认后再生成接口层代码 |
-| `frontend-design-api-alignment` | 对齐设计拆解和接口契约的字段、状态、权限、查询能力和差异决策 |
-| `frontend-code-implementation` | 根据已确认设计、接口和组件体系实现生产级前端页面 |
+| `frontend-product-requirements` | 从 PRD、Wiki 或产品说明沉淀产品事实、范围、规则和待确认问题 |
+| `frontend-design-requirements` | 写代码前拆解 Figma 设计稿的页面结构、组件映射、状态和验收点 |
+| `frontend-api-requirements` | 把接口文档沉淀为前端可执行接口需求和接入规则，确认后再生成接口层代码 |
+| `frontend-alignment-requirements` | 对齐产品需求、UI/设计需求和接口需求的字段、状态、权限、查询能力和差异决策 |
+| `frontend-code-implementation` | 根据已确认产品、设计、接口、对齐结果和组件体系实现生产级前端页面 |
 | `frontend-visual-verification` | 验证前端页面的设计还原、响应式、核心状态和截图验收 |
 | `frontend-code-review` | 审查前端改动的组件复用、接口契约、状态覆盖和验收质量 |
 
@@ -126,9 +127,10 @@ examples/business-project-template/
 ```text
 Use $frontend-project-bootstrap 初始化这个前端仓库的 Codex/Superpowers 协作规则、组件边界和验收护栏。
 Use $frontend-openspec-workflow 为这个前端需求设计 OpenSpec、Superpowers 和 frontend skills 的分层协作流程。
-Use $frontend-design-breakdown 拆解这个 Figma 页面，输出页面结构、组件映射、状态清单和视觉验收点，不写代码。
-Use $frontend-api-contract 根据接口文档生成前端接口契约、类型、service、mock 和状态处理规则。
-Use $frontend-design-api-alignment 对齐设计拆解和接口契约，输出字段映射、状态映射、差异清单和实现决策，不写代码。
+Use $frontend-product-requirements 从 PRD/Wiki/产品说明提炼产品事实、范围、规则和待确认问题，不写代码。
+Use $frontend-design-requirements 拆解这个 Figma 页面，输出页面结构、组件映射、状态清单和视觉验收点，不写代码。
+Use $frontend-api-requirements 根据接口文档生成前端接口需求、类型、service、mock 和状态处理规则。
+Use $frontend-alignment-requirements 对齐产品需求、UI/设计需求和接口需求，输出字段映射、状态映射、差异清单和实现决策，不写代码。
 Use $frontend-code-implementation 根据这个 Figma 页面实现前端页面。
 Use $frontend-visual-verification 验证这个页面的设计还原、响应式和核心状态。
 Use $frontend-code-review review 这次前端改动。
@@ -151,15 +153,16 @@ OpenSpec change 文件职责速查：
 
 1. 新项目或老项目接入 AI 前，先运行 `frontend-project-bootstrap`。
 2. 明确需求边界时，用 OpenSpec 创建或选择 change；需要编排前端文档时使用 `frontend-openspec-workflow`。
-3. 有 Figma 页面任务时，使用 `frontend-design-breakdown` 只拆设计事实。
-4. 有接口文档或联调任务时，使用 `frontend-api-contract` 只拆接口事实。
-5. 人工审核事实文件；拆解或契约不准时直接修改 `docs/design-breakdown.md`、`docs/api-contract.md` 或 `docs/design-api-alignment.md`。
-6. 有取舍、争议或 owner 的内容写入 `decisions.md`。
-7. 使用 `frontend-design-api-alignment` 对齐设计和接口，产出冲突和人工决策。
-8. `Implementation Gate: Approved` 后，再生成或更新 `tasks.md`；涉及前端页面实现时，`tasks.md` 第一项必须是由 Superpowers 计划执行 `frontend-code-implementation` handoff，并重新读取 active OpenSpec change。
-9. 实现阶段由 Superpowers 主导执行；页面代码修改前必须经过 `frontend-code-implementation` 准入，再用 `frontend-visual-verification` 和 `frontend-code-review` 验收。
-10. 开发中发现事实变化，先回写 OpenSpec change 和 `decisions.md`，再继续写代码。
-11. 验收通过后运行 OpenSpec validate/archive，把长期有效规则归档到 `openspec/specs/` 或项目稳定文档。
+3. 有 PRD、Wiki 或产品说明时，使用 `frontend-product-requirements` 只拆产品事实。
+4. 有 Figma 页面任务时，使用 `frontend-design-requirements` 只拆设计事实。
+5. 有接口文档或联调任务时，使用 `frontend-api-requirements` 只拆接口事实。
+6. 人工审核事实文件；拆解或契约不准时直接修改 `docs/product-requirements.md`、`docs/design-requirements.md`、`docs/api-requirements.md` 或 `docs/alignment-requirements.md`。
+7. 有取舍、争议或 owner 的内容写入 `decisions.md`。
+8. 使用 `frontend-alignment-requirements` 对齐产品、UI/设计和接口，产出冲突和人工决策。
+9. `Implementation Gate: Approved` 后，再生成或更新 `tasks.md`；涉及前端页面实现时，`tasks.md` 第一项必须是由 Superpowers 计划执行 `frontend-code-implementation` handoff，并重新读取 active OpenSpec change。
+10. 实现阶段由 Superpowers 主导执行；页面代码修改前必须经过 `frontend-code-implementation` 准入，再用 `frontend-visual-verification` 和 `frontend-code-review` 验收。
+11. 开发中发现事实变化，先回写 OpenSpec change 和 `decisions.md`，再继续写代码。
+12. 验收通过后运行 OpenSpec validate/archive，把长期有效规则归档到 `openspec/specs/` 或项目稳定文档。
 
 业务项目可以参考：
 

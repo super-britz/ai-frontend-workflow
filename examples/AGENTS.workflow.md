@@ -14,11 +14,12 @@
 | --- | --- | --- |
 | 项目初始化 | `frontend-project-bootstrap` | `AGENTS.md`、`docs/ai/*` |
 | 需求事实和变更边界 | OpenSpec / `frontend-openspec-workflow` | `openspec/changes/<change-id>/`、proposal、specs、人工 Gate |
-| Figma 设计拆解 | `frontend-design-breakdown` | `docs/design-breakdown.md` 或 `docs/ai/design-breakdown.md` |
-| 接口文档/联调 | `frontend-api-contract` | `docs/api-contract.md` 或 `docs/ai/api-contract.md` |
-| 设计接口对齐 | `frontend-design-api-alignment` | `docs/design-api-alignment.md` 或 `docs/ai/design-api-alignment.md` |
+| 产品说明/PRD/Wiki | `frontend-product-requirements` | `docs/product-requirements.md` 或 `docs/ai/product-requirements.md` |
+| Figma 设计拆解 | `frontend-design-requirements` | `docs/design-requirements.md` 或 `docs/ai/design-requirements.md` |
+| 接口文档/联调 | `frontend-api-requirements` | `docs/api-requirements.md` 或 `docs/ai/api-requirements.md` |
+| 产品/UI/API 对齐 | `frontend-alignment-requirements` | `docs/alignment-requirements.md` 或 `docs/ai/alignment-requirements.md` |
 | 工程执行 | Superpowers | plan、tests、worktree、review、verification evidence |
-| 设计确认后实现 | `frontend-code-implementation` | 页面代码、状态覆盖、组件实现 |
+| 需求确认后实现 | `frontend-code-implementation` | 页面代码、状态覆盖、组件实现 |
 | 页面完成验收 | `frontend-visual-verification` | `verification.md`、截图或问题清单 |
 | 合并前审查 | `frontend-code-review` | `review.md`、Review findings、未验证风险 |
 
@@ -39,24 +40,25 @@
 
 1. 明确需求、设计来源、接口来源和验收标准。
 2. 若启用 OpenSpec，先创建或选择 active change，明确 scope、non-goals、验收标准。
-3. 有 Figma 时先用 `frontend-design-breakdown` 做设计拆解，不直接写页面。
-4. 有接口时先用 `frontend-api-contract` 生成接口契约，不根据 UI 猜字段。
-5. 人工审核事实文件；拆解或契约不准时直接修改 `docs/design-breakdown.md`、`docs/api-contract.md` 或 `docs/design-api-alignment.md`。
-6. 有取舍、争议或 owner 的内容写入 `decisions.md`，不要只留在聊天里。
-7. 用 `frontend-design-api-alignment` 对照设计拆解和接口契约，列出字段、状态、筛选、分页、权限、错误态差异；不明确项标记 `Needs decision`。
-8. 人工审核 `decisions.md`，只有 `Implementation Gate: Approved` 才允许生成或更新 `tasks.md`。
-9. 生成 `tasks.md` 时，涉及前端页面实现的任务必须把 `frontend-code-implementation` handoff 作为第一项实现任务。
-10. 进入实现后由 Superpowers 主导 `writing-plans`、worktree、TDD、review 和完成前验证；页面代码修改前先调用 `frontend-code-implementation` 重新读取 active OpenSpec change、Figma 上下文和项目组件体系。
-11. 开发中发现事实变化，先更新 OpenSpec change 和 `decisions.md`，再继续实现。
-12. UI 改动必须做真实浏览器或截图验收，并把结论写入 `verification.md`。
-13. 合并前做前端专项 Review，并把阻塞风险写入 `review.md`。
-14. 验收后运行 OpenSpec validate/archive，把长期事实沉淀回 specs。
+3. 有 PRD、Wiki 或产品说明时先用 `frontend-product-requirements` 做产品事实拆解。
+4. 有 Figma 时先用 `frontend-design-requirements` 做设计拆解，不直接写页面。
+5. 有接口时先用 `frontend-api-requirements` 生成接口需求，不根据 UI 猜字段。
+6. 人工审核事实文件；拆解或契约不准时直接修改 `docs/product-requirements.md`、`docs/design-requirements.md`、`docs/api-requirements.md` 或 `docs/alignment-requirements.md`。
+7. 有取舍、争议或 owner 的内容写入 `decisions.md`，不要只留在聊天里。
+8. 用 `frontend-alignment-requirements` 对照产品、UI/设计和接口，列出字段、状态、筛选、分页、权限、错误态差异；不明确项标记 `Needs decision`。
+9. 人工审核 `decisions.md`，只有 `Implementation Gate: Approved` 才允许生成或更新 `tasks.md`。
+10. 生成 `tasks.md` 时，涉及前端页面实现的任务必须把 `frontend-code-implementation` handoff 作为第一项实现任务。
+11. 进入实现后由 Superpowers 主导 `writing-plans`、worktree、TDD、review 和完成前验证；页面代码修改前先调用 `frontend-code-implementation` 重新读取 active OpenSpec change、Figma 上下文和项目组件体系。
+12. 开发中发现事实变化，先更新 OpenSpec change 和 `decisions.md`，再继续实现。
+13. UI 改动必须做真实浏览器或截图验收，并把结论写入 `verification.md`。
+14. 合并前做前端专项 Review，并把阻塞风险写入 `review.md`。
+15. 验收后运行 OpenSpec validate/archive，把长期事实沉淀回 specs。
 
 ## 禁止事项
 
 - 不绕过组件库自造基础 UI。
 - 不根据 mock 或 UI 猜真实接口结构。
-- 不在设计拆解和接口契约对齐前直接写业务页面。
+- 不在产品、UI/设计和接口对齐前直接写业务页面。
 - 不在 `Implementation Gate` 未通过时进入页面实现。
 - 不在事实文件稳定和 `Implementation Gate` 通过前生成 `tasks.md`。
 - 不跳过 `frontend-code-implementation` 直接根据 `tasks.md` 写页面代码。

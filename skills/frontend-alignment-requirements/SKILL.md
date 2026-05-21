@@ -1,13 +1,13 @@
 ---
-name: frontend-design-api-alignment
-description: Use when 对齐前端设计需求和接口需求；比较 Figma 字段、页面状态、筛选、分页、排序、权限、错误态、枚举、mock 与 API response；在写代码前输出字段映射、差异清单、adapter 决策和 Needs design/product/backend decision。
+name: frontend-alignment-requirements
+description: Use when 沉淀前端对齐需求；对齐产品需求、UI/设计需求和接口需求；比较业务规则、Figma 字段、页面状态、筛选、分页、排序、权限、错误态、枚举、mock 与 API response；在写代码前输出字段映射、差异清单、adapter 决策和 Needs design/product/backend decision。
 ---
 
-# 设计接口对齐
+# 前端对齐需求
 
 ## 概览
 
-在写业务代码前，对齐设计需求和接口需求，确认页面要展示什么、接口能提供什么、差异应该在哪里处理。这个 skill 只产出对齐文档和决策清单，不实现页面代码。
+在写业务代码前，对齐产品需求、UI/设计需求和接口需求，确认业务要什么、页面要展示什么、接口能提供什么、差异应该在哪里处理。这个 skill 只产出对齐文档和决策清单，不实现页面代码。
 
 核心原则：**不对齐，不实现。**
 
@@ -28,7 +28,7 @@ description: Use when 对齐前端设计需求和接口需求；比较 Figma 字
 
 如果缺少产品需求、设计需求或接口需求，先要求补齐对应上游产物，不要直接对齐空白信息。
 
-如果设计需求明确说明页面是纯静态展示、无接口依赖、无后端状态和权限依赖，可以在对齐文档中标记 `api-not-required`。此时不强制等待接口需求，但仍需列出静态数据来源、状态豁免原因和视觉验收点。
+如果产品和设计需求明确说明页面是纯静态展示、无接口依赖、无后端状态和权限依赖，可以在对齐文档中标记 `api-not-required`。此时不强制等待接口需求，但仍需列出静态数据来源、状态豁免原因和视觉验收点。
 
 ## 硬性边界
 
@@ -150,7 +150,7 @@ description: Use when 对齐前端设计需求和接口需求；比较 Figma 字
 frontend-product-requirements
 → frontend-design-requirements
 → frontend-api-requirements
-→ frontend-design-api-alignment
+→ frontend-alignment-requirements
 → 人工审核 decisions.md
 → 生成包含 frontend-code-implementation handoff 的 tasks.md / writing-plans
 → frontend-code-implementation

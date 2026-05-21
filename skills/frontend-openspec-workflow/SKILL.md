@@ -1,6 +1,6 @@
 ---
 name: frontend-openspec-workflow
-description: Use when 将 OpenSpec/OPSX、前端专项 skills 和任意 AI 辅助开发执行工具组合到同一个前端需求流程；处理 openspec change、specs、proposal、tasks、decisions、validate、archive、人工 Gate、需求事实沉淀、执行纪律和前端设计接口实现边界。
+description: Use when 将 OpenSpec/OPSX、前端专项 skills 和任意 AI 辅助开发执行工具组合到同一个前端需求流程；处理 openspec change、specs、proposal、tasks、decisions、validate、archive、人工 Gate、需求事实沉淀、执行纪律和前端产品/UI/API 实现边界。
 ---
 
 # 前端 OpenSpec 工作流
@@ -47,7 +47,7 @@ OpenSpec change 中的文件应按“变更推进”和“事实沉淀”分层�
 | `docs/product-requirements.md` | 产品事实 |
 | `docs/design-requirements.md` | 设计事实 |
 | `docs/api-requirements.md` | 接口事实 |
-| `docs/alignment-requirements.md` | 产品 / 设计 / API 对齐结果 |
+| `docs/alignment-requirements.md` | 产品 / UI / API 对齐结果 |
 | `decisions.md` | 已拍板和待拍板问题 |
 | `tasks.md` | 执行清单 |
 | `specs/**/spec.md` | 最终系统能力契约 |
@@ -67,7 +67,7 @@ OpenSpec change 中的文件应按“变更推进”和“事实沉淀”分层�
 - `docs/product-requirements.md`：产品需求事实，沉淀业务目标、功能范围、业务规则、校验、权限、异常和验收口径。
 - `docs/design-requirements.md`：设计需求事实，沉淀 Figma 页面结构、组件形态、交互、状态和视觉验收点。
 - `docs/api-requirements.md`：接口需求事实，沉淀接口路径、参数、响应、枚举、错误码、权限码和 mock 约定。
-- `docs/alignment-requirements.md`：对齐事实，沉淀产品、设计、API 三者的字段映射、状态映射、adapter 决策和待确认问题。
+- `docs/alignment-requirements.md`：对齐事实，沉淀产品、UI/设计、API 三者的字段映射、状态映射、adapter 决策和待确认问题。
 
 ### 推荐顺序
 
@@ -157,7 +157,7 @@ openspec/changes/<change-id>/
 | `docs/product-requirements.md` | `frontend-product-requirements` |
 | `docs/design-requirements.md` | `frontend-design-requirements` |
 | `docs/api-requirements.md` | `frontend-api-requirements` |
-| `docs/alignment-requirements.md` | `frontend-design-api-alignment` |
+| `docs/alignment-requirements.md` | `frontend-alignment-requirements` |
 | `decisions.md` | 人工审核和 owner 决策 |
 | `verification.md` | `frontend-visual-verification` |
 | `review.md` | `frontend-code-review` |
@@ -194,7 +194,7 @@ openspec/changes/<change-id>/
 | Scope Gate | proposal/specs 明确范围、非目标、验收标准 |
 | Design Gate | 设计结构、组件映射、状态和交互已确认 |
 | Contract Gate | 字段、枚举、分页、错误码、权限已确认，或明确 `api-not-required` |
-| Implementation Gate | 设计接口冲突已有决策，`decisions.md` 标记 `Approved` |
+| Implementation Gate | 产品、设计和接口冲突已有决策，`decisions.md` 标记 `Approved` |
 | Merge Gate | verification 和 review 没有阻塞项 |
 
 状态只用：

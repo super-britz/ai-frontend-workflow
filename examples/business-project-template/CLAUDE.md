@@ -19,9 +19,10 @@
 
 - `/frontend-project-bootstrap`
 - `/frontend-openspec-workflow`
-- `/frontend-design-breakdown`
-- `/frontend-api-contract`
-- `/frontend-design-api-alignment`
+- `/frontend-product-requirements`
+- `/frontend-design-requirements`
+- `/frontend-api-requirements`
+- `/frontend-alignment-requirements`
 - `/frontend-code-implementation`
 - `/frontend-visual-verification`
 - `/frontend-code-review`

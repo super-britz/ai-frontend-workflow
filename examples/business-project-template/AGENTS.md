@@ -26,9 +26,10 @@
 
 - `$frontend-project-bootstrap`：初始化或更新前端 AI 协作规则。
 - `$frontend-openspec-workflow`：为前端需求建立 OpenSpec 协作流程。
-- `$frontend-design-breakdown`：写代码前拆解 Figma 或设计稿。
-- `$frontend-api-contract`：沉淀接口契约、类型、service 和 mock 规则。
-- `$frontend-design-api-alignment`：对齐设计字段和接口字段。
+- `$frontend-product-requirements`：从 PRD、Wiki 或产品说明沉淀产品事实。
+- `$frontend-design-requirements`：写代码前拆解 Figma 或设计稿。
+- `$frontend-api-requirements`：沉淀接口需求、类型、service 和 mock 规则。
+- `$frontend-alignment-requirements`：对齐产品、UI/设计和接口字段。
 - `$frontend-code-implementation`：根据已确认事实、Figma 上下文和项目组件体系实现前端页面。
 - `$frontend-visual-verification`：做页面截图、响应式和状态验收。
 - `$frontend-code-review`：做前端专项 Review。

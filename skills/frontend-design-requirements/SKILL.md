@@ -119,7 +119,7 @@ description: Use when 沉淀前端设计需求；拆解 Figma、设计稿、设�
 - 状态和交互清单
 - 视觉验收点
 - 必须确认的问题
-- 建议下一步：接口需求、设计接口对齐或实现计划
+- 建议下一步：接口需求、产品/UI/API 对齐或实现计划
 
 ## 与其他 skill 的关系
 
@@ -127,7 +127,7 @@ description: Use when 沉淀前端设计需求；拆解 Figma、设计稿、设�
 - 前置产品需求：`frontend-product-requirements`
 - OpenSpec 编排：`frontend-openspec-workflow`
 - 后续接口需求：`frontend-api-requirements`
-- 后续设计接口对齐：`frontend-design-api-alignment`
+- 后续对齐需求：`frontend-alignment-requirements`
 - 后续实现：`frontend-code-implementation`
 - 后续验收：`frontend-visual-verification`
 - 后续 Review：`frontend-code-review`
@@ -138,7 +138,7 @@ description: Use when 沉淀前端设计需求；拆解 Figma、设计稿、设�
 frontend-product-requirements
 → frontend-design-requirements
 → frontend-api-requirements
-→ frontend-design-api-alignment
+→ frontend-alignment-requirements
 → writing-plans
 → frontend-code-implementation
 → frontend-visual-verification

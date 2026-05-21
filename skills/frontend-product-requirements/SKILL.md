@@ -88,7 +88,7 @@ description: Use when 沉淀前端产品需求；从 PRD、Wiki、产品说明�
 - 关键业务规则
 - 权限、异常和验收口径
 - 必须确认的问题
-- 建议下一步：设计需求、接口需求或设计接口对齐
+- 建议下一步：设计需求、接口需求或产品/UI/API 对齐
 
 ## 与其他 skill 的关系
 
@@ -96,7 +96,7 @@ description: Use when 沉淀前端产品需求；从 PRD、Wiki、产品说明�
 - OpenSpec 编排：`frontend-openspec-workflow`
 - 后续设计需求：`frontend-design-requirements`
 - 后续接口需求：`frontend-api-requirements`
-- 后续设计接口对齐：`frontend-design-api-alignment`
+- 后续对齐需求：`frontend-alignment-requirements`
 - 后续实现：`frontend-code-implementation`
 
 推荐顺序：
@@ -105,7 +105,7 @@ description: Use when 沉淀前端产品需求；从 PRD、Wiki、产品说明�
 frontend-product-requirements
 → frontend-design-requirements
 → frontend-api-requirements
-→ frontend-design-api-alignment
+→ frontend-alignment-requirements
 → writing-plans
 → frontend-code-implementation
 ```
