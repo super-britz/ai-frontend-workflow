@@ -2,15 +2,26 @@
 
 本文件只放跨组件通用规则。具体组件 props/events/slots 请按入口文件路由读取对应组件族文件。
 
-## API 溯源顺序
+## API 溯源原则
 
-实现前必须按这个顺序确认组件用法：
+实现前必须确认组件真实用法，但不要把下面内容理解成所有场景都固定执行的线性顺序。Titan 组件可能来自目标仓库的二次封装、已安装包、monorepo 源码或外部文档，证据优先级应按当前项目能拿到的 source of truth 调整。
 
-1. 目标业务仓库里的真实调用：`rg "TiDialog|TiSelect|TiTable|ti-dialog|ti-select"`。
-2. 当前组件库源码：`packages/pc-titan-components/src/components/<component>/`。
-3. 组件类型文件：`types.ts` 或 `src/*.ts` 中的 props、emits、接口定义。
-4. 组件 `README.md` 和 `demo.vue`。
-5. Element Plus 官方 API 只作为透传型组件的补充，不作为业务封装型组件的默认依据。
+优先使用以下证据：
+
+1. 目标业务仓库里的真实调用，例如 `rg "TiDialog|TiSelect|TiTable|ti-dialog|ti-select"`。
+2. 目标业务仓库里的组件注册、二次封装、类型导出、全局配置和 wrapper。
+3. 当前可访问的 Titan 组件源码，例如 `packages/pc-titan-components/src/components/<component>/` 或 `node_modules/@ninebot/pc-titan-components`。
+4. 组件类型定义，例如 `types.ts`、`*.d.ts` 或 SFC 内部的 props、emits、slots 定义。
+5. 组件 `README.md`、`demo.vue`、Storybook 示例或项目内示例页面。
+6. Element Plus 官方 API 只作为透传型组件的补充，不作为业务封装型组件的默认依据。
+
+按组件类型选择依据：
+
+- 透明透传型组件：先看目标仓库真实调用和 Titan 类型定义，再用 Element Plus 官方 API 补全透传 props、slots、events。
+- 业务封装型组件：以目标仓库真实调用、Titan 源码和类型定义为准；demo 只能辅助理解流程，不要照搬 Element Plus API。
+- 项目二次封装组件：以目标仓库 wrapper 和相邻页面调用为准；不要绕过 wrapper 直接使用底层 Titan 或 Element Plus。
+- 找不到源码但有已安装包时：优先看 `.d.ts`、导出的类型、构建产物中的 props/emits 和项目真实调用。
+- 仍无法确认时：停止臆测，在实现说明或决策文件中标记需要 owner/component decision。
 
 禁止行为：
 
@@ -94,7 +105,7 @@
 
 ## 自检
 
-- 已按“API 溯源顺序”确认目标组件真实 API。
+- 已按“API 溯源原则”确认目标组件真实 API。
 - 没有用 Element Plus 替代 Titan 已覆盖的组件。
 - 没有把业务封装型 Titan 组件当成透明 Element Plus 组件使用。
 - 所有 `Ti*` 组件都来自 `@ninebot/pc-titan-components` 或项目已注册的 Titan 组件体系。

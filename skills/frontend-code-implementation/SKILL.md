@@ -15,32 +15,92 @@ Titan 只是组件体系分支之一：当仓库使用 `@ninebot/pc-titan-compon
 
 当本 skill 被 `frontend-openspec-workflow`、`AGENTS.md` 或用户明确要求为强制步骤时，它不是可选优化，而是前端页面实现的前置 Gate。未完成本节检查前，不得新增或修改页面实现代码。
 
-如果当前仓库的 `AGENTS.md`、`docs/ai/` 或用户要求中启用了本工作流，且任务不是明确的“跳过上游分析直接实现”，实现前必须先确认：
+先判断当前任务是否启用 OpenSpec。判断依据包括：
 
-- 已有 `docs/ai/product-requirements.md` 或 active OpenSpec change 中的 `docs/product-requirements.md`，或用户明确提供等价产品需求。
-- 已有 `docs/ai/design-requirements.md`，或用户明确提供等价的设计需求。
-- 涉及接口数据时，已有 `docs/ai/api-requirements.md`。
-- 产品、UI/设计和接口都参与本次页面时，已有 `docs/ai/alignment-requirements.md`，且结论允许进入实现。
-- 若启用 OpenSpec，已有 `openspec/changes/<change-id>/docs/*` 上游事实文件，且 `openspec/changes/<change-id>/decisions.md` 中 `Implementation Gate: Approved`。
-- 若启用 OpenSpec，`tasks.md` 应在事实文件稳定和 Gate 通过后生成；实现时读取文件，不以聊天摘要替代。
+- 用户明确指定 active OpenSpec change。
+- 仓库 `AGENTS.md`、`docs/ai/` 或任务文件要求使用 OpenSpec。
+- 存在与本任务对应的 `openspec/changes/<change-id>/`，且 `tasks.md` 或 `decisions.md` 已把本页面列入执行范围。
 
-缺少上述上游产物时，不要直接写代码；先建议补齐 `frontend-product-requirements`、`frontend-design-requirements`、`frontend-api-requirements` 或 `frontend-alignment-requirements` 产物。纯静态页面或无接口依赖页面，可以接受 `api-not-required` 决策后进入实现。
+如果无法唯一确认 active change，先从 `openspec list`、`openspec/changes/`、用户描述和当前分支名中定位；仍不明确时，停止实现并让用户确认 change。
+
+### 使用 OpenSpec 时
+
+实现前必须读取 active change 中的 source of truth：
+
+- `openspec/changes/<change-id>/proposal.md`
+- `openspec/changes/<change-id>/docs/product-requirements.md`
+- `openspec/changes/<change-id>/docs/design-requirements.md`
+- `openspec/changes/<change-id>/docs/api-requirements.md`，除非已明确 `api-not-required`
+- `openspec/changes/<change-id>/docs/alignment-requirements.md`
+- `openspec/changes/<change-id>/decisions.md`
+- `openspec/changes/<change-id>/tasks.md`
+- 相关 `openspec/changes/<change-id>/specs/**/spec.md`
+
+进入代码前必须确认：
+
+- `decisions.md` 中 `Implementation Gate` 为 `Approved`。
+- `tasks.md` 已在事实文件稳定和 Gate 通过后生成或更新。
+- `tasks.md` 中本次实现范围、文件边界和验收命令清楚。
+- `alignment-requirements.md` 没有阻塞实现的 `Needs product/design/backend/component decision`。
+- 如果接口不参与，本结论已在事实文件或决策文件中标记 `api-not-required`。
+
+OpenSpec 场景下，聊天摘要、历史分析和 `tasks.md` 的简短描述都不能替代上述文件。若实现中发现事实变化，先更新对应事实文件或 `decisions.md`，再继续写代码。
+
+### 未使用 OpenSpec 时
+
+如果当前任务没有启用 OpenSpec，则使用项目稳定文档或用户明确输入作为 source of truth。实现前必须确认至少有以下输入之一：
+
+- `docs/ai/product-requirements.md`、`docs/ai/design-requirements.md`、`docs/ai/api-requirements.md`、`docs/ai/alignment-requirements.md`
+- 项目其他约定路径下的等价需求文档
+- 用户在当前任务中明确提供的产品需求、设计需求、接口需求和对齐决策
+
+非 OpenSpec 场景仍需满足：
+
+- 有产品目标、页面范围和验收口径。
+- 有设计来源，例如 Figma node、设计截图、原型或明确的现有页面参照。
+- 涉及接口数据时，有接口字段、状态、错误码、权限和分页/筛选规则；无接口时明确 `api-not-required`。
+- 产品、UI/设计和 API 存在差异时，有字段映射、adapter 决策和待确认问题处理结论。
+
+缺少上述上游产物时，不要直接写代码；先建议补齐 `frontend-product-requirements`、`frontend-design-requirements`、`frontend-api-requirements` 或 `frontend-alignment-requirements` 产物。
 
 ## 工作流
 
-1. 解析用户提供的 Figma URL 或当前选中节点，确认要实现的精确 frame/node。
-2. 获取 Figma 结构化设计上下文和同一节点截图；如果上下文过大，先读取节点结构，再缩小到关键子节点。
-3. 读取当前仓库规则，例如 `AGENTS.md`、`CLAUDE.md`、`.cursorrules`、README、docs 或 active OpenSpec change，并执行“实现准入”检查。
-4. 检查项目技术栈、组件库、路由、状态管理、请求封装、i18n、权限、mock 和页面模板。
-5. 判断组件体系：
+### 使用 OpenSpec 时
+
+1. 定位 active change，并读取 `proposal.md`、`docs/*-requirements.md`、`decisions.md`、`tasks.md` 和相关 `specs/**/spec.md`。
+2. 执行 OpenSpec 准入检查；如果 `Implementation Gate` 未通过或有阻塞决策，停止实现并回到事实文件或决策文件。
+3. 从 `tasks.md` 中确认本次要实现的任务编号、文件范围、验收命令和不做范围。
+4. 若任务涉及 Figma，解析用户提供的 Figma URL 或当前选中节点，确认要实现的精确 frame/node。
+5. 获取 Figma 结构化设计上下文和同一节点截图；如果上下文过大，先读取节点结构，再缩小到关键子节点。
+6. 读取当前仓库规则，例如 `AGENTS.md`、`CLAUDE.md`、`.cursorrules`、README 和 `docs/ai/`，确认它们是否补充或约束 active change。
+7. 检查项目技术栈、组件库、路由、状态管理、请求封装、i18n、权限、mock 和页面模板。
+8. 判断组件体系：
    - 如果仓库使用 `@ninebot/pc-titan-components`、已有 `Ti*` 组件或项目规则要求 Titan，先读取 `references/titan-component-map.md` 入口索引和 `references/titan-components/common.md`，再按入口索引只读取本次涉及的组件族文件。
    - 如果仓库使用 Ant Design、Element Plus、Naive UI、Arco、Material UI、自研组件库或其他体系，先搜索目标仓库里的真实用法，再按项目既有模式实现。
    - 如果没有明确组件库，优先复用本地已有业务组件；确实没有可复用组件时才写原生 HTML/CSS。
-6. 读取 `references/repo-conventions.md`，并补充目标仓库的真实约定。
-7. 按已确认的设计需求、接口需求和对齐结果实现页面；组件选择优先遵守当前仓库组件体系。
-8. 接入真实数据、mock 数据、loading、empty、error、disabled、hover、focus、active 等必要状态。
-9. 用真实浏览器对照 Figma 截图验证桌面端和移动端表现。
-10. 完成前读取 `references/validation-checklist.md`，运行项目可用的最小验证命令，例如构建、类型检查、lint 或页面冒烟验证。
+9. 读取 `references/repo-conventions.md`，并补充目标仓库的真实约定。
+10. 按 `alignment-requirements.md` 和 `tasks.md` 实现页面；组件选择优先遵守当前仓库组件体系。
+11. 接入真实数据、mock 数据、loading、empty、error、disabled、hover、focus、active 等必要状态。
+12. 用真实浏览器对照 Figma 截图验证桌面端和移动端表现。
+13. 完成前读取 `references/validation-checklist.md`，运行 `tasks.md` 或项目规则要求的最小验证命令。
+14. 若实现改变了需求事实、接口映射、权限或验收口径，先回写 active change，再汇报代码结果。
+
+### 未使用 OpenSpec 时
+
+1. 读取 `AGENTS.md`、`CLAUDE.md`、`.cursorrules`、README、`docs/ai/` 和用户提供的需求材料。
+2. 执行非 OpenSpec 准入检查；缺少产品、设计、接口或对齐输入时，先补齐对应 requirements 产物。
+3. 若任务涉及 Figma，解析用户提供的 Figma URL 或当前选中节点，确认要实现的精确 frame/node。
+4. 获取 Figma 结构化设计上下文和同一节点截图；如果上下文过大，先读取节点结构，再缩小到关键子节点。
+5. 检查项目技术栈、组件库、路由、状态管理、请求封装、i18n、权限、mock 和页面模板。
+6. 判断组件体系：
+   - 如果仓库使用 `@ninebot/pc-titan-components`、已有 `Ti*` 组件或项目规则要求 Titan，先读取 `references/titan-component-map.md` 入口索引和 `references/titan-components/common.md`，再按入口索引只读取本次涉及的组件族文件。
+   - 如果仓库使用 Ant Design、Element Plus、Naive UI、Arco、Material UI、自研组件库或其他体系，先搜索目标仓库里的真实用法，再按项目既有模式实现。
+   - 如果没有明确组件库，优先复用本地已有业务组件；确实没有可复用组件时才写原生 HTML/CSS。
+7. 读取 `references/repo-conventions.md`，并补充目标仓库的真实约定。
+8. 按已确认的产品需求、设计需求、接口需求和对齐结果实现页面；组件选择优先遵守当前仓库组件体系。
+9. 接入真实数据、mock 数据、loading、empty、error、disabled、hover、focus、active 等必要状态。
+10. 用真实浏览器对照 Figma 截图验证桌面端和移动端表现。
+11. 完成前读取 `references/validation-checklist.md`，运行项目可用的最小验证命令，例如构建、类型检查、lint 或页面冒烟验证。
 
 ## 组件选择
 

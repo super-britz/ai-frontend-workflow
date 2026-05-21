@@ -4,7 +4,7 @@
 
 ## 使用顺序
 
-1. 先读 `titan-components/common.md`，确认 API 溯源顺序、Element Plus fallback、表单、token 和自检规则。
+1. 先读 `titan-components/common.md`，确认 API 溯源原则、Element Plus fallback、表单、token 和自检规则。
 2. 根据 Figma 形态或业务语义，在下方表格找到目标组件和对应规则文件。
 3. 只读取本次页面涉及的组件族文件；如果同一页面同时包含表格、筛选和弹窗，只读 `selectors-and-inputs.md`、`tables.md`、`overlays.md`。
 4. 组件族文件仍不足时，再搜索目标仓库真实调用与 `packages/pc-titan-components/src/components/<component>/` 源码、`types.ts`、README、`demo.vue`。
