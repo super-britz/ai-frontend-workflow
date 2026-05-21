@@ -36,6 +36,36 @@
 | --- | --- | --- | --- | --- | --- |
 |  |  |  |  |  |  |
 
+## 项目级组件补充
+
+只记录当前项目相对通用组件库规则的补充、覆盖、例外和业务封装，不重复搬运官方组件库 API。
+
+适合记录：
+
+- 项目已有业务封装，例如 `BizSearchTable`、`UserSelect`、`BaseDialog`。
+- 项目对组件库的统一约定，例如分页字段映射、默认插槽、权限按钮、埋点、loading 流程。
+- 项目禁止或限制使用的组件，以及替代方案。
+- 组件库规则未覆盖但项目中已经形成稳定模式的真实用法。
+
+不记录：
+
+- `titan-component-map.md` 已覆盖的 Titan 通用 props/events/slots。
+- Element Plus、Ant Design 等官方文档可直接查到的基础 API。
+
+| 组件/封装 | 来源文件 | 适用场景 | 项目级约定 | 覆盖/差异 | 示例位置 |
+| --- | --- | --- | --- | --- | --- |
+|  |  |  |  |  |  |
+
+## Titan 组件补充
+
+如果项目使用 `@ninebot/pc-titan-components`：
+
+- 先读取 `frontend-code-implementation/references/titan-component-map.md`。
+- 按入口索引读取 `frontend-code-implementation/references/titan-components/common.md` 和本次涉及的组件族文件，不要一次性加载全部 Titan 规则。
+- 再搜索项目真实调用和组件库源码：`types.ts`、`src/*.ts`、`README.md`、`demo.vue`。
+- 标记组件是“透明透传型”还是“业务封装型”；业务封装型不要照搬 Element Plus API。
+- 如果项目对弹窗、抽屉、表格、上传、远程下拉等高风险组件有二次封装或特殊约定，只在上方“项目级组件补充”记录项目差异。
+
 ## 风险组件
 
 | 组件 | 风险 | 使用限制 | 替代方案 |

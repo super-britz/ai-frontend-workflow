@@ -33,7 +33,7 @@ Titan 只是组件体系分支之一：当仓库使用 `@ninebot/pc-titan-compon
 3. 读取当前仓库规则，例如 `AGENTS.md`、`CLAUDE.md`、`.cursorrules`、README、docs 或 active OpenSpec change，并执行“实现准入”检查。
 4. 检查项目技术栈、组件库、路由、状态管理、请求封装、i18n、权限、mock 和页面模板。
 5. 判断组件体系：
-   - 如果仓库使用 `@ninebot/pc-titan-components`、已有 `Ti*` 组件或项目规则要求 Titan，读取 `references/titan-component-map.md`。
+   - 如果仓库使用 `@ninebot/pc-titan-components`、已有 `Ti*` 组件或项目规则要求 Titan，先读取 `references/titan-component-map.md` 入口索引和 `references/titan-components/common.md`，再按入口索引只读取本次涉及的组件族文件。
    - 如果仓库使用 Ant Design、Element Plus、Naive UI、Arco、Material UI、自研组件库或其他体系，先搜索目标仓库里的真实用法，再按项目既有模式实现。
    - 如果没有明确组件库，优先复用本地已有业务组件；确实没有可复用组件时才写原生 HTML/CSS。
 6. 读取 `references/repo-conventions.md`，并补充目标仓库的真实约定。
@@ -48,6 +48,11 @@ Titan 只是组件体系分支之一：当仓库使用 `@ninebot/pc-titan-compon
 - 对任何组件库，都必须先搜索目标仓库中的真实用法，不根据设计稿外观臆测 props、事件或插槽契约。
 - 遇到弹窗、抽屉、表单、表格、上传、筛选、分页等常见交互容器时，优先复用相邻页面的提交流程和状态模式。
 - 当仓库启用 Titan 时，优先级变为：Titan 组件 → Element Plus fallback → 原生 HTML/自定义布局；Titan 已覆盖的组件不允许直接用 Element Plus 替代。
+- Titan 组件不是 Element Plus 的同名皮肤。使用前必须确认该组件是“透明透传型”还是“业务封装型”：
+  - 透明透传型：例如 `TiSelect`、`TiSearchInput`，可以大量沿用 Element Plus props/slots/events，并叠加 Titan 自定义默认图标或样式。
+  - 业务封装型：例如 `TiSearchSelect`、`TiMultipleSelect`、`TiTable`、`TiDialog`、`TiDrawer`、上传组件、业务弹窗类组件，必须使用 Titan 自己的 props/events/slots，不要照搬 Element Plus 写法。
+- Titan 详细规则按组件族拆在 `references/titan-components/` 下。不要一次性读取所有子文件；只读取本次涉及的组件族文件。
+- 如果对应组件族文件没覆盖目标组件或场景，必须在目标仓库中继续搜索组件源码、`types.ts`、README、`demo.vue` 和实际业务调用，再实现；不要用“看起来像 Element Plus”作为 API 依据。
 
 ## 翻译原则
 
@@ -69,6 +74,6 @@ Titan 只是组件体系分支之一：当仓库使用 `@ninebot/pc-titan-compon
 
 ## 参考文件
 
-- `references/titan-component-map.md`：仅在仓库使用 Titan 时读取，提供 Figma 形态到 Titan/Element Plus 组件的映射规则。
+- `references/titan-component-map.md`：仅在仓库使用 Titan 时读取的入口索引，用于判断要按需读取哪些 `references/titan-components/*.md` 组件族规则。
 - `references/repo-conventions.md`：把设计稿适配到现有仓库时的通用检查点。
 - `references/validation-checklist.md`：完成前的视觉、交互、响应式和代码质量验收清单。
