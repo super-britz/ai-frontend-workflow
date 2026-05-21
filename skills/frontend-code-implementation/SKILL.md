@@ -41,6 +41,7 @@ Titan 只是组件体系分支之一：当仓库使用 `@ninebot/pc-titan-compon
 - `decisions.md` 中 `Implementation Gate` 为 `Approved`。
 - `tasks.md` 已在事实文件稳定和 Gate 通过后生成或更新。
 - `tasks.md` 中本次实现范围、文件边界和验收命令清楚。
+- `design-requirements.md` 中存在可重读的 UI 节点索引、设计来源索引或等价 Figma source 信息。
 - `alignment-requirements.md` 没有阻塞实现的 `Needs product/design/backend/component decision`。
 - 如果接口不参与，本结论已在事实文件或决策文件中标记 `api-not-required`。
 
@@ -57,7 +58,7 @@ OpenSpec 场景下，聊天摘要、历史分析和 `tasks.md` 的简短描述�
 非 OpenSpec 场景仍需满足：
 
 - 有产品目标、页面范围和验收口径。
-- 有设计来源，例如 Figma node、设计截图、原型或明确的现有页面参照。
+- 有设计来源，例如 Figma node、设计截图、原型或明确的现有页面参照；如果使用 Figma，`design-requirements.md` 或等价材料应保存可重读的 UI 节点索引。
 - 涉及接口数据时，有接口字段、状态、错误码、权限和分页/筛选规则；无接口时明确 `api-not-required`。
 - 产品、UI/设计和 API 存在差异时，有字段映射、adapter 决策和待确认问题处理结论。
 
@@ -70,37 +71,39 @@ OpenSpec 场景下，聊天摘要、历史分析和 `tasks.md` 的简短描述�
 1. 定位 active change，并读取 `proposal.md`、`docs/*-requirements.md`、`decisions.md`、`tasks.md` 和相关 `specs/**/spec.md`。
 2. 执行 OpenSpec 准入检查；如果 `Implementation Gate` 未通过或有阻塞决策，停止实现并回到事实文件或决策文件。
 3. 从 `tasks.md` 中确认本次要实现的任务编号、文件范围、验收命令和不做范围。
-4. 若任务涉及 Figma，解析用户提供的 Figma URL 或当前选中节点，确认要实现的精确 frame/node。
-5. 获取 Figma 结构化设计上下文和同一节点截图；如果上下文过大，先读取节点结构，再缩小到关键子节点。
-6. 读取当前仓库规则，例如 `AGENTS.md`、`CLAUDE.md`、`.cursorrules`、README 和 `docs/ai/`，确认它们是否补充或约束 active change。
-7. 检查项目技术栈、组件库、路由、状态管理、请求封装、i18n、权限、mock 和页面模板。
-8. 判断组件体系：
+4. 若任务涉及 Figma，从 `design-requirements.md` 的 UI 节点索引和设计来源索引中确认要实现的精确 frame/node。
+5. 重新读取这些 Figma 节点的结构化设计上下文和同一节点截图；如果上下文过大，先读取节点结构，再缩小到关键子节点。
+6. 对比二次读取结果和 `design-requirements.md`：如果节点缺失、截图明显变化、状态变体不一致或关键视觉事实冲突，停止实现并更新设计需求或请求 owner 决策。
+7. 读取当前仓库规则，例如 `AGENTS.md`、`CLAUDE.md`、`.cursorrules`、README 和 `docs/ai/`，确认它们是否补充或约束 active change。
+8. 检查项目技术栈、组件库、路由、状态管理、请求封装、i18n、权限、mock 和页面模板。
+9. 判断组件体系：
    - 如果仓库使用 `@ninebot/pc-titan-components`、已有 `Ti*` 组件或项目规则要求 Titan，先读取 `references/titan-component-map.md` 入口索引和 `references/titan-components/common.md`，再按入口索引只读取本次涉及的组件族文件。
    - 如果仓库使用 Ant Design、Element Plus、Naive UI、Arco、Material UI、自研组件库或其他体系，先搜索目标仓库里的真实用法，再按项目既有模式实现。
    - 如果没有明确组件库，优先复用本地已有业务组件；确实没有可复用组件时才写原生 HTML/CSS。
-9. 读取 `references/repo-conventions.md`，并补充目标仓库的真实约定。
-10. 按 `alignment-requirements.md` 和 `tasks.md` 实现页面；组件选择优先遵守当前仓库组件体系。
-11. 接入真实数据、mock 数据、loading、empty、error、disabled、hover、focus、active 等必要状态。
-12. 用真实浏览器对照 Figma 截图验证桌面端和移动端表现。
-13. 完成前读取 `references/validation-checklist.md`，运行 `tasks.md` 或项目规则要求的最小验证命令。
-14. 若实现改变了需求事实、接口映射、权限或验收口径，先回写 active change，再汇报代码结果。
+10. 读取 `references/repo-conventions.md`，并补充目标仓库的真实约定。
+11. 按 `alignment-requirements.md` 和 `tasks.md` 实现页面；组件选择优先遵守当前仓库组件体系。
+12. 接入真实数据、mock 数据、loading、empty、error、disabled、hover、focus、active 等必要状态。
+13. 用真实浏览器对照 Figma 截图验证桌面端和移动端表现。
+14. 完成前读取 `references/validation-checklist.md`，运行 `tasks.md` 或项目规则要求的最小验证命令。
+15. 若实现改变了需求事实、接口映射、权限或验收口径，先回写 active change，再汇报代码结果。
 
 ### 未使用 OpenSpec 时
 
 1. 读取 `AGENTS.md`、`CLAUDE.md`、`.cursorrules`、README、`docs/ai/` 和用户提供的需求材料。
 2. 执行非 OpenSpec 准入检查；缺少产品、设计、接口或对齐输入时，先补齐对应 requirements 产物。
-3. 若任务涉及 Figma，解析用户提供的 Figma URL 或当前选中节点，确认要实现的精确 frame/node。
-4. 获取 Figma 结构化设计上下文和同一节点截图；如果上下文过大，先读取节点结构，再缩小到关键子节点。
-5. 检查项目技术栈、组件库、路由、状态管理、请求封装、i18n、权限、mock 和页面模板。
-6. 判断组件体系：
+3. 若任务涉及 Figma，从 `design-requirements.md`、`docs/ai/` 或用户提供材料中的 UI 节点索引确认要实现的精确 frame/node。
+4. 重新读取这些 Figma 节点的结构化设计上下文和同一节点截图；如果上下文过大，先读取节点结构，再缩小到关键子节点。
+5. 对比二次读取结果和设计需求材料；如果源节点缺失、截图明显变化或关键视觉事实冲突，先更新设计需求或请求 owner 决策。
+6. 检查项目技术栈、组件库、路由、状态管理、请求封装、i18n、权限、mock 和页面模板。
+7. 判断组件体系：
    - 如果仓库使用 `@ninebot/pc-titan-components`、已有 `Ti*` 组件或项目规则要求 Titan，先读取 `references/titan-component-map.md` 入口索引和 `references/titan-components/common.md`，再按入口索引只读取本次涉及的组件族文件。
    - 如果仓库使用 Ant Design、Element Plus、Naive UI、Arco、Material UI、自研组件库或其他体系，先搜索目标仓库里的真实用法，再按项目既有模式实现。
    - 如果没有明确组件库，优先复用本地已有业务组件；确实没有可复用组件时才写原生 HTML/CSS。
-7. 读取 `references/repo-conventions.md`，并补充目标仓库的真实约定。
-8. 按已确认的产品需求、设计需求、接口需求和对齐结果实现页面；组件选择优先遵守当前仓库组件体系。
-9. 接入真实数据、mock 数据、loading、empty、error、disabled、hover、focus、active 等必要状态。
-10. 用真实浏览器对照 Figma 截图验证桌面端和移动端表现。
-11. 完成前读取 `references/validation-checklist.md`，运行项目可用的最小验证命令，例如构建、类型检查、lint 或页面冒烟验证。
+8. 读取 `references/repo-conventions.md`，并补充目标仓库的真实约定。
+9. 按已确认的产品需求、设计需求、接口需求和对齐结果实现页面；组件选择优先遵守当前仓库组件体系。
+10. 接入真实数据、mock 数据、loading、empty、error、disabled、hover、focus、active 等必要状态。
+11. 用真实浏览器对照 Figma 截图验证桌面端和移动端表现。
+12. 完成前读取 `references/validation-checklist.md`，运行项目可用的最小验证命令，例如构建、类型检查、lint 或页面冒烟验证。
 
 ## 组件选择
 
