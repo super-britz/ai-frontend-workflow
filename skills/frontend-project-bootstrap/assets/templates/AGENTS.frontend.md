@@ -44,6 +44,7 @@
 
 ## 需求级事实文件
 
+- PRD / Wiki / 产品说明使用 `frontend-product-requirements`，不要在聊天里隐式沉淀产品规则。
 - Figma / 设计需求使用 `frontend-design-requirements`，不要在项目级规则里记录需求细节。
 - 接口需求使用 `frontend-api-requirements`，不要根据 UI 猜接口字段。
 - 设计和接口对齐使用 `frontend-design-api-alignment`，未决问题必须进入对应事实文件或决策文件。

@@ -154,7 +154,7 @@ openspec/changes/<change-id>/
 
 | 文档 | 由谁产出 |
 | --- | --- |
-| `docs/product-requirements.md` | 从 PRD/Wiki/产品说明提炼，可由 `frontend-openspec-workflow` 协助沉淀 |
+| `docs/product-requirements.md` | `frontend-product-requirements` |
 | `docs/design-requirements.md` | `frontend-design-requirements` |
 | `docs/api-requirements.md` | `frontend-api-requirements` |
 | `docs/alignment-requirements.md` | `frontend-design-api-alignment` |

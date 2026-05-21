@@ -124,6 +124,7 @@ description: Use when 沉淀前端设计需求；拆解 Figma、设计稿、设�
 ## 与其他 skill 的关系
 
 - 前置：`frontend-project-bootstrap`
+- 前置产品需求：`frontend-product-requirements`
 - OpenSpec 编排：`frontend-openspec-workflow`
 - 后续接口需求：`frontend-api-requirements`
 - 后续设计接口对齐：`frontend-design-api-alignment`
@@ -134,7 +135,8 @@ description: Use when 沉淀前端设计需求；拆解 Figma、设计稿、设�
 推荐顺序：
 
 ```text
-frontend-design-requirements
+frontend-product-requirements
+→ frontend-design-requirements
 → frontend-api-requirements
 → frontend-design-api-alignment
 → writing-plans

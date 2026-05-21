@@ -135,6 +135,7 @@ description: Use when 对齐前端设计需求和接口需求；比较 Figma 字
 
 ## 与其他 skill 的关系
 
+- 前置产品需求：`frontend-product-requirements`
 - 前置设计需求：`frontend-design-requirements`
 - 前置接口需求：`frontend-api-requirements`
 - OpenSpec 编排：`frontend-openspec-workflow`
@@ -146,7 +147,8 @@ description: Use when 对齐前端设计需求和接口需求；比较 Figma 字
 推荐顺序：
 
 ```text
-frontend-design-requirements
+frontend-product-requirements
+→ frontend-design-requirements
 → frontend-api-requirements
 → frontend-design-api-alignment
 → 人工审核 decisions.md

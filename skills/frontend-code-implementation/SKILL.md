@@ -24,7 +24,7 @@ Titan 只是组件体系分支之一：当仓库使用 `@ninebot/pc-titan-compon
 - 若启用 OpenSpec，已有 `openspec/changes/<change-id>/docs/*` 上游事实文件，且 `openspec/changes/<change-id>/decisions.md` 中 `Implementation Gate: Approved`。
 - 若启用 OpenSpec，`tasks.md` 应在事实文件稳定和 Gate 通过后生成；实现时读取文件，不以聊天摘要替代。
 
-缺少上述上游产物时，不要直接写代码；先建议补齐产品需求、`frontend-design-requirements`、`frontend-api-requirements` 或 `frontend-design-api-alignment` 产物。纯静态页面或无接口依赖页面，可以接受 `api-not-required` 决策后进入实现。
+缺少上述上游产物时，不要直接写代码；先建议补齐 `frontend-product-requirements`、`frontend-design-requirements`、`frontend-api-requirements` 或 `frontend-design-api-alignment` 产物。纯静态页面或无接口依赖页面，可以接受 `api-not-required` 决策后进入实现。
 
 ## 工作流
 
