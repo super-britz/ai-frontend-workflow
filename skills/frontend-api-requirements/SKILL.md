@@ -1,17 +1,17 @@
 ---
-name: frontend-api-contract
-description: Use when 处理前端接口文档、OpenAPI、Swagger、Apifox、YApi、接口契约、API types、request service、mock、联调、分页、错误码、权限、loading/empty/error 状态，或防止 AI 根据 UI 猜接口字段和响应结构。
+name: frontend-api-requirements
+description: Use when 沉淀前端接口需求；处理接口文档、OpenAPI、Swagger、Apifox、YApi、接口契约、API types、request service、mock、联调、分页、错误码、权限、loading/empty/error 状态，或防止 AI 根据 UI 猜接口字段和响应结构。
 ---
 
-# 前端接口契约
+# 前端接口需求
 
 ## 概览
 
-把后端接口文档沉淀成前端可执行的接口契约。重点是让 Agent 明确字段、类型、service、mock、状态处理和未决问题，避免根据 UI 或臆测生成接口代码。
+把后端接口文档沉淀成前端可执行的接口需求和契约。重点是让 AI 助手明确字段、类型、service、mock、状态处理和未决问题，避免根据 UI 或臆测生成接口代码。
 
-这个 skill 默认先产出契约文档和接入规则，不直接实现页面。只有接口契约已确认，且用户明确要求生成代码时，才可以生成 types、service、mock 等接口层代码；仍然不负责实现业务页面，也不替代 OpenAPI 代码生成工具。
+这个 skill 默认先产出接口需求文档和接入规则，不直接实现页面。只有接口需求已确认，且用户明确要求生成代码时，才可以生成 types、service、mock 等接口层代码；仍然不负责实现业务页面，也不替代 OpenAPI 代码生成工具。
 
-如果当前任务同时涉及设计稿，接口契约生成后应进入 `frontend-design-api-alignment`，先对齐设计字段、接口字段、状态、权限和差异决策，再进入实现。
+如果当前任务同时涉及设计稿，接口需求生成后应进入 `frontend-design-api-alignment`，先对齐设计字段、接口字段、状态、权限和差异决策，再进入实现。
 
 ## 执行原则
 
@@ -24,7 +24,7 @@ description: Use when 处理前端接口文档、OpenAPI、Swagger、Apifox、YA
 - 不清楚的信息标记为 `Needs backend decision`，不要自行补全。
 - 未确认契约前，不创建或修改业务页面代码。
 - 如需生成代码，只生成接口层：types、service、mock、fixtures 或测试，不写页面展示逻辑。
-- 接口契约必须写入文档；不要只把字段和结论留在聊天上下文。
+- 接口需求必须写入文档；不要只把字段和结论留在聊天上下文。
 
 ## 工作流程
 
@@ -68,7 +68,7 @@ description: Use when 处理前端接口文档、OpenAPI、Swagger、Apifox、YA
 - 记录冲突字段、路径、类型或状态码。
 - 在最终回复中标记需要后端确认。
 
-### 3. 生成或更新接口契约文档
+### 3. 生成或更新接口需求文档
 
 如果存在 active OpenSpec change，优先生成到 `openspec/changes/<change-id>/docs/api-requirements.md`。否则默认生成到 `docs/ai/api-requirements.md`，除非仓库已有接口文档约定。
 
@@ -159,8 +159,8 @@ description: Use when 处理前端接口文档、OpenAPI、Swagger、Apifox、YA
 
 - 看着页面设计稿猜接口字段。
 - 只在聊天里整理接口字段，没有写入 `api-requirements.md`。
-- 接口契约被指出不准后，只口头确认，不更新文件。
-- 直接复制 mock 当真实接口契约。
+- 接口需求被指出不准后，只口头确认，不更新文件。
+- 直接复制 mock 当真实接口需求。
 - 在页面组件里散写 `axios.get('/xxx')`。
 - 为单个页面重复定义已有分页、错误码或响应包裹类型。
 - 忽略后端错误结构，导致前端只处理成功态。

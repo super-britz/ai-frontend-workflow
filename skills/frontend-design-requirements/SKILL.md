@@ -1,13 +1,13 @@
 ---
-name: frontend-design-breakdown
-description: Use when 拆解 Figma、设计稿、设计截图、页面原型、组件映射、状态清单、交互清单、视觉验收点，或需要在写代码前分析设计结构；只输出设计拆解和决策问题，不实现代码、不改业务文件。
+name: frontend-design-requirements
+description: Use when 沉淀前端设计需求；拆解 Figma、设计稿、设计截图、页面原型、组件映射、状态清单、交互清单、视觉验收点，或需要在写代码前分析设计结构；只输出设计需求和决策问题，不实现代码、不改业务文件。
 ---
 
-# 前端设计拆解
+# 前端设计需求
 
 ## 概览
 
-在写代码前，把 Figma 或设计稿拆成可实现、可对齐接口、可验收的前端设计说明。这个 skill 只做分析和文档产出，不实现代码。
+在写代码前，把 Figma 或设计稿拆成可实现、可对齐接口、可验收的前端设计需求说明。这个 skill 只做分析和文档产出，不实现代码。
 
 它回答“设计稿要求什么”，不回答“代码怎么写完”。
 
@@ -19,7 +19,7 @@ description: Use when 拆解 Figma、设计稿、设计截图、页面原型、�
 - 不把 Figma 图层结构直接当成代码结构。
 - 不把未确认交互当成已确认需求。
 - 发现缺口时标记 `Needs design/product decision`，不要自行补全。
-- 结果必须写入设计拆解文档；不要只把拆解留在聊天上下文。
+- 结果必须写入设计需求文档；不要只把拆解留在聊天上下文。
 
 ## 工作流程
 
@@ -102,7 +102,7 @@ description: Use when 拆解 Figma、设计稿、设计截图、页面原型、�
 
 视觉规格优先和页面结构、状态变体放在同一个 `design-requirements.md` 中，按章节组织；不要因为来源是多个 Figma node 就过早拆文件。若单个设计需求超过约 600-800 行、覆盖多个完整页面，或实现时频繁只需要视觉规格，再拆出 `ui-reproduction-requirements.md` 或页面级子文档。
 
-### 6. 生成设计拆解文档
+### 6. 生成设计需求文档
 
 如果存在 active OpenSpec change，优先输出到 `openspec/changes/<change-id>/docs/design-requirements.md`。否则默认输出到 `docs/ai/design-requirements.md`，除非项目已有更合适的文档约定。
 
@@ -119,13 +119,13 @@ description: Use when 拆解 Figma、设计稿、设计截图、页面原型、�
 - 状态和交互清单
 - 视觉验收点
 - 必须确认的问题
-- 建议下一步：接口契约、设计接口对齐或实现计划
+- 建议下一步：接口需求、设计接口对齐或实现计划
 
 ## 与其他 skill 的关系
 
 - 前置：`frontend-project-bootstrap`
 - OpenSpec 编排：`frontend-openspec-workflow`
-- 后续接口契约：`frontend-api-contract`
+- 后续接口需求：`frontend-api-requirements`
 - 后续设计接口对齐：`frontend-design-api-alignment`
 - 后续实现：`frontend-code-implementation`
 - 后续验收：`frontend-visual-verification`
@@ -134,8 +134,8 @@ description: Use when 拆解 Figma、设计稿、设计截图、页面原型、�
 推荐顺序：
 
 ```text
-frontend-design-breakdown
-→ frontend-api-contract
+frontend-design-requirements
+→ frontend-api-requirements
 → frontend-design-api-alignment
 → writing-plans
 → frontend-code-implementation

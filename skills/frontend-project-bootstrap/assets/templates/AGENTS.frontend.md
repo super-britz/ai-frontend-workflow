@@ -44,8 +44,8 @@
 
 ## 需求级事实文件
 
-- Figma / 设计拆解使用 `frontend-design-breakdown`，不要在项目级规则里记录需求细节。
-- 接口契约使用 `frontend-api-contract`，不要根据 UI 猜接口字段。
+- Figma / 设计需求使用 `frontend-design-requirements`，不要在项目级规则里记录需求细节。
+- 接口需求使用 `frontend-api-requirements`，不要根据 UI 猜接口字段。
 - 设计和接口对齐使用 `frontend-design-api-alignment`，未决问题必须进入对应事实文件或决策文件。
 - 启用 OpenSpec 时，需求级事实写入 `openspec/changes/<change-id>/docs/*` 和 `decisions.md`。
 - 未启用 OpenSpec 时，可使用 `docs/ai/*-requirements.md` 作为轻量 fallback。

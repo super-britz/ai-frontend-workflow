@@ -12,7 +12,7 @@
 在开始任何页面代码修改前，执行：
 
 ```text
-Use $frontend-code-implementation 根据 active OpenSpec change 中已确认的产品需求、设计拆解、接口契约、设计接口对齐结果和 tasks.md，实现前端页面。
+Use $frontend-code-implementation 根据 active OpenSpec change 中已确认的产品需求、设计需求、接口需求、设计接口对齐结果和 tasks.md，实现前端页面。
 ```
 
 `frontend-code-implementation` 必须重新读取：

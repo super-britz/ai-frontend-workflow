@@ -1,4 +1,4 @@
 interface:
   display_name: "前端代码实现"
   short_description: "基于已确认设计、接口和组件体系实现前端页面"
-  default_prompt: "Use $frontend-code-implementation 根据已确认的设计拆解、接口契约和对齐结果实现前端页面。"
+  default_prompt: "Use $frontend-code-implementation 根据已确认的设计需求、接口需求和对齐结果实现前端页面。"

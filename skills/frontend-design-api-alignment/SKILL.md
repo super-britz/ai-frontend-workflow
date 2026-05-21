@@ -1,13 +1,13 @@
 ---
 name: frontend-design-api-alignment
-description: Use when 对齐前端设计拆解和接口契约；比较 Figma 字段、页面状态、筛选、分页、排序、权限、错误态、枚举、mock 与 API response；在写代码前输出字段映射、差异清单、adapter 决策和 Needs design/product/backend decision。
+description: Use when 对齐前端设计需求和接口需求；比较 Figma 字段、页面状态、筛选、分页、排序、权限、错误态、枚举、mock 与 API response；在写代码前输出字段映射、差异清单、adapter 决策和 Needs design/product/backend decision。
 ---
 
 # 设计接口对齐
 
 ## 概览
 
-在写业务代码前，对齐设计拆解和接口契约，确认页面要展示什么、接口能提供什么、差异应该在哪里处理。这个 skill 只产出对齐文档和决策清单，不实现页面代码。
+在写业务代码前，对齐设计需求和接口需求，确认页面要展示什么、接口能提供什么、差异应该在哪里处理。这个 skill 只产出对齐文档和决策清单，不实现页面代码。
 
 核心原则：**不对齐，不实现。**
 
@@ -28,7 +28,7 @@ description: Use when 对齐前端设计拆解和接口契约；比较 Figma 字
 
 如果缺少产品需求、设计需求或接口需求，先要求补齐对应上游产物，不要直接对齐空白信息。
 
-如果设计拆解明确说明页面是纯静态展示、无接口依赖、无后端状态和权限依赖，可以在对齐文档中标记 `api-not-required`。此时不强制等待接口契约，但仍需列出静态数据来源、状态豁免原因和视觉验收点。
+如果设计需求明确说明页面是纯静态展示、无接口依赖、无后端状态和权限依赖，可以在对齐文档中标记 `api-not-required`。此时不强制等待接口需求，但仍需列出静态数据来源、状态豁免原因和视觉验收点。
 
 ## 硬性边界
 
@@ -38,7 +38,7 @@ description: Use when 对齐前端设计拆解和接口契约；比较 Figma 字
 - 不根据 mock 反推真实接口结构。
 - 不把产品语义冲突伪装成前端 adapter。
 - 不清楚的信息必须标记为 `Needs design decision`、`Needs product decision` 或 `Needs backend decision`。
-- 只有明确 `api-not-required` 时，才允许没有接口契约进入后续实现。
+- 只有明确 `api-not-required` 时，才允许没有接口需求进入后续实现。
 - 对齐结果必须写入文档；不要只把字段映射和冲突留在聊天上下文。
 
 ## 工作流程
@@ -135,8 +135,8 @@ description: Use when 对齐前端设计拆解和接口契约；比较 Figma 字
 
 ## 与其他 skill 的关系
 
-- 前置设计拆解：`frontend-design-breakdown`
-- 前置接口契约：`frontend-api-contract`
+- 前置设计需求：`frontend-design-requirements`
+- 前置接口需求：`frontend-api-requirements`
 - OpenSpec 编排：`frontend-openspec-workflow`
 - 后续实现计划：`writing-plans`
 - 后续实现：`frontend-code-implementation`
@@ -146,8 +146,8 @@ description: Use when 对齐前端设计拆解和接口契约；比较 Figma 字
 推荐顺序：
 
 ```text
-frontend-design-breakdown
-→ frontend-api-contract
+frontend-design-requirements
+→ frontend-api-requirements
 → frontend-design-api-alignment
 → 人工审核 decisions.md
 → 生成包含 frontend-code-implementation handoff 的 tasks.md / writing-plans

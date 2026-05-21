@@ -55,7 +55,7 @@ OpenSpec change 中的文件应按“变更推进”和“事实沉淀”分层�
 ### 变更推进文件
 
 - `proposal.md`：回答“为什么做、做什么、不做什么”，只写变更背景、范围、非目标和主要风险，不写字段级接口或 Figma 细节。
-- `design.md`：回答“工程上准备怎么做”，只写实现策略、模块拆分、数据流、风险控制和推进顺序，不重复产品正文、设计拆解正文或接口字段表。
+- `design.md`：回答“工程上准备怎么做”，只写实现策略、模块拆分、数据流、风险控制和推进顺序，不重复产品正文、设计需求正文或接口字段表。
 - `specs/**/spec.md`：回答“最终必须满足什么”，只写验收级 requirement / scenario，不写实现细节。
 - `tasks.md`：回答“现在做到哪一步”，只写执行清单和进度，不承担需求分析职责；涉及前端页面实现时，必须把 `frontend-code-implementation` handoff 作为代码修改前的第一项执行任务。
 - `decisions.md`：回答“有争议的地方最后怎么定”，只记录取舍、原因、owner、状态和 Gate 结果，不重复事实正文。
@@ -155,8 +155,8 @@ openspec/changes/<change-id>/
 | 文档 | 由谁产出 |
 | --- | --- |
 | `docs/product-requirements.md` | 从 PRD/Wiki/产品说明提炼，可由 `frontend-openspec-workflow` 协助沉淀 |
-| `docs/design-requirements.md` | `frontend-design-breakdown` |
-| `docs/api-requirements.md` | `frontend-api-contract` |
+| `docs/design-requirements.md` | `frontend-design-requirements` |
+| `docs/api-requirements.md` | `frontend-api-requirements` |
 | `docs/alignment-requirements.md` | `frontend-design-api-alignment` |
 | `decisions.md` | 人工审核和 owner 决策 |
 | `verification.md` | `frontend-visual-verification` |
@@ -217,7 +217,7 @@ openspec/changes/<change-id>/
 - `docs/alignment-requirements.md` 已审核。
 - `decisions.md` 中 `Implementation Gate` 为 `Approved`。
 
-不要在设计拆解或接口契约还在变的时候提前生成任务清单。
+不要在设计需求或接口需求还在变的时候提前生成任务清单。
 
 生成 `tasks.md` 时必须使用 `assets/templates/frontend-tasks.md` 作为基础模板。只要任务涉及前端页面或组件实现，`tasks.md` 必须包含：
 
@@ -297,8 +297,8 @@ openspec archive <change-id> --skip-specs
 ## 常见失败
 
 - 让 OpenSpec `/opsx:apply` 和其他执行工具同时主导实现，导致执行规则打架。
-- 把设计拆解和接口契约合并，导致 AI 根据 UI 猜接口。
-- 设计拆解、接口契约或对齐结果只留在聊天里，没有写入 change 文件。
+- 把设计需求和接口需求合并，导致 AI 根据 UI 猜接口。
+- 设计需求、接口需求或对齐结果只留在聊天里，没有写入 change 文件。
 - 拆解不准时只在聊天里纠正，没有直接修改事实文件。
 - 在事实文件和决策还没稳定前就生成 `tasks.md`。
 - Gate 只在聊天里说通过，没有写入 `decisions.md`。

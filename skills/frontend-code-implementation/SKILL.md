@@ -1,6 +1,6 @@
 ---
 name: frontend-code-implementation
-description: Use when 根据已确认的设计拆解、接口契约和设计接口对齐结果，实现前端页面或组件代码；适用于 Figma URL、Figma node、设计稿截图、组件库优先、Vue/React/Vite/Next/Nuxt 页面实现。
+description: Use when 根据已确认的设计需求、接口需求和设计接口对齐结果，实现前端页面或组件代码；适用于 Figma URL、Figma node、设计稿截图、组件库优先、Vue/React/Vite/Next/Nuxt 页面实现。
 ---
 
 # 前端代码实现
@@ -18,13 +18,13 @@ Titan 只是组件体系分支之一：当仓库使用 `@ninebot/pc-titan-compon
 如果当前仓库的 `AGENTS.md`、`docs/ai/` 或用户要求中启用了本工作流，且任务不是明确的“跳过上游分析直接实现”，实现前必须先确认：
 
 - 已有 `docs/ai/product-requirements.md` 或 active OpenSpec change 中的 `docs/product-requirements.md`，或用户明确提供等价产品需求。
-- 已有 `docs/ai/design-requirements.md`，或用户明确提供等价的设计拆解。
+- 已有 `docs/ai/design-requirements.md`，或用户明确提供等价的设计需求。
 - 涉及接口数据时，已有 `docs/ai/api-requirements.md`。
 - 设计和接口都参与本次页面时，已有 `docs/ai/alignment-requirements.md`，且结论允许进入实现。
 - 若启用 OpenSpec，已有 `openspec/changes/<change-id>/docs/*` 上游事实文件，且 `openspec/changes/<change-id>/decisions.md` 中 `Implementation Gate: Approved`。
 - 若启用 OpenSpec，`tasks.md` 应在事实文件稳定和 Gate 通过后生成；实现时读取文件，不以聊天摘要替代。
 
-缺少上述上游产物时，不要直接写代码；先建议补齐产品需求、`frontend-design-breakdown`、`frontend-api-contract` 或 `frontend-design-api-alignment` 产物。纯静态页面或无接口依赖页面，可以接受 `api-not-required` 决策后进入实现。
+缺少上述上游产物时，不要直接写代码；先建议补齐产品需求、`frontend-design-requirements`、`frontend-api-requirements` 或 `frontend-design-api-alignment` 产物。纯静态页面或无接口依赖页面，可以接受 `api-not-required` 决策后进入实现。
 
 ## 工作流
 
@@ -37,7 +37,7 @@ Titan 只是组件体系分支之一：当仓库使用 `@ninebot/pc-titan-compon
    - 如果仓库使用 Ant Design、Element Plus、Naive UI、Arco、Material UI、自研组件库或其他体系，先搜索目标仓库里的真实用法，再按项目既有模式实现。
    - 如果没有明确组件库，优先复用本地已有业务组件；确实没有可复用组件时才写原生 HTML/CSS。
 6. 读取 `references/repo-conventions.md`，并补充目标仓库的真实约定。
-7. 按已确认的设计拆解、接口契约和对齐结果实现页面；组件选择优先遵守当前仓库组件体系。
+7. 按已确认的设计需求、接口需求和对齐结果实现页面；组件选择优先遵守当前仓库组件体系。
 8. 接入真实数据、mock 数据、loading、empty、error、disabled、hover、focus、active 等必要状态。
 9. 用真实浏览器对照 Figma 截图验证桌面端和移动端表现。
 10. 完成前读取 `references/validation-checklist.md`，运行项目可用的最小验证命令，例如构建、类型检查、lint 或页面冒烟验证。
@@ -68,7 +68,7 @@ Titan 只是组件体系分支之一：当仓库使用 `@ninebot/pc-titan-compon
 
 - 如果 Figma 上下文过大或被截断，先缩小节点范围再继续。
 - 如果同一页面存在多个相似 variant，确认用户指定的 source of truth。
-- 如果缺少设计拆解、接口契约或设计接口对齐结论，先补齐上游产物，不要越级实现。
+- 如果缺少设计需求、接口需求或设计接口对齐结论，先补齐上游产物，不要越级实现。
 - 如果组件库无法覆盖某个形态，先查项目既有页面，再选择基础 UI fallback 或自定义实现。
 - 如果浏览器截图和 Figma 差异明显，优先检查组件选择、布局、尺寸、间距、排版，再检查颜色和交互态。
 
