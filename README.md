@@ -31,7 +31,7 @@ facts 先稳定 → decisions 再确认 → tasks 最后生成
 
 | Skill | 用途 |
 | --- | --- |
-| `frontend-project-bootstrap` | 初始化前端仓库的 `AGENTS.md`、组件边界、设计还原和验收护栏 |
+| `frontend-project-bootstrap` | 检查前端仓库并生成或更新项目根目录 `AGENTS.md` |
 | `frontend-openspec-workflow` | 为单个前端需求创建或选择 OpenSpec change，并规划文档落点、人工 Gate 和归档 |
 | `frontend-product-requirements` | 从 PRD、Wiki 或产品说明沉淀产品事实、范围、规则和待确认问题 |
 | `frontend-design-requirements` | 写代码前拆解 Figma 设计稿的页面结构、组件映射、状态和验收点 |
@@ -125,7 +125,7 @@ examples/business-project-template/
 安装后可以这样调用：
 
 ```text
-Use $frontend-project-bootstrap 初始化这个前端仓库的 Codex/Superpowers 协作规则、组件边界和验收护栏。
+Use $frontend-project-bootstrap 检查这个前端仓库，并生成或更新项目根目录 AGENTS.md。
 Use $frontend-openspec-workflow 为这个前端需求设计 OpenSpec、Superpowers 和 frontend skills 的分层协作流程。
 Use $frontend-product-requirements 从 PRD/Wiki/产品说明提炼产品事实、范围、规则和待确认问题，不写代码。
 Use $frontend-design-requirements 拆解这个 Figma 页面，输出页面结构、组件映射、状态清单和视觉验收点，不写代码。

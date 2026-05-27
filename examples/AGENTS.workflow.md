@@ -2,7 +2,7 @@
 
 ## 总入口
 
-- 新项目或老项目首次接入 AI：先运行 `Use $frontend-project-bootstrap 初始化这个前端仓库的 Codex/Superpowers 协作规则、组件边界和验收护栏。`
+- 新项目或老项目首次接入 AI：先运行 `Use $frontend-project-bootstrap 检查这个前端仓库，并生成或更新项目根目录 AGENTS.md。`
 - 需要按需求沉淀上下文或人工审核时，先运行 `Use $frontend-openspec-workflow 为这个前端需求设计 OpenSpec、Superpowers 和 frontend skills 的分层协作流程。`
 - 后续所有前端任务，先读取本文件、`AGENTS.md`、`docs/ai/` 和 active OpenSpec change 下的项目规则。
 - OpenSpec 负责项目事实和需求变更，Superpowers 负责执行过程和工程质量，frontend skills 负责前端专业判断。
@@ -12,7 +12,7 @@
 
 | 场景 | 必用 skill | 产物 |
 | --- | --- | --- |
-| 项目初始化 | `frontend-project-bootstrap` | `AGENTS.md`、`docs/ai/*` |
+| 项目初始化 | `frontend-project-bootstrap` | `AGENTS.md` |
 | 需求事实和变更边界 | OpenSpec / `frontend-openspec-workflow` | `openspec/changes/<change-id>/`、proposal、specs、人工 Gate |
 | 产品说明/PRD/Wiki | `frontend-product-requirements` | `docs/product-requirements.md` 或 `docs/ai/product-requirements.md` |
 | Figma 设计拆解 | `frontend-design-requirements` | `docs/design-requirements.md` 或 `docs/ai/design-requirements.md` |

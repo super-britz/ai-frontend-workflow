@@ -24,7 +24,7 @@
 
 常用 skills：
 
-- `$frontend-project-bootstrap`：初始化或更新前端 AI 协作规则。
+- `$frontend-project-bootstrap`：生成或更新项目根目录 `AGENTS.md`。
 - `$frontend-openspec-workflow`：为前端需求建立 OpenSpec 协作流程。
 - `$frontend-product-requirements`：从 PRD、Wiki 或产品说明沉淀产品事实。
 - `$frontend-design-requirements`：写代码前拆解 Figma 或设计稿。
