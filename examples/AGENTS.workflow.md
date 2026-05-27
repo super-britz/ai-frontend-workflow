@@ -14,7 +14,7 @@
 | 场景 | 必用 skill | 产物 |
 | --- | --- | --- |
 | 项目初始化 | `frontend-project-bootstrap` | `AGENTS.md` |
-| 大需求拆分 | `frontend-change-planning` | `docs/ai/frontend-change-plan.md` |
+| 大需求拆分 | `frontend-change-planning` | `openspec/changes/change-plan.md` 或 `docs/ai/frontend-change-plan.md` |
 | 需求事实和变更边界 | OpenSpec / `frontend-openspec-workflow` | `openspec/changes/<change-id>/`、proposal、specs、Gate、decisions、tasks |
 | 产品说明/PRD/Wiki | `frontend-product-requirements` | `docs/product-requirements.md` 或 `docs/ai/product-requirements.md` |
 | Figma 设计拆解 | `frontend-design-requirements` | `docs/design-requirements.md` 或 `docs/ai/design-requirements.md` |
