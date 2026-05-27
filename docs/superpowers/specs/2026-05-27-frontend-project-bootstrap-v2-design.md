@@ -1,74 +1,74 @@
-# frontend-project-bootstrap v2 Design
+# frontend-project-bootstrap v2 设计说明
 
-## Goal
+## 目标
 
-Rewrite `frontend-project-bootstrap` into a focused AGENTS.md initializer/updater.
+将 `frontend-project-bootstrap` 重写为一个聚焦的 `AGENTS.md` 初始化 / 更新 skill。
 
-The skill should help an AI assistant inspect a frontend repository and create or update the root `AGENTS.md` with concise project-level collaboration rules. It should not create requirement documents, component usage documents, OpenSpec changes, verification reports, review reports, or task routing rules.
+这个 skill 应帮助 AI 助手检查前端仓库，并在项目根目录创建或更新简洁、可执行的 `AGENTS.md` 项目级协作规则。它不负责创建需求文档、组件使用文档、OpenSpec change、验收报告、Review 报告，也不负责写任务分流规则。
 
-## Scope
+## 范围
 
-### Keep
+### 保留职责
 
-- Inspect the repository before writing rules.
-- Generate `AGENTS.md` when it is missing.
-- Update `AGENTS.md` when it already exists.
-- Preserve existing user rules, language preferences, safety rules, and commit rules.
-- Record discovered project facts such as framework, language, package manager, UI library, key directories, and available commands.
-- Add concise project-level guardrails for code edits, frontend implementation, validation, git usage, and prohibited actions.
-- Mark important missing information as `Needs project discovery` instead of inventing facts.
+- 写规则前先检查仓库。
+- 缺少 `AGENTS.md` 时生成该文件。
+- 已存在 `AGENTS.md` 时就地更新。
+- 保留已有用户规则、语言偏好、安全规则和 commit 规则。
+- 记录已发现的项目事实，例如框架、语言、包管理器、UI 库、关键目录和可用命令。
+- 添加简洁的项目级护栏，覆盖代码修改、前端实现、验证、Git 使用和禁止事项。
+- 对重要但无法从仓库确认的信息标记 `Needs project discovery`，不要编造项目事实。
 
-### Remove
+### 移除职责
 
-- Do not create `docs/ai/component-usage.md`.
-- Do not create `docs/ai/*-requirements.md`.
-- Do not create or update OpenSpec files.
-- Do not add frontend skill routing rules.
-- Do not add Figma node, Implementation Gate, visual verification, or review workflow details.
-- Do not attempt to design a project component system during bootstrap.
+- 不创建 `docs/ai/component-usage.md`。
+- 不创建 `docs/ai/*-requirements.md`。
+- 不创建或更新 OpenSpec 文件。
+- 不添加 frontend skills 任务分流规则。
+- 不添加 Figma node、Implementation Gate、视觉验收或 Review 流程细节。
+- 不在 bootstrap 阶段设计项目组件体系。
 
-## Output Contract
+## 输出契约
 
-The skill has one file output:
+这个 skill 只有一个文件产物：
 
 ```text
 AGENTS.md
 ```
 
-If the repository already has `AGENTS.md`, the skill updates it in place. If it has nearby agent rule files such as `CLAUDE.md`, `.github/copilot-instructions.md`, `.cursorrules`, or README instructions, the skill reads them and preserves non-conflicting project rules in `AGENTS.md`.
+如果仓库已经有 `AGENTS.md`，则直接更新该文件。如果仓库存在相邻的 agent 规则文件，例如 `CLAUDE.md`、`.github/copilot-instructions.md`、`.cursorrules` 或 README 中的项目说明，则读取这些文件，并把不冲突的项目规则保留到 `AGENTS.md` 中。
 
-## AGENTS.md Content
+## AGENTS.md 内容
 
-The generated or updated file should stay short and practical. Recommended sections:
+生成或更新后的文件应保持简短、实用。推荐章节：
 
-- Global preferences
-- Project overview
-- Common commands
-- Code change rules
-- Frontend implementation rules
-- Validation rules
-- Git rules
-- Prohibited actions
-- Unknowns
+- 全局偏好
+- 项目概况
+- 常用命令
+- 代码修改规则
+- 前端实现规则
+- 验证规则
+- Git 规则
+- 禁止事项
+- 未确认项
 
-The frontend implementation rules should remain project-level and lightweight, for example:
+前端实现规则只保留项目级、轻量级约束，例如：
 
-- Search existing pages and components before adding new UI.
-- Prefer the project UI library and existing local abstractions.
-- Avoid unrelated global style, routing, build, dependency, or API changes.
-- Avoid new dependencies unless the task explicitly requires them.
+- 新增 UI 前先搜索已有页面和组件。
+- 优先复用项目 UI 库和已有本地封装。
+- 避免无关的全局样式、路由、构建、依赖或 API 修改。
+- 除非任务明确要求，否则不新增依赖。
 
-## Failure Modes To Avoid
+## 需要避免的失败模式
 
-- Generating a long generic AGENTS.md that future agents will not read.
-- Inventing commands, component names, routes, test tools, or project conventions.
-- Replacing user-written rules instead of merging them.
-- Turning bootstrap into a requirement-analysis, OpenSpec, Figma, verification, or review workflow.
-- Creating extra documentation files as a side effect.
+- 生成过长、泛泛而谈、后续 agent 不会认真阅读的 `AGENTS.md`。
+- 编造命令、组件名、路由、测试工具或项目约定。
+- 覆盖用户已写规则，而不是合并保留。
+- 把 bootstrap 变成需求分析、OpenSpec、Figma、验收或 Review 工作流。
+- 顺手创建额外文档文件。
 
-## Success Criteria
+## 成功标准
 
-- `frontend-project-bootstrap` is easy to explain in one sentence: generate or update `AGENTS.md` for a frontend repository.
-- The skill body is shorter than the current version and has fewer responsibilities.
-- The AGENTS template is shorter and contains no task routing rules.
-- `scripts/check-skills.sh` passes after the rewrite.
+- `frontend-project-bootstrap` 可以用一句话解释：为前端仓库生成或更新 `AGENTS.md`。
+- skill 正文比当前版本更短，职责更少。
+- `AGENTS.md` 模板更短，不包含任务分流规则。
+- 重写后 `scripts/check-skills.sh` 通过。
