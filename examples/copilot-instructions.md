@@ -11,6 +11,7 @@
 常用 skills：
 
 - `frontend-project-bootstrap`
+- `frontend-change-planning`
 - `frontend-openspec-workflow`
 - `frontend-product-requirements`
 - `frontend-design-requirements`

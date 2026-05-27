@@ -1,0 +1,4 @@
+interface:
+  display_name: "规划前端 change"
+  short_description: "把较大的前端需求拆成多个可进入 OpenSpec 的 change 候选"
+  default_prompt: "Use $frontend-change-planning 分析这个较大的前端需求，并输出 OpenSpec change 拆分规划。"

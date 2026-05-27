@@ -25,6 +25,7 @@
 常用 skills：
 
 - `$frontend-project-bootstrap`：生成或更新项目根目录 `AGENTS.md`。
+- `$frontend-change-planning`：把较大的前端需求拆成多个 OpenSpec change 候选。
 - `$frontend-openspec-workflow`：为前端需求创建或整理 OpenSpec change、Gate、decisions 和 tasks。
 - `$frontend-product-requirements`：从 PRD、Wiki 或产品说明沉淀产品事实。
 - `$frontend-design-requirements`：写代码前拆解 Figma 或设计稿。
