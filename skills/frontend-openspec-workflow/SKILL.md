@@ -65,6 +65,8 @@ openspec/changes/<change-id>/
 
 按实际需要创建或补齐：
 
+- `proposal.md`，使用 `assets/templates/frontend-proposal.md`。
+- `design.md`，使用 `assets/templates/frontend-design.md`。
 - `docs/` 下的事实文件落点。
 - `decisions.md`，使用 `assets/templates/frontend-decisions.md`。
 - `tasks.md`，使用 `assets/templates/frontend-tasks.md`。
@@ -135,6 +137,8 @@ openspec archive <change-id>
 ## 资源
 
 - `assets/templates/frontend-change-index.md`
+- `assets/templates/frontend-proposal.md`
+- `assets/templates/frontend-design.md`
 - `assets/templates/frontend-decisions.md`
 - `assets/templates/frontend-tasks.md`
 - `assets/templates/frontend-verification.md`
