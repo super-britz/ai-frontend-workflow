@@ -18,14 +18,9 @@
 - 添加简洁的项目级护栏，覆盖代码修改、前端实现、验证、Git 使用和禁止事项。
 - 对重要但无法从仓库确认的信息标记 `Needs project discovery`，不要编造项目事实。
 
-### 移除职责
+### 职责边界
 
-- 不创建 `docs/ai/component-usage.md`。
-- 不创建 `docs/ai/*-requirements.md`。
-- 不创建或更新 OpenSpec 文件。
-- 不添加 frontend skills 任务分流规则。
-- 不添加 Figma node、Implementation Gate、视觉验收或 Review 流程细节。
-- 不在 bootstrap 阶段设计项目组件体系。
+`frontend-project-bootstrap` 只维护 `AGENTS.md`。需求分析、组件规范、OpenSpec、Figma、视觉验收、Review 和任务分流都交给后续专项流程处理。
 
 ## 输出契约
 
