@@ -2,46 +2,29 @@
 
 ## Editing Rules
 
-- 本文件只记录执行任务，不承载产品、设计、接口或字段映射事实。
-- 只有事实文件稳定、`decisions.md` 中 `Implementation Gate: Approved` 后，才生成或更新本文件。
-- 如果任务涉及前端页面或组件实现，第一组实现任务必须先调用 `frontend-code-implementation`。
-- 实现时必须重新读取 active OpenSpec change，不依赖聊天摘要或上一次分析记忆。
+- 本文件只记录执行清单，不承载产品、设计、接口或字段映射事实。
+- 事实变化先更新 `docs/*-requirements.md` 或 `decisions.md`，再更新任务。
+- `Implementation Gate` 通过前，不生成具体实现任务。
 
-## Required Implementation Handoff
+## Required Handoff
 
-在开始任何页面代码修改前，执行：
+如果本 change 涉及前端页面或组件实现，第一项实现任务使用：
 
 ```text
-Use $frontend-code-implementation 根据 active OpenSpec change 中已确认的产品需求、设计需求、接口需求、对齐需求结果和 tasks.md，实现前端页面。
+Use $frontend-code-implementation 根据 active OpenSpec change 中已确认的事实和 tasks.md 执行前端实现。
 ```
 
-`frontend-code-implementation` 必须重新读取：
-
-- `proposal.md`
-- `specs/**/spec.md`
-- `docs/product-requirements.md`
-- `docs/design-requirements.md`
-- `docs/api-requirements.md`
-- `docs/alignment-requirements.md`
-- `decisions.md`
-- `tasks.md`
-- 精确 Figma node 的结构化上下文和截图
-- 项目组件体系；若仓库使用 Titan，再读取 Titan 映射规则
-
-如果上述输入缺失或 `Implementation Gate` 不是 `Approved`，停止实现并回到事实文件或决策文件补齐。
+实现准入、设计来源读取、组件体系、视觉验收和 Review 细节由后续专项流程处理。
 
 ## Task List
 
-- [ ] Implementation handoff: invoke `frontend-code-implementation` and complete its admission checks.
-- [ ] Re-read active OpenSpec change files and confirm source of truth.
-- [ ] Re-read exact Figma node context and screenshot before page code changes.
-- [ ] Map page structure to existing project routes, components, services, stores and style tokens.
-- [ ] Implement service/adapter/type changes required by `docs/alignment-requirements.md`.
-- [ ] Implement page/component changes using the project component system first; if the repo uses Titan, apply Titan mapping rules.
-- [ ] Cover default, loading, empty, error, permission, disabled and success states.
-- [ ] Run available code checks.
-- [ ] Run `frontend-visual-verification` and write results to `verification.md`.
-- [ ] Run `frontend-code-review` and write findings to `review.md`.
+- [ ] Confirm active change id and source-of-truth files.
+- [ ] Complete or update required facts in `docs/*-requirements.md`.
+- [ ] Record blocking decisions in `decisions.md`.
+- [ ] Approve or block `Implementation Gate`.
+- [ ] Add implementation handoff task after `Implementation Gate: Approved`.
+- [ ] Record verification evidence in `verification.md`.
+- [ ] Record review findings in `review.md`.
 - [ ] Run `openspec validate <change-id> --strict`.
 
 ## Progress Notes

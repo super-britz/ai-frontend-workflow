@@ -32,7 +32,7 @@ facts 先稳定 → decisions 再确认 → tasks 最后生成
 | Skill | 用途 |
 | --- | --- |
 | `frontend-project-bootstrap` | 检查前端仓库并生成或更新项目根目录 `AGENTS.md` |
-| `frontend-openspec-workflow` | 为单个前端需求创建或选择 OpenSpec change，并规划文档落点、人工 Gate 和归档 |
+| `frontend-openspec-workflow` | 为前端需求创建或整理 OpenSpec change、Gate、decisions 和 tasks |
 | `frontend-product-requirements` | 从 PRD、Wiki 或产品说明沉淀产品事实、范围、规则和待确认问题 |
 | `frontend-design-requirements` | 写代码前拆解 Figma 设计稿的页面结构、组件映射、状态和验收点 |
 | `frontend-api-requirements` | 把接口文档沉淀为前端可执行接口需求和接入规则，确认后再生成接口层代码 |
@@ -126,7 +126,7 @@ examples/business-project-template/
 
 ```text
 Use $frontend-project-bootstrap 检查这个前端仓库，并生成或更新项目根目录 AGENTS.md。
-Use $frontend-openspec-workflow 为这个前端需求设计 OpenSpec、Superpowers 和 frontend skills 的分层协作流程。
+Use $frontend-openspec-workflow 为这个前端需求创建或整理 OpenSpec change 文件结构、Gate、decisions 和 tasks。
 Use $frontend-product-requirements 从 PRD/Wiki/产品说明提炼产品事实、范围、规则和待确认问题，不写代码。
 Use $frontend-design-requirements 拆解这个 Figma 页面，输出页面结构、组件映射、状态清单和视觉验收点，不写代码。
 Use $frontend-api-requirements 根据接口文档生成前端接口需求、类型、service、mock 和状态处理规则。
@@ -152,7 +152,7 @@ OpenSpec change 文件职责速查：
 | `specs/**/spec.md` | 最终系统能力契约 |
 
 1. 新项目或老项目接入 AI 前，先运行 `frontend-project-bootstrap`。
-2. 明确需求边界时，用 OpenSpec 创建或选择 change；需要编排前端文档时使用 `frontend-openspec-workflow`。
+2. 明确需求边界时，用 OpenSpec 创建或选择 change；需要整理 change 文件结构、Gate、decisions 或 tasks 时使用 `frontend-openspec-workflow`。
 3. 有 PRD、Wiki 或产品说明时，使用 `frontend-product-requirements` 只拆产品事实。
 4. 有 Figma 页面任务时，使用 `frontend-design-requirements` 只拆设计事实。
 5. 有接口文档或联调任务时，使用 `frontend-api-requirements` 只拆接口事实。

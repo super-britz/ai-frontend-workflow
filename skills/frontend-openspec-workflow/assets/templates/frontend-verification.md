@@ -3,34 +3,33 @@
 ## Scope
 
 - Change ID:
-- Page/component:
-- Route:
-- Design source:
-- API source:
+- Feature / page / component:
+- Source of truth:
 
 ## Commands
 
 | Command | Result | Notes |
 | --- | --- | --- |
-|  | Pending |  |
+| `openspec validate <change-id> --strict` | Pending |  |
 
-## Viewport And State Matrix
+## Evidence
 
-| Viewport | Default | Loading | Empty | Error | Permission | Disabled | Success | Notes |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Desktop | Pending | Pending | Pending | Pending | Pending | Pending | Pending |  |
-| Mobile | Pending | Pending | Pending | Pending | Pending | Pending | Pending |  |
+| Area | Evidence | Status |
+| --- | --- | --- |
+| Code checks |  | Pending |
+| UI / browser verification |  | Pending |
+| Review |  | Pending |
 
-## Findings
+## Blocking Items
 
-| Priority | Area | Issue | Status |
+| ID | Issue | Owner | Status |
 | --- | --- | --- | --- |
-|  |  |  |  |
+| V-001 |  |  | Pending |
 
 ## Conclusion
 
 Status: Pending
 
-Unverified items:
+Notes:
 
-- 
+-

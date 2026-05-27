@@ -1,4 +1,4 @@
-# Frontend OpenSpec Change
+# Frontend Change Index
 
 ## Change
 
@@ -8,55 +8,44 @@
 - Status: Pending
 - Source:
 
-## Document Map
+## File Map
 
-| 内容 | 路径 | 状态 |
+| File | Purpose | Status |
 | --- | --- | --- |
-| Proposal | `proposal.md` | Pending |
-| OpenSpec specs | `specs/` | Pending |
-| Technical design | `design.md` | Pending |
-| Tasks | `tasks.md` | Pending |
-| Product requirements | `docs/product-requirements.md` | Pending |
-| Design requirements | `docs/design-requirements.md` | Pending |
-| API requirements | `docs/api-requirements.md` | Pending |
-| Alignment requirements | `docs/alignment-requirements.md` | Pending |
-| Decisions | `decisions.md` | Pending |
-| Verification | `verification.md` | Pending |
-| Review | `review.md` | Pending |
+| `proposal.md` | Scope, non-goals, acceptance | Pending |
+| `design.md` | Engineering approach | Pending |
+| `specs/` | Long-term capability contract | Pending |
+| `docs/product-requirements.md` | Product facts | Pending |
+| `docs/design-requirements.md` | Design facts and sources | Pending |
+| `docs/api-requirements.md` | API facts | Pending |
+| `docs/alignment-requirements.md` | Product / UI / API alignment | Pending |
+| `decisions.md` | Decisions and Gate status | Pending |
+| `tasks.md` | Execution checklist | Pending |
+| `verification.md` | Verification evidence | Pending |
+| `review.md` | Review findings | Pending |
 
-## Source Of Truth
+## Inputs
 
-- 事实文件：`docs/product-requirements.md`、`docs/design-requirements.md`、`docs/api-requirements.md`、`docs/alignment-requirements.md`
-- 决策文件：`decisions.md`
-- 执行文件：`tasks.md`
-
-规则：
-
-- 拆解、契约或对齐不准时，直接修改事实文件。
-- 有取舍、争议、owner 或审批状态时，写入 `decisions.md`。
-- `tasks.md` 只能在事实文件稳定且 `Implementation Gate` 通过后生成或更新。
-- 聊天记录不能替代上述文件。
+- PRD / product source:
+- Figma / design source:
+- API source:
+- Related routes/pages:
+- Related specs:
 
 ## Gates
 
-| Gate | Status | Reviewer | Date | Notes |
-| --- | --- | --- | --- | --- |
-| Scope Gate | Pending |  |  |  |
-| Design Review | Pending |  |  |  |
-| Contract Review | Pending |  |  |  |
-| Implementation Gate | Pending |  |  |  |
-| Merge Gate | Pending |  |  |  |
-
-## Active Inputs
-
-- Figma:
-- PRD:
-- API source:
-- Related routes/pages:
-- Related components:
+| Gate | Status | Owner | Evidence |
+| --- | --- | --- | --- |
+| Scope Gate | Pending |  | `proposal.md` |
+| Product Gate | Pending |  | `docs/product-requirements.md` |
+| Design Gate | Pending |  | `docs/design-requirements.md` |
+| Contract Gate | Pending |  | `docs/api-requirements.md` |
+| Alignment Gate | Pending |  | `docs/alignment-requirements.md` |
+| Implementation Gate | Pending |  | `decisions.md` |
+| Merge Gate | Pending |  | `verification.md` / `review.md` |
 
 ## Open Questions
 
-| ID | Type | Question | Owner | Status |
-| --- | --- | --- | --- | --- |
-| Q-001 | product/design/backend/component |  |  | Pending |
+| ID | Question | Owner | Status |
+| --- | --- | --- | --- |
+| Q-001 |  |  | Pending |
