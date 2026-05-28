@@ -1,174 +1,89 @@
 ---
 name: frontend-api-requirements
-description: Use when 沉淀前端接口需求；处理接口文档、OpenAPI、Swagger、Apifox、YApi、接口契约、API types、request service、mock、联调、分页、错误码、权限、loading/empty/error 状态，或防止 AI 根据 UI 猜接口字段和响应结构。
+description: Use when 沉淀前端接口契约事实；从 OpenAPI、Swagger、Apifox、YApi、后端接口文档或联调说明记录接口来源、路径、方法、请求、响应、错误、分页、鉴权和未确认项；只输出接口事实和 Needs backend decision，不根据 UI/mock 猜字段，不生成 types/service/mock/test，不写接入方案。
 ---
 
 # 前端接口需求
 
-## 概览
+## 定位
 
-把后端接口文档沉淀成前端可执行的接口需求和契约。重点是让 AI 助手明确字段、类型、service、mock、状态处理和未决问题，避免根据 UI 或臆测生成接口代码。
+把后端接口资料沉淀成前端视角的接口契约摘录与缺口清单。
 
-这个 skill 默认先产出接口需求文档和接入规则，不直接实现页面。只有接口需求已确认，且用户明确要求生成代码时，才可以生成 types、service、mock 等接口层代码；仍然不负责实现业务页面，也不替代 OpenAPI 代码生成工具。
+它不是后端接口文档副本；原始接口文档以来源链接或文件路径为准。
 
-如果当前任务同时涉及设计稿，接口需求生成后应进入 `frontend-alignment-requirements`，先对齐产品语义、设计字段、接口字段、状态、权限和差异决策，再进入实现。
+它只回答：
 
-## 执行原则
+- 接口来源是什么，可信度如何。
+- 接口路径、方法、请求参数、请求体、响应结构、错误结构是什么。
+- 全局鉴权、headers、响应包裹、分页、文件上传下载等契约是什么。
+- 哪些接口信息缺失或冲突，需要 `Needs backend decision`。
 
-- 先确认接口来源，再生成前端契约。
-- 优先使用结构化来源：OpenAPI / Swagger / Apifox / YApi 导出。
-- Markdown、飞书、截图或口头说明只能作为补充，不能覆盖结构化接口源。
-- 不根据 UI 猜字段、分页结构、错误码、权限规则或响应包裹结构。
-- 不把接口请求散落在页面组件里，必须遵守项目已有 request/service 分层。
-- 不重复定义已有类型；先搜索已有 types、services、mocks 和相邻页面。
-- 不清楚的信息标记为 `Needs backend decision`，不要自行补全。
-- 未确认契约前，不创建或修改业务页面代码。
-- 如需生成代码，只生成接口层：types、service、mock、fixtures 或测试，不写页面展示逻辑。
-- 接口需求必须写入文档；不要只把字段和结论留在聊天上下文。
+它不回答 UI 如何展示、service 怎么命名、类型文件放哪里、mock 怎么写、代码怎么接。
 
-## 工作流程
+## 硬性边界
 
-### 1. 探测项目接口约定
+- 不写业务代码。
+- 不创建或修改页面、组件、types、service、mock、fixtures 或测试。
+- 不生成 TypeScript interface、service 方法、request 示例或 mock 示例。
+- 不写接口接入 checklist、文件路径、命名规范、质量门禁或后续实现方案。
+- 不根据 UI、设计稿、mock、历史页面或示例数据反推真实接口字段。
+- 不全文搬运接口文档；只摘录前端消费接口必须依赖的契约字段、结构、约束、错误和未决问题。
+- 不把口头说明、Markdown、截图覆盖结构化接口源，除非后端明确确认。
+- 不把未确认字段、枚举、错误码、分页结构、权限结构当成已确认契约。
+- 缺失或冲突只标记 `Needs backend decision`，不要自行补全。
+- 结果必须写入接口需求文档；不要只留在聊天上下文。
 
-按需读取：
-
-- `package.json`、接口生成脚本、mock 脚本
-- `AGENTS.md`、`README.md`、`docs/`
-- OpenSpec change：`openspec/changes/<change-id>/proposal.md`、`design.md`、`decisions.md`
-- request 封装：`request`、`http`、`axios`、`fetch`、`client`
-- service 目录：`api/`、`services/`、`request/`
-- 类型目录：`types/`、`interfaces/`、`model/`
-- mock 目录：`mock/`、`mocks/`、`fixtures/`
-- 相邻页面的列表、详情、创建、编辑、删除接口接入方式
-
-整理：
-
-- 请求库和封装入口
-- service 命名与文件组织
-- 类型命名与导出方式
-- 响应包裹结构
-- 分页结构
-- 错误码与错误提示方式
-- 鉴权、权限、租户、语言、环境变量规则
-- mock 与联调方式
-
-### 2. 读取接口来源
+## 读取内容
 
 来源优先级：
 
 1. OpenAPI / Swagger JSON 或 YAML
 2. Apifox / YApi 导出
-3. 后端维护的 Markdown / 文档平台
-4. 已有前端 service 与后端联调代码
-5. UI 设计稿或需求描述
+3. 后端维护的 Markdown、文档平台或联调说明
+4. 已有前端 service 或联调代码；只能作为现状参照，不能覆盖后端契约
+5. UI、mock 或用户描述；只能提示需要确认的问题，不能作为接口事实
 
-如果多个来源冲突：
+记录：
 
-- 以结构化接口源为准。
-- 记录冲突字段、路径、类型或状态码。
-- 在最终回复中标记需要后端确认。
+- 来源名称、链接或文件路径、类型、版本、更新时间、读取时间、负责人和可信度。
+- 多来源之间的路径、方法、字段、类型、枚举、状态码、错误结构冲突。
+- 缺失但会影响接口契约的信息，统一写 `Needs backend decision`。
 
-### 3. 生成或更新接口需求文档
+## 输出内容
 
-如果存在 active OpenSpec change，优先生成到 `openspec/changes/<change-id>/docs/api-requirements.md`。否则默认生成到 `docs/ai/api-requirements.md`，除非仓库已有接口文档约定。
+使用 `assets/templates/api-requirements.md` 作为基础模板，输出到：
 
-使用 `assets/templates/api-requirements.md` 作为基础模板，必须写清：
+- active OpenSpec change 存在时：`openspec/changes/<change-id>/docs/api-requirements.md`
+- 否则：`docs/ai/api-requirements.md`
 
-- 文档来源与更新时间
-- 全局请求和响应约定
-- 接口清单
-- 每个接口的用途、权限、请求参数、响应字段、错误状态
-- 前端 service 方法名
-- TypeScript 类型名
-- mock 示例
-- loading、empty、error、permission、success 状态映射
-- 未决问题
+文档只沉淀以下内容：
 
-如果人工审核发现契约不准，直接修改 `api-requirements.md`。涉及后端确认、产品取舍或 owner 的内容，写入 active change 的 `decisions.md`。
+- 接口来源索引：来源、版本、可信度、覆盖范围、冲突。
+- 全局契约：Base URL、鉴权、headers、响应包裹、错误结构、分页结构、时间格式、上传/下载约定。
+- 接口清单：场景、方法、路径、来源、可信度、状态。
+- 接口详情：用途说明、请求路径参数、query、headers、body、响应字段、错误码/业务码、权限/鉴权约束。
+- 未决问题：只写 `Needs backend decision`。
 
-### 4. 生成前端接入规则
+字段只记录接口源明确给出的名称、类型、必填、枚举、默认值、说明和来源。接口源没有明确表达时，不要补类型、不猜字段、不写兼容逻辑。
 
-需要写清 Agent 后续实现时应该如何接入：
+最终回复包含：
 
-- service 文件路径和方法命名
-- request 封装调用方式
-- params、body、query 的传参规则
-- 类型定义位置
-- mock 数据位置
-- 错误提示和空状态处理方式
-- 是否需要取消请求、防抖、节流、缓存或轮询
-- 是否需要权限、租户、语言或环境参数
-
-可使用 `assets/templates/api-integration-checklist.md`。
-
-### 5. 可选生成接口层代码
-
-只有满足全部条件才进入本步骤：
-
-- 用户明确要求生成接口层代码。
-- `api-requirements.md` 已确认或未决项不影响本次接口。
-- 项目已有 request/service/types/mock 约定已识别。
-- 不需要靠 UI 或 mock 反推字段。
-
-允许生成：
-
-- TypeScript 类型
-- service 方法
-- mock / fixtures
-- service 测试或类型测试
-
-禁止生成：
-
-- 页面组件
-- 业务表单逻辑
-- 路由和权限配置
-- 设计还原代码
-- 未确认字段的兼容逻辑
-
-### 6. 定义质量门禁
-
-接口相关改动完成前必须检查：
-
-- 类型与接口文档一致。
-- service 只做请求封装和轻量数据适配，不承载页面状态。
-- 页面不硬编码接口路径、状态码、分页结构或响应包裹结构。
-- mock 数据覆盖成功、空、错误、权限不足和边界字段。
-- 新增逻辑有单元测试、service 测试或关键路径 E2E。
-- 可用的 lint、typecheck、test、build 已运行。
-
-### 7. 汇报结果
-
-最终回复必须包含：
-
-- 接口来源和可信度。
-- 创建或更新了哪些契约文档。
-- 已确认的全局接口约定。
-- 仍需后端确认的问题。
-- 建议下一个前端接入任务。
-
-## 推荐默认值
-
-- OpenSpec 文档路径：`openspec/changes/<change-id>/docs/api-requirements.md`
-- 仓库文档路径：`docs/ai/api-requirements.md`
-- 接入检查清单：`docs/ai/api-integration-checklist.md`
-- 未确认字段统一写 `Needs backend decision`
-- 类型命名：`XxxParams`、`XxxRequest`、`XxxResponse`、`XxxItem`
-- service 方法命名：`getXxxList`、`getXxxDetail`、`createXxx`、`updateXxx`、`deleteXxx`
+- 产物文件路径
+- 接口来源和可信度
+- 全局接口契约摘要
+- 接口覆盖范围摘要
+- `Needs backend decision`
 
 ## 常见失败
 
-- 看着页面设计稿猜接口字段。
-- 只在聊天里整理接口字段，没有写入 `api-requirements.md`。
+- 看 UI 或 mock 猜接口字段。
+- 只在聊天里整理接口，没有写入 `api-requirements.md`。
+- 把示例响应当成完整响应契约。
+- 把已有前端 service 当成后端最新契约。
+- 在接口需求里写 TypeScript、service、mock、测试或接入方案。
+- 接口字段不明确时自行发明字段名、类型、枚举或错误码。
 - 接口需求被指出不准后，只口头确认，不更新文件。
-- 直接复制 mock 当真实接口需求。
-- 在页面组件里散写 `axios.get('/xxx')`。
-- 为单个页面重复定义已有分页、错误码或响应包裹类型。
-- 忽略后端错误结构，导致前端只处理成功态。
-- 接口字段不明确时自行发明字段名。
 
 ## 资源
 
 - `assets/templates/api-requirements.md`
-- `assets/templates/api-integration-checklist.md`
-- `assets/templates/api-source-audit.md`
-- `assets/templates/mock-data-rules.md`
