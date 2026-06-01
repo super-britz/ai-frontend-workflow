@@ -20,13 +20,12 @@ Use $frontend-code-implementation 根据 active OpenSpec change 中已确认的�
 ## Task List
 
 - [ ] Confirm active change id and source-of-truth files.
-- [ ] Complete or update required facts in `docs/*-requirements.md`.
-- [ ] Record blocking decisions in `decisions.md`.
-- [ ] Record owner decision for `Implementation Gate`.
+- [ ] Confirm `Implementation Gate: Approved` in `decisions.md`.
 - [ ] Confirm `design.md` is ready for implementation.
-- [ ] Add implementation handoff task after `Implementation Gate: Approved`.
-- [ ] Record verification evidence in `verification.md`.
-- [ ] Record review findings in `review.md`.
+- [ ] Run `frontend-code-implementation` handoff for page or component implementation.
+- [ ] Implement approved frontend changes.
+- [ ] Run `frontend-visual-verification` and record evidence in `verification.md`.
+- [ ] Run `frontend-code-review` and record findings in `review.md`.
 - [ ] Run `openspec validate <change-id> --strict`.
 
 ## Progress Notes

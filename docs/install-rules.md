@@ -33,6 +33,9 @@ skills:
   - frontend-requirements-design
   - frontend-requirements-api
   - frontend-requirements-alignment
+  - frontend-change-decisions
+  - frontend-change-design
+  - frontend-change-tasks
   - frontend-code-implementation
   - frontend-visual-verification
   - frontend-code-review

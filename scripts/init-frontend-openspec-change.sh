@@ -39,6 +39,7 @@ copy_if_missing() {
 mkdir -p "${CHANGE_DIR}/docs"
 
 copy_if_missing "${TEMPLATE_DIR}/decisions.md" "${CHANGE_DIR}/decisions.md"
+copy_if_missing "${TEMPLATE_DIR}/design.md" "${CHANGE_DIR}/design.md"
 copy_if_missing "${TEMPLATE_DIR}/tasks.md" "${CHANGE_DIR}/tasks.md"
 copy_if_missing "${TEMPLATE_DIR}/verification.md" "${CHANGE_DIR}/verification.md"
 copy_if_missing "${TEMPLATE_DIR}/review.md" "${CHANGE_DIR}/review.md"

@@ -1,0 +1,4 @@
+interface:
+  display_name: "编写前端架构设计"
+  short_description: "为 OpenSpec change 沉淀前端 design.md 技术方案和影响面"
+  default_prompt: "Use $frontend-change-design 根据当前 OpenSpec change 的已确认事实和 decisions.md，编写前端 design.md 架构设计；不要新增需求事实、不要批准 Gate、不要生成 tasks 或写代码。"

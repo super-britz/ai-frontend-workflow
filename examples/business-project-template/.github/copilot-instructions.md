@@ -19,10 +19,13 @@
 
 - `frontend-project-bootstrap`
 - `frontend-change-planning`
-- `frontend-product-requirements`
-- `frontend-design-requirements`
-- `frontend-api-requirements`
-- `frontend-alignment-requirements`
+- `frontend-requirements-product`
+- `frontend-requirements-design`
+- `frontend-requirements-api`
+- `frontend-requirements-alignment`
+- `frontend-change-decisions`
+- `frontend-change-design`
+- `frontend-change-tasks`
 - `frontend-code-implementation`
 - `frontend-visual-verification`
 - `frontend-code-review`
