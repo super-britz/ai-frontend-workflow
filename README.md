@@ -75,6 +75,8 @@ manifest 示例见：
 ./scripts/install-skills.sh
 ```
 
+默认会把本仓库的 `skills/` 复制到本机 Agent 的运行时目录，不会把 skill 装进仓库本身，也不会做软链。
+
 ### 按业务项目 manifest 安装
 
 支持 Codex、VS Code 中的 GitHub Copilot、Claude Code：
@@ -82,6 +84,15 @@ manifest 示例见：
 ```bash
 ./scripts/install-skills.sh --manifest /path/to/project/.ai/skills.yaml --agent all
 ```
+
+如果要改安装位置，可以给 `codex` / `copilot` 传 `--target`，支持绝对路径和相对路径：
+
+```bash
+./scripts/install-skills.sh --manifest /path/to/project/.ai/skills.yaml --agent codex --target /tmp/custom-skills
+./scripts/install-skills.sh --manifest /path/to/project/.ai/skills.yaml --agent copilot --target ./runtime-skills
+```
+
+`claude` 目前使用 `AI_FRONTEND_WORKFLOW_HOME`，默认安装到 `~/.ai-frontend-workflow/skills`。
 
 只安装到某个 Agent：
 
@@ -98,6 +109,7 @@ manifest 示例见：
 ```
 
 安装脚本统一使用复制模式，不使用软链。修改本仓库 skill 后，需要重新执行安装脚本同步到对应 Agent 的运行时目录。
+`./scripts/update-skills.sh` 会先 `git pull --ff-only`，再重新执行安装；它是更新来源，不是安装器本身。
 
 ### 业务项目接入模板
 
