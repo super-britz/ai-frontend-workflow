@@ -41,7 +41,7 @@ description: Use when review 前端 diff、commit、PR 或指定文件；对照 
 - README 和开发文档
 - 相邻页面、公共组件、service、store、route、hooks/composables
 - `package.json`、TS/ESLint/Prettier、Vite/Next/Nuxt/Vue/React、路由、权限和 i18n 配置
-- 已启用的组件体系 skill 或团队外部规则，例如 `frontend-titan-implementation`
+- 已启用的组件体系 skill 或团队外部规则
 
 如果没有这些文件，按当前代码库惯例审查，并在 residual risk 里说明依据不足。
 

@@ -37,6 +37,8 @@
 - `$frontend-visual-verification`：做页面截图、响应式和状态验收。
 - `$frontend-code-review`：做前端专项 Review。
 
+如果项目还有外部组件体系 skill，例如 `ti-component-skills`，先确认它已安装，再在项目级 `AGENTS.md` 里补一句“实现前先读取该 skill 并按其规则执行”。
+
 ## 项目命令
 
 按当前项目实际情况维护：

@@ -11,7 +11,7 @@ description: Use when 根据已确认的产品需求、设计需求、接口需�
 
 实现时优先使用项目已有组件、业务模式和样式 token，而不是照搬 Figma 导出的 React/Tailwind/绝对定位结构。
 
-如果当前项目有单独维护的组件体系 skill 或约定，例如 `frontend-titan-implementation`，先读取那个 skill，再按它的规则实现；本 skill 不内嵌具体组件体系映射。
+如果当前项目有单独维护的组件体系 skill 或约定，先读取那个 skill，再按它的规则实现；本 skill 不内嵌具体组件体系映射。
 
 ## 硬性边界
 
