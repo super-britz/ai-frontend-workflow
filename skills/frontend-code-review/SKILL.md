@@ -1,129 +1,99 @@
 ---
 name: frontend-code-review
-description: Use when review 前端改动、PR、diff、前端专项 Review、组件复用、组件库优先、Figma 还原、接口契约、TypeScript 类型、UI 状态、响应式、可访问性、测试和 Playwright 验收，或排查 AI 生成前端代码质量风险。
+description: Use when review 前端 diff、commit、PR 或指定文件；对照 product/design/api/alignment、decisions.md、design.md、tasks.md 和 verification.md 查找回归、契约漂移、组件体系偏离、状态缺失和验收缺口；只输出风险 findings，不写代码。
 ---
 
-# 前端专项 Review
+# 前端代码 Review
 
-## 概览
+## 定位
 
-对前端改动做专项代码审查，优先发现会导致线上问题、设计还原失败、组件体系失控、接口契约漂移或验收不足的风险。这个 skill 默认采用 code review 姿态：问题优先，少写泛泛表扬。
+对前端改动做风险导向审查，优先发现会导致线上问题、契约漂移、UI 行为回归、组件体系失控或验收不足的缺陷。
 
-## 执行原则
+本 skill 只输出 review findings。它不实现代码、不补需求、不重新做视觉验收、不重写架构设计。
 
-- 先确认 review 范围：当前 diff、指定提交、PR 或具体文件。
-- 先读项目规则：`AGENTS.md`、`docs/ai/component-usage.md`、active OpenSpec change、接口契约、视觉验收结果和项目约定。
-- 只审查范围内的改动；不要把无关历史问题混进结论。
-- 发现问题必须给出文件和行号，说明影响和触发条件。
-- 优先报告会影响用户、数据、可维护性和交付验收的问题。
-- 不为纯个人风格、无影响命名或格式噪音占用主要结论。
-- 不直接改代码，除非用户明确要求“修复”。
+## 硬性边界
 
-## 工作流程
+- 不审查无关历史问题。
+- 不把个人风格、命名偏好或格式噪音放进主要 findings。
+- 不用“应该更好”替代可触发、可定位、可修复的问题。
+- 不直接改代码，除非用户明确要求修复。
+- 不替代 `frontend-visual-verification`、`frontend-change-design` 或 `frontend-change-tasks`。
+- 每个 finding 必须有文件/行号或明确 diff 位置；否则放入 residual risk。
 
-### 1. 确认范围
+## 输入
 
-按需使用：
+先确定 review 范围：
 
-- `git status -sb`
-- `git diff`
-- `git diff --stat`
-- `git show <commit>`
-- PR diff 或用户指定文件
+- 当前工作区 diff。
+- 指定 commit。
+- 指定 PR。
+- 用户给出的文件或补丁。
 
-整理：
+再按需读取项目约束。项目约束指本仓库或 active change 中已经明确存在的 source of truth，包括：
 
-- 修改了哪些页面、组件、service、types、样式、测试、配置
-- 是否涉及 Figma 还原
-- 是否涉及接口契约
-- 是否涉及公共组件或全局样式
-- 是否涉及路由、权限、状态管理或构建配置
-
-### 2. 读取项目约束
-
-优先查看：
-
-- `AGENTS.md`
-- `docs/ai/component-usage.md`
-- `docs/ai/api-requirements.md`
-- `docs/ai/*-requirements.md`
-- `openspec/changes/<change-id>/docs/*`
+- `openspec/changes/<change-id>/docs/*-requirements.md`
 - `openspec/changes/<change-id>/decisions.md`
+- `openspec/changes/<change-id>/design.md`
+- `openspec/changes/<change-id>/tasks.md`
 - `openspec/changes/<change-id>/verification.md`
-- 相邻页面和已有组件实现
+- `docs/ai/*`
+- `AGENTS.md`
+- README 和开发文档
+- 相邻页面、公共组件、service、store、route、hooks/composables
+- `package.json`、TS/ESLint/Prettier、Vite/Next/Nuxt/Vue/React、路由、权限和 i18n 配置
+- 已启用的组件体系 skill 或团队外部规则，例如 `frontend-titan-implementation`
 
-如果仓库没有这些文档，按当前代码库惯例审查，并在结论中说明缺口。
+如果没有这些文件，按当前代码库惯例审查，并在 residual risk 里说明依据不足。
 
-### 3. 审查重点
+## Review 顺序
 
-#### 组件与设计系统
+1. 读取 diff，确认本次实际改了什么。
+2. 读取相关 source of truth，确认改动应该实现什么。
+3. 对照 `design.md`、requirements、decisions 和 tasks，检查代码有没有漂移。
+4. 搜索相邻页面、组件、service、store、route 和测试，判断是否破坏既有模式。
+5. 只输出本次改动引入或暴露的具体风险。
 
-- 是否绕过已有组件库自造按钮、表单、表格、弹窗、抽屉、上传、图标。
-- 是否重复封装已有业务组件。
-- 是否破坏组件 props、事件、slot、样式约定。
-- Figma 还原是否误把图层结构当代码结构。
+## 重点风险
 
-#### 接口与数据
+- Source of truth drift：代码和 `design.md`、requirements、decisions 或 tasks 不一致。
+- Contract drift：接口路径、请求参数、响应结构、错误码、权限、分页或类型和 API 契约不一致。
+- UI behavior regression：loading、empty、error、permission、disabled、submitting、success、响应式或可访问性出现明显缺口。
+- Component/system drift：绕过已有组件体系、重复造组件、破坏公共组件调用契约或引入平行模式。
+- Verification gap：没有足够测试、build、typecheck、浏览器截图或 `verification.md` evidence 支撑改动安全。
 
-- 是否遵守 `frontend-requirements-api` 或项目接口需求。
-- 是否在页面里硬编码接口路径、分页结构、错误码或响应包裹。
-- TypeScript 类型是否与接口文档一致。
-- loading、empty、error、permission、success 是否覆盖。
-- mock 是否被当成真实接口契约。
-
-#### UI 状态与交互
-
-- 表单校验、提交中、防重复提交、错误提示是否完整。
-- 弹窗/抽屉关闭、重置、回填、确认流程是否正确。
-- 筛选、分页、排序、上传、下载是否处理边界。
-- 长文本、空数据、异常数据是否导致溢出或遮挡。
-
-#### 响应式与可访问性
-
-- 移动端、窄屏、滚动容器是否可用。
-- 文案是否溢出、重叠、遮挡。
-- 键盘 focus、aria、label、按钮语义是否有明显问题。
-- 颜色对比、禁用态、错误态是否可辨认。
-
-#### 测试与验收
-
-- 是否补了必要单元测试、组件测试、service 测试或 E2E。
-- 是否真实运行 lint、typecheck、test、build。
-- UI 改动是否有截图或浏览器验收。
-- 测试是否只测 mock 行为，没测真实逻辑。
-
-### 4. 输出格式
+## 输出格式
 
 有问题时，按严重程度排序：
 
-- P0：会导致崩溃、数据错误、安全风险、关键流程不可用。
-- P1：主要功能错误、设计还原明显失败、接口契约错误。
+- P0：崩溃、数据错误、安全风险、关键流程不可用。
+- P1：主要功能错误、接口契约错误、明显设计/交互回归。
 - P2：边界状态缺失、响应式问题、可维护性明显退化。
-- P3：轻微一致性、低风险测试缺口。
+- P3：低风险一致性问题或测试缺口。
 
-每个问题包含：
+每个 finding 包含：
 
-- 标题
-- 文件和行号
-- 影响
-- 触发条件
-- 建议修复方向
+- 标题。
+- 文件和行号。
+- 影响。
+- 触发条件。
+- 修复方向。
 
 没有发现问题时，明确说明“未发现阻塞性问题”，并列出仍未验证的风险。
 
-在支持 `::code-comment{...}` 的客户端中，可用结构化代码评论；普通聊天中使用文件路径和行号。
+如果存在 active OpenSpec change，把 review 摘要写入：
 
-如果存在 active OpenSpec change，优先把 Review 摘要写入 `openspec/changes/<change-id>/review.md`。
+```text
+openspec/changes/<change-id>/review.md
+```
 
 ## 常见失败
 
-- 只看代码能不能编译，不看 UI 状态和视觉验收。
-- 只指出风格问题，漏掉组件库绕过、接口猜字段、状态缺失。
-- 把无关历史问题混入本次 review。
-- 没有文件和行号，导致反馈无法落地。
-- 没有区分严重程度，导致真正风险被噪音淹没。
+- 只看 build 是否通过，不看事实漂移。
+- 把视觉验收重新做一遍，而不是检查已有 verification evidence。
+- 把架构重新设计一遍，而不是检查代码是否遵守 `design.md`。
+- 把无关历史问题混入本次 diff。
+- 没有文件行号，导致反馈无法落地。
 
 ## 资源
 
 - `assets/templates/frontend-review-report.md`
-- `assets/templates/frontend-review-checklist.md`

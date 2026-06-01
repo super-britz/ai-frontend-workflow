@@ -1,31 +1,31 @@
-# 前端 Review 报告
+# Frontend Review Report
 
-## 范围
+## Scope
 
-- 分支/提交/PR：
-- 审查文件：
-- 涉及模块：
-- 相关规则：
+- Reviewed diff / commit / PR:
+- Source of truth:
+- Reviewed files:
+- Related modules:
 
 ## Findings
 
-| 优先级 | 文件 | 行号 | 问题 | 影响 | 建议 |
+| Severity | File | Line | Finding | Impact | Fix direction |
 | --- | --- | --- | --- | --- | --- |
 |  |  |  |  |  |  |
 
-## 未验证风险
+## Residual Risk
 
 - 
 
-## 验证信息
+## Evidence
 
-- Lint：
-- Typecheck：
-- Test：
-- Build：
-- E2E/截图：
+- Lint:
+- Typecheck:
+- Test:
+- Build:
+- Browser / screenshot:
 
-## 结论
+## Conclusion
 
-- 是否有阻塞问题：
-- 是否建议合并：
+- Blocking findings:
+- Merge recommendation:
