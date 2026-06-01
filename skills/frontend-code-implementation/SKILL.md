@@ -62,7 +62,7 @@ OpenSpec 场景下，聊天摘要、历史分析和 `tasks.md` 的简短描述�
 - 涉及接口数据时，有接口字段、状态、错误码、权限和分页/筛选规则；无接口时明确 `api-not-required`。
 - 产品、UI/设计和 API 存在差异时，有字段映射、adapter 决策和待确认问题处理结论。
 
-缺少上述上游产物时，不要直接写代码；先建议补齐 `frontend-product-requirements`、`frontend-design-requirements`、`frontend-api-requirements` 或 `frontend-alignment-requirements` 产物。
+缺少上述上游产物时，不要直接写代码；先建议补齐 `frontend-requirements-product`、`frontend-requirements-design`、`frontend-requirements-api` 或 `frontend-requirements-alignment` 产物。
 
 ## 工作流
 

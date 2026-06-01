@@ -1,0 +1,4 @@
+interface:
+  display_name: "前端产品需求"
+  short_description: "从 PRD/Wiki/产品说明沉淀产品事实、Scope Gate 和验收口径"
+  default_prompt: "Use $frontend-requirements-product 根据 PRD/Wiki/产品说明沉淀前端产品事实、业务范围、产品规则、权限、异常、验收口径和产品待确认问题，不拆设计、不猜接口、不写实现方案。"

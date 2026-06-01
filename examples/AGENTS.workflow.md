@@ -16,10 +16,10 @@
 | 项目初始化 | `frontend-project-bootstrap` | `AGENTS.md` |
 | 大需求拆分 | `frontend-change-planning` | `openspec/changes/change-plan.md` 或 `docs/ai/frontend-change-plan.md` |
 | 需求事实和变更边界 | OpenSpec / 前端模板 | `openspec/changes/<change-id>/`、proposal、specs、Gate、decisions、tasks |
-| 产品说明/PRD/Wiki | `frontend-product-requirements` | `docs/product-requirements.md` 或 `docs/ai/product-requirements.md` |
-| Figma 设计拆解 | `frontend-design-requirements` | `docs/design-requirements.md` 或 `docs/ai/design-requirements.md` |
-| 接口文档/联调 | `frontend-api-requirements` | `docs/api-requirements.md` 或 `docs/ai/api-requirements.md` |
-| 产品/UI/API 对齐 | `frontend-alignment-requirements` | `docs/alignment-requirements.md` 或 `docs/ai/alignment-requirements.md` |
+| 产品说明/PRD/Wiki | `frontend-requirements-product` | `docs/product-requirements.md` 或 `docs/ai/product-requirements.md` |
+| Figma 设计拆解 | `frontend-requirements-design` | `docs/design-requirements.md` 或 `docs/ai/design-requirements.md` |
+| 接口文档/联调 | `frontend-requirements-api` | `docs/api-requirements.md` 或 `docs/ai/api-requirements.md` |
+| 产品/UI/API 对齐 | `frontend-requirements-alignment` | `docs/alignment-requirements.md` 或 `docs/ai/alignment-requirements.md` |
 | 工程执行 | Superpowers | plan、tests、worktree、review、verification evidence |
 | 需求确认后实现 | `frontend-code-implementation` | 页面代码、状态覆盖、组件实现 |
 | 页面完成验收 | `frontend-visual-verification` | `verification.md`、截图或问题清单 |
@@ -43,12 +43,12 @@
 1. 明确需求、设计来源、接口来源和验收标准。
 2. 需求较大或边界不清时，先用 `frontend-change-planning` 拆成多个 change 候选。
 3. 若启用 OpenSpec，先创建或选择 active change，明确 scope、non-goals、验收标准。
-4. 有 PRD、Wiki 或产品说明时先用 `frontend-product-requirements` 做产品事实拆解。
-5. 有 Figma 时先用 `frontend-design-requirements` 做设计拆解，不直接写页面。
-6. 有接口时先用 `frontend-api-requirements` 沉淀接口契约摘录与缺口清单，不根据 UI 猜字段。
+4. 有 PRD、Wiki 或产品说明时先用 `frontend-requirements-product` 做产品事实拆解。
+5. 有 Figma 时先用 `frontend-requirements-design` 做设计拆解，不直接写页面。
+6. 有接口时先用 `frontend-requirements-api` 沉淀接口契约摘录与缺口清单，不根据 UI 猜字段。
 7. 人工审核事实文件；拆解或契约不准时直接修改 `docs/product-requirements.md`、`docs/design-requirements.md`、`docs/api-requirements.md` 或 `docs/alignment-requirements.md`。
 8. 有取舍、争议或 owner 的内容写入 `decisions.md`，不要只留在聊天里。
-9. 用 `frontend-alignment-requirements` 对照产品、UI 和 API 事实，列出缺失与冲突差异；不明确项标记 `Needs product/design/backend decision`。
+9. 用 `frontend-requirements-alignment` 对照产品、UI 和 API 事实，列出缺失与冲突差异；不明确项标记 `Needs product/design/backend decision`。
 10. 人工审核 `decisions.md`，只有 `Implementation Gate: Approved` 才允许生成或更新 `tasks.md`。
 11. 生成 `tasks.md` 时，涉及前端页面实现的任务必须把 `frontend-code-implementation` handoff 作为第一项实现任务。
 12. 进入实现后由 Superpowers 主导 `writing-plans`、worktree、TDD、review 和完成前验证；页面代码修改前先调用 `frontend-code-implementation` 重新读取 active OpenSpec change、Figma 上下文和项目组件体系。

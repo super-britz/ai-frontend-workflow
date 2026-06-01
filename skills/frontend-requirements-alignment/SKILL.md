@@ -1,5 +1,5 @@
 ---
-name: frontend-alignment-requirements
+name: frontend-requirements-alignment
 description: Use when 对照前端产品事实、UI 设计事实和接口契约事实；读取 product-requirements、design-requirements、api-requirements，输出字段、状态、异常、查询/操作能力的交叉检查与差异清单；只暴露一致、缺失、冲突和 Needs product/design/backend decision，不做实现准入、不写 adapter/service/component 决策、不编排流程。
 ---
 

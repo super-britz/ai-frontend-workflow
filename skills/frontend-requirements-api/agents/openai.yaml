@@ -1,0 +1,4 @@
+interface:
+  display_name: "前端接口需求"
+  short_description: "把接口文档沉淀为可复查的前端接口契约事实"
+  default_prompt: "Use $frontend-requirements-api 根据接口文档沉淀接口来源、路径、方法、请求、响应、错误、分页、鉴权和未确认项；只输出接口事实和 Needs backend decision，不生成 types/service/mock/test，不写接入方案。"

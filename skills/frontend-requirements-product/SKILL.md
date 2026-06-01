@@ -1,5 +1,5 @@
 ---
-name: frontend-product-requirements
+name: frontend-requirements-product
 description: Use when 沉淀前端产品需求和 Scope Gate；从 PRD、Wiki、产品说明、需求单、会议纪要或用户描述提炼业务目标、范围、产品规则、权限、异常、验收口径和产品待确认问题；只输出产品事实和产品决策问题，不拆设计、不猜接口、不写实现方案。
 ---
 

@@ -65,7 +65,7 @@ description: Use when review 前端改动、PR、diff、前端专项 Review、�
 
 #### 接口与数据
 
-- 是否遵守 `frontend-api-requirements` 或项目接口需求。
+- 是否遵守 `frontend-requirements-api` 或项目接口需求。
 - 是否在页面里硬编码接口路径、分页结构、错误码或响应包裹。
 - TypeScript 类型是否与接口文档一致。
 - loading、empty、error、permission、success 是否覆盖。

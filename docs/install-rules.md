@@ -29,10 +29,10 @@ source:
 
 skills:
   - frontend-project-bootstrap
-  - frontend-product-requirements
-  - frontend-design-requirements
-  - frontend-api-requirements
-  - frontend-alignment-requirements
+  - frontend-requirements-product
+  - frontend-requirements-design
+  - frontend-requirements-api
+  - frontend-requirements-alignment
   - frontend-code-implementation
   - frontend-visual-verification
   - frontend-code-review

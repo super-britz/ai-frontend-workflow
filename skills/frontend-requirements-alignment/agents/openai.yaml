@@ -1,0 +1,4 @@
+interface:
+  display_name: "前端对齐需求"
+  short_description: "对照产品、UI 和 API 事实，输出缺失与冲突差异清单"
+  default_prompt: "Use $frontend-requirements-alignment 对照产品事实、UI 设计事实和接口契约事实，输出字段、状态、异常、查询/操作能力的交叉检查与差异清单；只暴露一致、缺失、冲突和 Needs product/design/backend decision，不写实现准入或 adapter/service/component 决策。"

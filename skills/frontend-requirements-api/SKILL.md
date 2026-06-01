@@ -1,5 +1,5 @@
 ---
-name: frontend-api-requirements
+name: frontend-requirements-api
 description: Use when 沉淀前端接口契约事实；从 OpenAPI、Swagger、Apifox、YApi、后端接口文档或联调说明记录接口来源、路径、方法、请求、响应、错误、分页、鉴权和未确认项；只输出接口事实和 Needs backend decision，不根据 UI/mock 猜字段，不生成 types/service/mock/test，不写接入方案。
 ---
 

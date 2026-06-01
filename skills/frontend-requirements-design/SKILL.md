@@ -1,5 +1,5 @@
 ---
-name: frontend-design-requirements
+name: frontend-requirements-design
 description: Use when 沉淀前端 UI 设计拆解；从 Figma、设计稿、设计截图或页面原型记录设计来源、UI 结构、视觉元素、状态变体、交互表现和视觉验收点；只输出设计稿中明确存在的 UI 事实和 Needs design decision，不拆产品、不猜接口、不写组件/实现方案、不编排流程。
 ---
 
