@@ -1,74 +1,61 @@
-# 前端对齐需求
+# 前端需求对齐差异清单
 
 ## 基本信息
 
-- 页面/模块：
+- 对齐对象：
 - 产品需求来源：
-- UI/设计需求来源：
-- 接口需求来源：
-- 接口依赖：required / api-not-required
+- UI 设计来源：
+- 接口契约来源：
 - 对齐时间：
-- 负责人：
-- 是否允许进入实现：否
+- 可信度：
 
 ## 输入来源
 
-| 类型 | 路径/链接 | 状态 | 备注 |
-| --- | --- | --- | --- |
-| 产品需求 | `docs/ai/product-requirements.md` | 待确认 |  |
-| 设计需求 | `docs/ai/design-requirements.md` | 待确认 |  |
-| 接口需求 | `docs/ai/api-requirements.md` | 待确认 |  |
-
-## 无接口依赖说明
-
-- 是否 `api-not-required`：
-- 静态数据来源：
-- 状态豁免原因：
-- 仍需验收的视觉/交互点：
-
-## 字段映射
-
-| 产品语义 | UI/设计字段 | 设计文案 | 接口字段 | 类型 | 映射方式 | 处理层 | 状态 | 备注 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-|  |  |  |  |  | direct / format / combine / derive / frontend-only / missing-in-api / missing-in-design | service / adapter / component | 待确认 |  |
-
-## 状态映射
-
-| 页面状态 | 设计表现 | 接口依据 | 前端处理 | 状态 |
+| 类型 | 路径/链接 | 可信度 | 覆盖范围 | 备注 |
 | --- | --- | --- | --- | --- |
-| loading |  | 请求中 |  | 待确认 |
-| empty |  | 空列表/空对象 |  | 待确认 |
-| error |  | HTTP 状态码/业务码 |  | 待确认 |
-| permission |  | 权限字段/错误码 |  | 待确认 |
-| disabled |  | 字段/权限/流程状态 |  | 待确认 |
-| success |  | 操作结果 |  | 待确认 |
+| product |  |  |  |  |
+| design |  |  |  |  |
+| api |  |  |  |  |
 
-## 查询能力对齐
+## 对齐范围
 
-| 能力 | 设计控件 | 接口参数 | 默认值 | 是否支持 | 决策 |
+| 对齐项 | 产品来源 | UI 来源 | API 来源 | 结论 | 备注 |
 | --- | --- | --- | --- | --- | --- |
-| 搜索 |  |  |  | 待确认 |  |
-| 筛选 |  |  |  | 待确认 |  |
-| 分页 |  |  |  | 待确认 |  |
-| 排序 |  |  |  | 待确认 |  |
+|  |  |  |  |  |  |
 
-## 前端 Adapter 决策
+## 字段/文案/数据差异
 
-| 场景 | 输入字段 | 输出字段 | 处理位置 | 规则 |
-| --- | --- | --- | --- | --- |
-|  |  |  | service / adapter |  |
+| UI 可见项 | 产品语义 | API 契约 | 差异类型 | 影响 | 处理结论 |
+| --- | --- | --- | --- | --- | --- |
+|  |  |  |  |  |  |
+
+## 状态与异常差异
+
+| 状态/异常 | 产品口径 | UI 表现 | API 契约 | 差异类型 | 处理结论 |
+| --- | --- | --- | --- | --- | --- |
+|  |  |  |  |  |  |
+
+## 查询/操作能力差异
+
+| 能力 | 产品口径 | UI 表现 | API 支持 | 差异类型 | 处理结论 |
+| --- | --- | --- | --- | --- | --- |
+|  |  |  |  |  |  |
 
 ## 差异清单
 
-| 优先级 | 类型 | 差异 | 影响 | 决策 |
-| --- | --- | --- | --- | --- |
-| P1 | backend |  | 阻塞实现 | `Needs backend decision` |
-| P2 | product |  | 影响交互 | `Needs product decision` |
-| P2 | design |  | 影响视觉/状态 | `Needs design decision` |
+| ID | 类型 | 差异 | 影响 | Owner | 状态 |
+| --- | --- | --- | --- | --- | --- |
+| A-001 | product / design / backend |  |  |  | Pending |
 
-## 实现准入结论
+## 允许的结论值
 
-- 允许进入实现：
-- 阻塞项：
-- 可并行项：
-- 下一步：
+- `consistent`
+- `missing-in-product`
+- `missing-in-design`
+- `missing-in-api`
+- `conflict`
+- `source-insufficient`
+- `not-applicable`
+- `Needs product decision`
+- `Needs design decision`
+- `Needs backend decision`

@@ -1,172 +1,103 @@
 ---
 name: frontend-alignment-requirements
-description: Use when 沉淀前端对齐需求；对齐产品需求、UI/设计需求和接口需求；比较业务规则、Figma 字段、页面状态、筛选、分页、排序、权限、错误态、枚举、mock 与 API response；在写代码前输出字段映射、差异清单、adapter 决策和 Needs design/product/backend decision。
+description: Use when 对照前端产品事实、UI 设计事实和接口契约事实；读取 product-requirements、design-requirements、api-requirements，输出字段、状态、异常、查询/操作能力的交叉检查与差异清单；只暴露一致、缺失、冲突和 Needs product/design/backend decision，不做实现准入、不写 adapter/service/component 决策、不编排流程。
 ---
 
 # 前端对齐需求
 
-## 概览
+## 定位
 
-在写业务代码前，对齐产品需求、UI/设计需求和接口需求，确认业务要什么、页面要展示什么、接口能提供什么、差异应该在哪里处理。这个 skill 只产出对齐文档和决策清单，不实现页面代码。
+对照产品、UI、API 三类 source of truth，产出前端需求差异清单。
 
-核心原则：**不对齐，不实现。**
+它只回答：
 
-## 输入
+- 产品事实、UI 事实、接口契约是否在描述同一件事。
+- 哪些字段、状态、异常、查询/操作能力是一致的。
+- 哪些内容缺失、冲突或来源不足。
+- 缺口应该归属为 `Needs product decision`、`Needs design decision` 或 `Needs backend decision`。
 
-优先读取：
-
-- `docs/ai/design-requirements.md`
-- `docs/ai/api-requirements.md`
-- `docs/ai/product-requirements.md`
-- `openspec/changes/<change-id>/docs/product-requirements.md`
-- `openspec/changes/<change-id>/docs/design-requirements.md`
-- `openspec/changes/<change-id>/docs/api-requirements.md`
-- `openspec/changes/<change-id>/decisions.md`
-- `docs/ai/component-usage.md`
-- `AGENTS.md`
-- Figma 链接、PRD、接口文档或用户补充说明
-
-如果缺少产品需求、设计需求或接口需求，先要求补齐对应上游产物，不要直接对齐空白信息。
-
-如果产品和设计需求明确说明页面是纯静态展示、无接口依赖、无后端状态和权限依赖，可以在对齐文档中标记 `api-not-required`。此时不强制等待接口需求，但仍需列出静态数据来源、状态豁免原因和视觉验收点。
+它不回答怎么实现、由哪层适配、是否允许进入实现、任务怎么拆。
 
 ## 硬性边界
 
-- 不写页面代码。
-- 不创建或修改组件、service、types、mock。
-- 不根据设计稿猜接口字段。
-- 不根据 mock 反推真实接口结构。
-- 不把产品语义冲突伪装成前端 adapter。
-- 不清楚的信息必须标记为 `Needs design decision`、`Needs product decision` 或 `Needs backend decision`。
-- 只有明确 `api-not-required` 时，才允许没有接口需求进入后续实现。
-- 对齐结果必须写入文档；不要只把字段映射和冲突留在聊天上下文。
+- 不写业务代码。
+- 不创建或修改页面、组件、types、service、mock、fixtures 或测试。
+- 不编排后续任务、推荐顺序、实现计划、验收流程或实现准入。
+- 不新增产品事实、UI 事实或接口事实；只引用已有来源。
+- 不根据 UI 猜接口字段，不根据 API 反推产品语义，不根据产品描述补 UI 细节。
+- 不写 adapter、service、component、backend 实现方案或处理层。
+- 不把差异伪装成前端可自行处理的问题。
+- 不为完整性强行补齐字段、状态、查询能力或异常矩阵。
+- 不清楚的信息只标记对应的 `Needs ... decision`，不要自行补全。
+- 结果必须写入对齐差异清单；不要只留在聊天上下文。
 
-## 工作流程
+## 输入
 
-### 1. 建立对齐基线
+优先读取已经沉淀的事实文件：
 
-分别提取：
+- `docs/ai/product-requirements.md`
+- `docs/ai/design-requirements.md`
+- `docs/ai/api-requirements.md`
+- `openspec/changes/<change-id>/docs/product-requirements.md`
+- `openspec/changes/<change-id>/docs/design-requirements.md`
+- `openspec/changes/<change-id>/docs/api-requirements.md`
 
-- 产品字段和业务规则：业务对象、功能范围、校验、权限、引用保护和验收口径。
-- 设计字段：页面上出现的文案、字段、筛选项、表格列、详情项、表单项。
-- 接口字段：请求参数、响应字段、枚举、分页、错误码、权限字段。
-- 设计状态：default、loading、empty、error、permission、disabled、success。
-- 接口状态：HTTP 状态码、业务码、错误结构、空数据结构、权限结构。
-- 交互能力：搜索、筛选、分页、排序、上传、下载、批量操作、导入导出。
+只在事实文件不足时读取原始 PRD、Figma、接口文档或用户补充说明，并把它们记录为补充来源。补充来源不能覆盖已确认事实；冲突时写入差异清单。
 
-### 2. 建字段映射
+如果缺少某一类事实文件，不要强行完整对齐。可以输出“来源不足”的对齐文档，并把受影响项标记为：
 
-为每个设计字段给出映射结论：
+- `Needs product decision`
+- `Needs design decision`
+- `Needs backend decision`
 
-- `direct`：接口字段可直接展示。
-- `format`：需要格式化，例如时间、金额、百分比、枚举文案。
-- `combine`：由多个接口字段组合。
-- `derive`：由接口字段计算得出。
-- `frontend-only`：纯前端展示，不依赖接口。
-- `missing-in-api`：设计需要但接口没有。
-- `missing-in-design`：接口提供但设计没有展示。
+## 输出内容
 
-字段转换优先放在 service/adapter 层，不散落在页面组件里。
+使用 `assets/templates/alignment-requirements.md` 作为基础模板，输出到：
 
-### 3. 对齐状态和错误
+- active OpenSpec change 存在时：`openspec/changes/<change-id>/docs/alignment-requirements.md`
+- 否则：`docs/ai/alignment-requirements.md`
 
-检查：
+文档只沉淀以下内容：
 
-- 空数据如何判断。
-- loading 是否覆盖首次加载和局部刷新。
-- error 是否覆盖网络错误、业务错误、参数错误。
-- permission 是否有接口字段或错误码支持。
-- disabled/submitting/success 是否有明确触发条件。
-- 设计中的状态是否需要后端枚举或业务码。
+- 输入来源：产品、UI、API 的路径/链接、可信度、覆盖范围。
+- 对齐范围：本次只对照哪些页面、模块、字段、状态或接口。
+- 字段/文案/数据差异：UI 可见项、产品语义、API 契约之间的一致、缺失或冲突。
+- 状态与异常差异：产品口径、UI 表现、API 错误/状态之间的一致、缺失或冲突。
+- 查询/操作能力差异：产品能力、UI 控件、API 支持之间的一致、缺失或冲突。
+- 差异清单：每个差异的 owner、影响和状态。
 
-### 4. 对齐查询能力
+允许的结论值：
 
-检查搜索、筛选、分页、排序：
+- `consistent`
+- `missing-in-product`
+- `missing-in-design`
+- `missing-in-api`
+- `conflict`
+- `source-insufficient`
+- `not-applicable`
+- `Needs product decision`
+- `Needs design decision`
+- `Needs backend decision`
 
-- 设计上有哪些控件。
-- 接口是否有对应参数。
-- 参数类型、默认值、枚举范围是否明确。
-- 排序字段和排序方向是否受支持。
-- 分页结构是否和项目约定一致。
+不要输出 `adapter`、`service`、`component`、`implementation-ready`、`allow implement` 等实现导向结论。
 
-接口不支持的交互不能直接实现为“假筛选”或“前端本地过滤”，除非产品明确接受。
-
-### 5. 分类差异和决策
-
-把差异分成四类：
-
-- 可直接实现：设计和接口一致。
-- 前端适配：字段名、格式化、枚举文案、轻量组合可在 adapter/service 层处理。
-- 需要产品/设计确认：展示语义、交互流程、状态表现不一致。
-- 需要后端确认：字段缺失、参数缺失、枚举缺失、错误码缺失、权限结构缺失。
-
-### 6. 输出对齐文档
-
-如果存在 active OpenSpec change，优先输出到 `openspec/changes/<change-id>/docs/alignment-requirements.md`，并把必须人工确认的问题同步到 `openspec/changes/<change-id>/decisions.md`，状态保持 `Pending`。否则默认输出到 `docs/ai/alignment-requirements.md`，除非项目已有更合适的文档约定。
-
-使用 `assets/templates/alignment-requirements.md` 作为基础模板。
-
-如果人工审核发现字段映射、adapter 决策或差异分类不准，直接修改 `alignment-requirements.md`。需要产品、设计、后端或组件 owner 拍板的内容，写入 `decisions.md`。
-
-最终回复必须包含：
+最终回复包含：
 
 - 产物文件路径
-- 对齐输入来源
-- 产品/设计/API 覆盖范围
-- 字段映射摘要
-- 状态映射摘要
-- 查询能力对齐结论
-- 可前端 adapter 的清单
-- 必须确认的问题
-- 是否允许进入实现阶段
-
-## 进入实现的条件
-
-只有满足全部条件，才建议进入 `frontend-code-implementation` 或 `writing-plans`：
-
-- 关键展示字段都有来源或明确决策。
-- 关键产品规则都有设计入口或明确决策。
-- loading、empty、error、permission 等关键状态有处理规则，或已明确 `api-not-required` 的豁免原因。
-- 搜索、筛选、分页、排序能力已确认，或确认页面不需要这些能力。
-- 接口缺失项已决策为后端补齐、产品调整、前端移除，或页面已标记 `api-not-required`。
-- 若启用 OpenSpec，`openspec/changes/<change-id>/decisions.md` 中的 `Implementation Gate` 必须是 `Approved`。
-- adapter 规则明确放在 service/adapter 层；静态页面则明确不需要 adapter。
-- `tasks.md` 应在事实文件稳定且 Implementation Gate 通过后再生成；涉及前端页面实现时，第一项实现任务必须是调用 `frontend-code-implementation` 并重新读取 source of truth。
-
-## 与其他 skill 的关系
-
-- 前置产品需求：`frontend-product-requirements`
-- 前置设计需求：`frontend-design-requirements`
-- 前置接口需求：`frontend-api-requirements`
-- OpenSpec 编排：`frontend-openspec-workflow`
-- 后续实现计划：`writing-plans`
-- 后续实现：`frontend-code-implementation`
-- 后续验收：`frontend-visual-verification`
-- 后续 Review：`frontend-code-review`
-
-推荐顺序：
-
-```text
-frontend-product-requirements
-→ frontend-design-requirements
-→ frontend-api-requirements
-→ frontend-alignment-requirements
-→ 人工审核 decisions.md
-→ 生成包含 frontend-code-implementation handoff 的 tasks.md / writing-plans
-→ frontend-code-implementation
-```
+- 输入来源和可信度
+- 对齐范围摘要
+- 关键一致项摘要
+- 关键差异和对应 `Needs ... decision`
 
 ## 常见失败
 
-- 设计字段和接口字段没对上，就直接写页面。
+- 字段、状态或能力没对上，就直接写实现建议。
+- 把产品语义冲突说成前端 adapter 可以处理。
+- 接口缺字段时建议本地过滤、前端兜底或 mock 字段。
+- 缺少产品/UI/API 来源时，仍然强行输出完整对齐矩阵。
+- 在对齐文档里写 service、component、adapter、tasks 或实现准入。
 - 对齐结果只留在聊天里，没有写入 `alignment-requirements.md`。
-- `Needs decision` 没处理就生成 `tasks.md`。
-- 接口没有筛选参数，却做了看似可用的本地筛选。
-- mock 有字段就当真实接口有字段。
-- 把产品语义冲突塞进前端 adapter。
-- 状态码和错误结构没确认，只写成功态。
 
 ## 资源
 
 - `assets/templates/alignment-requirements.md`
-- `assets/templates/alignment-decision-log.md`
