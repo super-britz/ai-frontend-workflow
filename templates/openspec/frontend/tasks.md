@@ -5,6 +5,7 @@
 - 本文件只记录执行清单，不承载产品、设计、接口或字段映射事实。
 - 事实变化先更新 `docs/*-requirements.md` 或 `decisions.md`，再更新任务。
 - `Implementation Gate` 通过前，不生成具体实现任务。
+- Gate 批准必须来自用户、owner 或已有文档的明确指令。
 
 ## Required Handoff
 
@@ -21,7 +22,7 @@ Use $frontend-code-implementation 根据 active OpenSpec change 中已确认的�
 - [ ] Confirm active change id and source-of-truth files.
 - [ ] Complete or update required facts in `docs/*-requirements.md`.
 - [ ] Record blocking decisions in `decisions.md`.
-- [ ] Approve or block `Implementation Gate`.
+- [ ] Record owner decision for `Implementation Gate`.
 - [ ] Add implementation handoff task after `Implementation Gate: Approved`.
 - [ ] Record verification evidence in `verification.md`.
 - [ ] Record review findings in `review.md`.

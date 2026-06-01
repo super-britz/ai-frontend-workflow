@@ -18,7 +18,7 @@
 | `docs/product-requirements.md` | Product facts | Pending |
 | `docs/design-requirements.md` | Design facts and sources | Pending |
 | `docs/api-requirements.md` | API facts | Pending |
-| `docs/alignment-requirements.md` | Product / UI / API alignment | Pending |
+| `docs/alignment-requirements.md` | Product / UI / API differences | Pending |
 | `decisions.md` | Decisions and Gate status | Pending |
 | `tasks.md` | Execution checklist | Pending |
 | `verification.md` | Verification evidence | Pending |

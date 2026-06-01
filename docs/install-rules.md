@@ -29,7 +29,6 @@ source:
 
 skills:
   - frontend-project-bootstrap
-  - frontend-openspec-workflow
   - frontend-product-requirements
   - frontend-design-requirements
   - frontend-api-requirements

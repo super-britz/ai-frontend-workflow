@@ -18,7 +18,7 @@ description: Use when 一个前端需求过大、边界不清、可能需要拆�
 - 不确定应该建一个 change 还是多个 change。
 - 需要先确定交付阶段、依赖关系和推荐执行顺序。
 
-如果需求已经足够小、边界清楚，可以直接使用 `frontend-openspec-workflow` 创建或整理对应 change。
+如果需求已经足够小、边界清楚，可以直接使用 OpenSpec 创建或选择对应 change。
 
 ## 拆分原则
 
@@ -106,7 +106,7 @@ docs/ai/frontend-change-plan.md
 - 推荐拆出的 change 数量。
 - 推荐先做哪个 change。
 - 需要 owner 决策的问题。
-- 下一步是否进入 `frontend-openspec-workflow`。
+- 下一步是否进入 OpenSpec change。
 
 ## 资源
 

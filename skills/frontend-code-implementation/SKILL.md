@@ -13,7 +13,7 @@ Titan 只是组件体系分支之一：当仓库使用 `@ninebot/pc-titan-compon
 
 ## 实现准入
 
-当本 skill 被 `frontend-openspec-workflow`、`AGENTS.md` 或用户明确要求为强制步骤时，它不是可选优化，而是前端页面实现的前置 Gate。未完成本节检查前，不得新增或修改页面实现代码。
+当本 skill 被 `AGENTS.md`、`tasks.md` 或用户明确要求为强制步骤时，它不是可选优化，而是前端页面实现的前置 Gate。未完成本节检查前，不得新增或修改页面实现代码。
 
 先判断当前任务是否启用 OpenSpec。判断依据包括：
 

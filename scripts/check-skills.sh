@@ -48,7 +48,12 @@ require_file "${ROOT_DIR}/examples/business-project-template/CLAUDE.md"
 require_file "${ROOT_DIR}/examples/business-project-template/.github/copilot-instructions.md"
 require_file "${ROOT_DIR}/examples/business-project-template/scripts/setup-ai-skills.sh"
 require_file "${ROOT_DIR}/examples/business-project-template/README.md"
-require_file "${ROOT_DIR}/skills/frontend-openspec-workflow/assets/templates/frontend-tasks.md"
+require_file "${ROOT_DIR}/templates/openspec/frontend/tasks.md"
+require_file "${ROOT_DIR}/templates/openspec/frontend/decisions.md"
+require_file "${ROOT_DIR}/templates/openspec/frontend/verification.md"
+require_file "${ROOT_DIR}/templates/openspec/frontend/review.md"
+require_file "${ROOT_DIR}/templates/openspec/frontend/change-index.md"
+require_file "${ROOT_DIR}/scripts/init-frontend-openspec-change.sh"
 
 skill_dirs=()
 while IFS= read -r skill_dir; do
@@ -84,7 +89,8 @@ validate_manifest_skills "$BUSINESS_TEMPLATE_MANIFEST_FILE"
 grep -q 'Codex' "$INSTALL_RULES_FILE" || fail "install rules must mention Codex"
 grep -q 'GitHub Copilot' "$INSTALL_RULES_FILE" || fail "install rules must mention GitHub Copilot"
 grep -q 'Claude Code' "$INSTALL_RULES_FILE" || fail "install rules must mention Claude Code"
-grep -q 'frontend-code-implementation' "${ROOT_DIR}/skills/frontend-openspec-workflow/assets/templates/frontend-tasks.md" || fail "frontend tasks template must require frontend-code-implementation"
+grep -q 'frontend-code-implementation' "${ROOT_DIR}/templates/openspec/frontend/tasks.md" || fail "frontend tasks template must require frontend-code-implementation"
+bash -n "${ROOT_DIR}/scripts/init-frontend-openspec-change.sh"
 bash -n "${ROOT_DIR}/examples/business-project-template/scripts/setup-ai-skills.sh"
 
 if grep -R -n -E 'gho_|ghp_|github_pat_|sk-[A-Za-z0-9]|api[_-]?key|secret|password|cookie|Authorization|Bearer|/Users/[^/ ]+' \
