@@ -2,7 +2,7 @@
 
 ## Editing Rules
 
-- 本文件只记录执行清单，不承载产品、设计、接口或字段映射事实。
+- 本文件只记录执行清单，不承载产品、UI、接口或字段映射事实。
 - 事实变化先更新 `docs/*-requirements.md`、`design.md` 或 `decisions.md`，再更新任务。
 - `Implementation Gate` 通过前，不生成具体实现任务。
 - Gate 批准必须来自用户、owner 或已有文档的明确指令。

@@ -1,4 +1,4 @@
 interface:
   display_name: "维护前端决策"
   short_description: "整理 OpenSpec decisions.md 的 Gate、owner 决策和阻塞问题"
-  default_prompt: "Use $frontend-change-decisions 汇总当前 OpenSpec change 的 Needs product/design/backend decision，维护 decisions.md 的 Gate 状态、owner 决策和阻塞问题；不要替 owner 批准 Gate。"
+  default_prompt: "Use $frontend-change-decisions 汇总当前 OpenSpec change 的 Needs product/ui/backend decision，维护 decisions.md 的 Gate 状态、owner 决策和阻塞问题；不要替 owner 批准 Gate。"

@@ -27,7 +27,7 @@
 - `$frontend-project-bootstrap`：生成或更新项目根目录 `AGENTS.md`。
 - `$frontend-change-planning`：把较大的前端需求拆成多个 OpenSpec change 候选。
 - `$frontend-requirements-product`：从 PRD、Wiki 或产品说明沉淀产品事实。
-- `$frontend-requirements-design`：写代码前拆解 Figma 或设计稿。
+- `$frontend-requirements-ui`：写代码前拆解 Figma 或设计稿。
 - `$frontend-requirements-api`：沉淀前端接口契约摘录与缺口清单。
 - `$frontend-requirements-alignment`：对照产品、UI 和 API 事实，输出缺失与冲突差异清单。
 - `$frontend-change-decisions`：维护 `decisions.md` 的 Gate、owner 决策和阻塞问题。

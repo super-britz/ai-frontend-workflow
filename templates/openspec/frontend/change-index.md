@@ -16,7 +16,7 @@
 | `design.md` | Engineering approach | Pending |
 | `specs/` | Long-term capability contract | Pending |
 | `docs/product-requirements.md` | Product facts | Pending |
-| `docs/design-requirements.md` | Design facts and sources | Pending |
+| `docs/ui-requirements.md` | UI facts and sources | Pending |
 | `docs/api-requirements.md` | API facts | Pending |
 | `docs/alignment-requirements.md` | Product / UI / API differences | Pending |
 | `decisions.md` | Decisions and Gate status | Pending |
@@ -27,7 +27,7 @@
 ## Inputs
 
 - PRD / product source:
-- Figma / design source:
+- Figma / UI source:
 - API source:
 - Related routes/pages:
 - Related specs:
@@ -38,9 +38,10 @@
 | --- | --- | --- | --- |
 | Scope Gate | Pending |  | `proposal.md` |
 | Product Gate | Pending |  | `docs/product-requirements.md` |
-| Design Gate | Pending |  | `docs/design-requirements.md` |
+| UI Gate | Pending |  | `docs/ui-requirements.md` |
 | Contract Gate | Pending |  | `docs/api-requirements.md` |
 | Alignment Gate | Pending |  | `docs/alignment-requirements.md` |
+| Architecture Gate | Pending |  | `design.md` |
 | Implementation Gate | Pending |  | `decisions.md` |
 | Merge Gate | Pending |  | `verification.md` / `review.md` |
 

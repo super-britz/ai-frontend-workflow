@@ -12,10 +12,18 @@
 | --- | --- | --- | --- |
 | Proposal | `proposal.md` |  |  |
 | Product facts | `docs/product-requirements.md` |  |  |
-| UI facts | `docs/design-requirements.md` |  |  |
+| UI facts | `docs/ui-requirements.md` |  |  |
 | API contract | `docs/api-requirements.md` |  |  |
 | Alignment differences | `docs/alignment-requirements.md` |  |  |
 | Decisions | `decisions.md` |  |  |
+
+## Scope Guardrails
+
+- Only record architecture decisions for this change.
+- Use `N/A` for areas with no impact.
+- Send new facts back to `docs/*-requirements.md`.
+- Send owner decisions and Gate changes back to `decisions.md`.
+- Do not turn this file into implementation tasks or UI fact extraction.
 
 ## Existing Implementation
 

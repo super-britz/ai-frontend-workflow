@@ -1,6 +1,6 @@
 ---
 name: frontend-change-decisions
-description: Use when 维护前端 OpenSpec change 的 decisions.md；汇总 Needs product/design/backend decision、记录 owner 拍板、更新 Gate 状态、整理阻塞问题；不替 owner 决策、不写架构设计、不生成任务、不写代码。
+description: Use when 维护前端 OpenSpec change 的 decisions.md；汇总 Needs product/ui/backend decision、记录 owner 拍板、更新 Gate 状态、整理阻塞问题；不替 owner 决策、不写架构设计、不生成任务、不写代码。
 ---
 
 # 前端 Change 决策记录
@@ -11,7 +11,7 @@ description: Use when 维护前端 OpenSpec change 的 decisions.md；汇总 Nee
 
 本 skill 只回答：
 
-- 哪些 `Needs product/design/backend decision` 还没关闭。
+- 哪些 `Needs product/ui/backend decision` 还没关闭。
 - 哪些问题已经由 owner 明确拍板。
 - 各 Gate 当前是 `Pending`、`Approved`、`Changes Required` 还是 `Blocked`。
 - 哪些阻塞问题会影响后续 `design.md`、`tasks.md` 或实现。
@@ -20,7 +20,7 @@ description: Use when 维护前端 OpenSpec change 的 decisions.md；汇总 Nee
 
 ## 硬性边界
 
-- 不替用户、owner、产品、设计或后端做决策。
+- 不替用户、owner、产品、UI 或后端做决策。
 - 不把 Gate 改成 `Approved`，除非用户输入或已有文档有明确批准。
 - 不新增产品事实、UI 事实或接口事实；事实变化应回写对应 `docs/*-requirements.md`。
 - 不写 `design.md`、`tasks.md`、业务代码、测试或实现计划。
@@ -33,7 +33,7 @@ description: Use when 维护前端 OpenSpec change 的 decisions.md；汇总 Nee
 
 - `proposal.md`
 - `docs/product-requirements.md`
-- `docs/design-requirements.md`
+- `docs/ui-requirements.md`
 - `docs/api-requirements.md`
 - `docs/alignment-requirements.md`
 - 现有 `decisions.md`
@@ -65,7 +65,7 @@ openspec/changes/<change-id>/decisions.md
 
 - 已有决策不删除；需要修正时新增一条决策或把状态改为 superseded/changed，并保留来源。
 - Gate evidence 必须指向文件路径、issue、PR、会议纪要或用户明确输入。
-- `Implementation Gate` 只有在范围、产品、设计、接口和对齐阻塞项都被明确处理后，才能按 owner 指令改为 `Approved`。
+- `Implementation Gate` 只有在范围、产品、UI、接口和对齐阻塞项都被明确处理后，才能按 owner 指令改为 `Approved`。
 - 如果缺少必要事实文件，只记录缺口，不创建虚假的通过状态。
 
 ## 最终回复

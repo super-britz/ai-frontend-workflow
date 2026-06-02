@@ -8,7 +8,7 @@
 | --- | --- | --- |
 | OpenSpec | 项目事实、需求边界、变更生命周期 | `openspec init`、`openspec new change`、`openspec validate`、`openspec archive` |
 | Superpowers | 执行纪律、TDD、worktree、review、完成前验证 | `brainstorming`、`writing-plans`、`test-driven-development`、`verification-before-completion` |
-| Frontend skills | change 规划、需求事实、差异对齐、决策记录、架构设计、任务清单、实现、验收、Review | `frontend-change-planning`、`frontend-requirements-product`、`frontend-requirements-design`、`frontend-requirements-api`、`frontend-requirements-alignment`、`frontend-change-decisions`、`frontend-change-design`、`frontend-change-tasks` |
+| Frontend skills | change 规划、需求事实、差异对齐、决策记录、架构设计、任务清单、实现、验收、Review | `frontend-change-planning`、`frontend-requirements-product`、`frontend-requirements-ui`、`frontend-requirements-api`、`frontend-requirements-alignment`、`frontend-change-decisions`、`frontend-change-design`、`frontend-change-tasks` |
 
 最稳的心智模型：
 
@@ -25,7 +25,15 @@ OpenSpec 先定义事实和变更边界
 facts 先稳定 → decisions 再确认 → design 再落地 → tasks 最后生成
 ```
 
-产品需求、设计需求、接口需求和产品/UI/API 对齐结果必须写入 OpenSpec change 或 `docs/ai/` 文件；聊天摘要不能作为 source of truth。
+产品需求、UI 需求、接口需求和产品/UI/API 对齐结果必须写入 OpenSpec change 或 `docs/ai/` 文件；聊天摘要不能作为 source of truth。
+
+## 防跑偏护栏
+
+- 完整 OpenSpec 链路适合新页面、复杂需求、接口联动、跨模块改造和需要 owner 决策的 change；小范围文案、样式、单点 bugfix 可以走轻量路径，只读取项目约定、必要事实和验证要求，不强制创建完整 change。
+- `docs/ui-requirements.md` 只记录 UI 事实；`design.md` 只记录前端架构设计和技术方案，不能互相替代。
+- 每个文件只解决自己的问题：事实变化回写 `docs/*-requirements.md`，取舍和 Gate 回写 `decisions.md`，执行顺序写 `tasks.md`，代码实现不补事实。
+- 不确定项必须标记为 `Needs product/ui/backend decision`、`Blocked` 或 open question；不要用实现假设把缺口填平。
+- 外部组件体系 skill 由业务项目 `AGENTS.md` 或本机已安装 skill 声明；公共 workflow 不硬编码 Titan 或其他团队组件库路径。
 
 ## Skills
 
@@ -34,13 +42,13 @@ facts 先稳定 → decisions 再确认 → design 再落地 → tasks 最后生
 | `frontend-project-bootstrap` | 检查前端仓库并生成或更新项目根目录 `AGENTS.md` |
 | `frontend-change-planning` | 把较大的前端需求拆成多个可进入 OpenSpec 的 change 候选 |
 | `frontend-requirements-product` | 从 PRD、Wiki 或产品说明沉淀产品事实、范围、规则和待确认问题 |
-| `frontend-requirements-design` | 从 Figma 或设计稿沉淀 UI 设计事实、状态变体和视觉验收点 |
+| `frontend-requirements-ui` | 从 Figma 或设计稿沉淀 UI 事实、状态变体和视觉验收点 |
 | `frontend-requirements-api` | 从接口文档沉淀前端接口契约摘录与缺口清单 |
 | `frontend-requirements-alignment` | 对照产品、UI 和 API 事实，输出缺失与冲突差异清单 |
 | `frontend-change-decisions` | 维护 OpenSpec `decisions.md` 的 Gate、owner 决策和阻塞问题 |
 | `frontend-change-design` | 根据已确认事实和决策沉淀 OpenSpec `design.md` 前端架构设计 |
 | `frontend-change-tasks` | 在 Implementation Gate 通过后维护 OpenSpec `tasks.md` 执行清单 |
-| `frontend-code-implementation` | 根据已确认产品、设计、接口、对齐结果和组件体系实现生产级前端页面 |
+| `frontend-code-implementation` | 根据已确认产品、UI、接口、对齐结果和组件体系实现生产级前端页面 |
 | `frontend-visual-verification` | 验证前端页面的设计还原、响应式、核心状态和截图验收 |
 | `frontend-code-review` | 审查前端改动的组件复用、接口契约、状态覆盖和验收质量 |
 
@@ -143,9 +151,9 @@ examples/business-project-template/
 Use $frontend-project-bootstrap 检查这个前端仓库，并生成或更新项目根目录 AGENTS.md。
 Use $frontend-change-planning 分析这个较大的前端需求，并输出 OpenSpec change 拆分规划。
 Use $frontend-requirements-product 从 PRD/Wiki/产品说明提炼产品事实、范围、规则和待确认问题，不写代码。
-Use $frontend-requirements-design 沉淀这个 Figma 页面的 UI 设计拆解，输出设计来源索引、UI 结构、视觉元素、状态变体和视觉验收点。
+Use $frontend-requirements-ui 沉淀这个 Figma 页面的 UI 拆解，输出设计来源索引、UI 结构、视觉元素、状态变体和视觉验收点。
 Use $frontend-requirements-api 根据接口文档沉淀接口来源、路径、方法、请求、响应、错误、分页、鉴权和未确认项。
-Use $frontend-requirements-alignment 对照产品事实、UI 设计事实和接口契约事实，输出字段、状态、异常、查询/操作能力的交叉检查与差异清单。
+Use $frontend-requirements-alignment 对照产品事实、UI 事实和接口契约事实，输出字段、状态、异常、查询/操作能力的交叉检查与差异清单。
 Use $frontend-change-decisions 汇总当前 OpenSpec change 的待决问题，维护 decisions.md 的 Gate 状态、owner 决策和阻塞问题。
 Use $frontend-change-design 根据当前 OpenSpec change 的已确认事实和 decisions.md，编写前端 design.md 架构设计。
 Use $frontend-change-tasks 根据当前 OpenSpec change 的 decisions.md 和 design.md 维护 tasks.md。
@@ -162,9 +170,9 @@ OpenSpec change 文件职责速查：
 | --- | --- |
 | `proposal.md` | 为什么做、做什么、不做什么 |
 | `docs/product-requirements.md` | 产品事实 |
-| `docs/design-requirements.md` | 设计事实 |
+| `docs/ui-requirements.md` | UI 事实 |
 | `docs/api-requirements.md` | 接口事实 |
-| `docs/alignment-requirements.md` | 产品 / 设计 / API 对齐结果 |
+| `docs/alignment-requirements.md` | 产品 / UI / API 对齐结果 |
 | `decisions.md` | 已拍板和待拍板问题 |
 | `design.md` | 前端架构设计 / 技术方案 |
 | `tasks.md` | 执行清单 |
@@ -172,11 +180,11 @@ OpenSpec change 文件职责速查：
 
 1. 新项目或老项目接入 AI 前，先运行 `frontend-project-bootstrap`。
 2. 需求较大或边界不清时，先用 `frontend-change-planning` 拆成多个 change 候选。
-3. 明确单个 change 边界后，用 OpenSpec 创建或选择 change；需要前端 Gate/tasks/verification 模板时运行 `./scripts/init-frontend-openspec-change.sh <change-id>`。
+3. 明确单个 change 边界后，用 OpenSpec 创建或选择 change；需要前端 change 模板时运行 `./scripts/init-frontend-openspec-change.sh <change-id>`。
 4. 有 PRD、Wiki 或产品说明时，使用 `frontend-requirements-product` 只拆产品事实。
-5. 有 Figma 页面任务时，使用 `frontend-requirements-design` 只拆 UI 设计事实。
+5. 有 Figma 页面任务时，使用 `frontend-requirements-ui` 只拆 UI 事实。
 6. 有接口文档或联调任务时，使用 `frontend-requirements-api` 只做接口契约摘录与缺口清单。
-7. 人工审核事实文件；拆解或契约不准时直接修改 `docs/product-requirements.md`、`docs/design-requirements.md`、`docs/api-requirements.md` 或 `docs/alignment-requirements.md`。
+7. 人工审核事实文件；拆解或契约不准时直接修改 `docs/product-requirements.md`、`docs/ui-requirements.md`、`docs/api-requirements.md` 或 `docs/alignment-requirements.md`。
 8. 使用 `frontend-requirements-alignment` 对照产品、UI 和 API 事实，产出缺失与冲突差异清单。
 9. 有取舍、争议或 owner 的内容用 `frontend-change-decisions` 写入 `decisions.md`，AI 不替 owner 批准 Gate。
 10. 关键 Gate 处理后，用 `frontend-change-design` 编写 `design.md` 前端架构设计。

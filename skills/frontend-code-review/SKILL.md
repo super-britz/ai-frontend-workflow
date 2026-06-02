@@ -1,6 +1,6 @@
 ---
 name: frontend-code-review
-description: Use when review 前端 diff、commit、PR 或指定文件；对照 product/design/api/alignment、decisions.md、design.md、tasks.md 和 verification.md 查找回归、契约漂移、组件体系偏离、状态缺失和验收缺口；只输出风险 findings，不写代码。
+description: Use when review 前端 diff、commit、PR 或指定文件；对照 product/ui/api/alignment、decisions.md、design.md、tasks.md 和 verification.md 查找回归、契约漂移、组件体系偏离、状态缺失和验收缺口；只输出风险 findings，不写代码。
 ---
 
 # 前端代码 Review

@@ -50,7 +50,7 @@ description: Use when 一个前端需求过大、边界不清、可能需要拆�
 - 已有 OpenSpec specs 或 active changes。
 - 项目 `AGENTS.md`、README、业务文档和相似页面。
 
-只使用来源中明确存在的信息。缺失但影响拆分的问题，标记 `Needs product/design/backend decision`。
+只使用来源中明确存在的信息。缺失但影响拆分的问题，标记 `Needs product/ui/backend decision`。
 
 ### 2. 建立候选 change
 
@@ -63,7 +63,7 @@ description: Use when 一个前端需求过大、边界不清、可能需要拆�
 - 依赖。
 - 风险。
 - 推荐顺序。
-- 是否需要产品、设计、API 或权限补充。
+- 是否需要产品、UI、API 或权限补充。
 
 ### 3. 检查拆分质量
 

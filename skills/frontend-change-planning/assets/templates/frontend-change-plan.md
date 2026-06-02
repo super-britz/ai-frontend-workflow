@@ -34,4 +34,4 @@
 
 - [ ] 选择优先进入 OpenSpec 的 change。
 - [ ] 使用 OpenSpec 创建或选择该 change。
-- [ ] 对该 change 补齐产品、设计、API 和对齐事实。
+- [ ] 对该 change 补齐产品、UI、API 和对齐事实。

@@ -35,7 +35,7 @@ description: Use when 根据已批准的前端 OpenSpec change、decisions.md �
 - `design.md`
 - `decisions.md`
 - `docs/product-requirements.md`
-- `docs/design-requirements.md`
+- `docs/ui-requirements.md`
 - `docs/api-requirements.md`
 - `docs/alignment-requirements.md`
 - 现有 `tasks.md`

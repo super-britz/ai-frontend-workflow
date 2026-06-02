@@ -14,7 +14,7 @@
 | 类型 | 路径/链接 | 可信度 | 覆盖范围 | 备注 |
 | --- | --- | --- | --- | --- |
 | product |  |  |  |  |
-| design |  |  |  |  |
+| ui |  |  |  |  |
 | api |  |  |  |  |
 
 ## 对齐范围
@@ -45,17 +45,17 @@
 
 | ID | 类型 | 差异 | 影响 | Owner | 状态 |
 | --- | --- | --- | --- | --- | --- |
-| A-001 | product / design / backend |  |  |  | Pending |
+| A-001 | product / ui / backend |  |  |  | Pending |
 
 ## 允许的结论值
 
 - `consistent`
 - `missing-in-product`
-- `missing-in-design`
+- `missing-in-ui`
 - `missing-in-api`
 - `conflict`
 - `source-insufficient`
 - `not-applicable`
 - `Needs product decision`
-- `Needs design decision`
+- `Needs UI decision`
 - `Needs backend decision`

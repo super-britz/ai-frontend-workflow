@@ -9,7 +9,7 @@ description: Use when 为前端 OpenSpec change 编写 design.md 架构设计；
 
 编写当前 OpenSpec change 的 `design.md`，沉淀前端架构设计和技术方案。
 
-这里的 design 是 engineering design，不是 UI design。UI 事实属于 `docs/design-requirements.md`。
+这里的 design 是 engineering design，不是 UI design。UI 事实属于 `docs/ui-requirements.md`。
 
 本 skill 只回答：
 
@@ -26,8 +26,15 @@ description: Use when 为前端 OpenSpec change 编写 design.md 架构设计；
 - 不替 owner 批准 Gate。
 - 不生成或更新 `tasks.md`。
 - 不写业务代码、types、service、mock、fixtures 或测试。
-- 不用架构设计掩盖未关闭的 `Needs product/design/backend decision`。
+- 不用架构设计掩盖未关闭的 `Needs product/ui/backend decision`。
 - 不写到具体逐行实现步骤；文件级执行清单属于 `frontend-change-tasks`。
+
+## 写法护栏
+
+- 只写本 change 相关的架构影响；无影响项写 `N/A`，不要为了填满模板扩写。
+- 新发现的产品、UI 或接口事实回写 `docs/*-requirements.md`，不要塞进 `design.md`。
+- owner 取舍、Gate 状态和阻塞问题回写 `decisions.md`，不要在 `design.md` 里自行拍板。
+- 具体实现步骤、文件清单和验收命令属于 `tasks.md`。
 
 ## 输入
 
@@ -35,7 +42,7 @@ description: Use when 为前端 OpenSpec change 编写 design.md 架构设计；
 
 - `proposal.md`
 - `docs/product-requirements.md`
-- `docs/design-requirements.md`
+- `docs/ui-requirements.md`
 - `docs/api-requirements.md`
 - `docs/alignment-requirements.md`
 - `decisions.md`

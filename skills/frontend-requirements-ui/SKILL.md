@@ -1,9 +1,9 @@
 ---
-name: frontend-requirements-design
-description: Use when 沉淀前端 UI 设计拆解；从 Figma、设计稿、设计截图或页面原型记录设计来源、UI 结构、视觉元素、状态变体、交互表现和视觉验收点；只输出设计稿中明确存在的 UI 事实和 Needs design decision，不拆产品、不猜接口、不写组件/实现方案、不编排流程。
+name: frontend-requirements-ui
+description: Use when 沉淀前端 UI 拆解；从 Figma、设计稿、设计截图或页面原型记录设计来源、UI 结构、视觉元素、状态变体、交互表现和视觉验收点；只输出设计稿中明确存在的 UI 事实和 Needs UI decision，不拆产品、不猜接口、不写组件/实现方案、不编排流程。
 ---
 
-# 前端设计需求
+# 前端 UI 需求
 
 ## 定位
 
@@ -14,7 +14,7 @@ description: Use when 沉淀前端 UI 设计拆解；从 Figma、设计稿、设
 - 设计来源是什么。
 - 画布、节点、截图里明确出现了什么。
 - UI 结构、视觉元素、状态变体和交互表现是什么。
-- 哪些视觉信息缺失，需要 `Needs design decision`。
+- 哪些视觉信息缺失，需要 `Needs UI decision`。
 
 它不回答产品规则、接口字段、组件选型、实现方案或交付流程。
 
@@ -28,8 +28,8 @@ description: Use when 沉淀前端 UI 设计拆解；从 Figma、设计稿、设
 - 不推荐前端组件、组件库映射、业务封装或技术方案。
 - 不把 Figma 图层名直接当成代码结构、组件名或字段契约。
 - 不为完整性强行补齐设计稿没有表达的状态矩阵。
-- 缺失或冲突只标记 `Needs design decision`，不要自行补全。
-- 结果必须写入设计需求文档；不要只留在聊天上下文。
+- 缺失或冲突只标记 `Needs UI decision`，不要自行补全。
+- 结果必须写入 UI 需求文档；不要只留在聊天上下文。
 
 ## 读取内容
 
@@ -47,14 +47,14 @@ description: Use when 沉淀前端 UI 设计拆解；从 Figma、设计稿、设
 - UI 节点、状态变体、弹窗/抽屉、局部 UI 和视觉规范来源。
 - 关键截图或导出资产路径；没有落盘截图时记录来源。
 
-不要粘贴完整 Figma JSON、图层 dump 或大段自动生成样式。文档保存“来源索引 + 关键视觉事实 + 设计未决问题”即可。
+不要粘贴完整 Figma JSON、图层 dump 或大段自动生成样式。文档保存“来源索引 + 关键视觉事实 + UI 未决问题”即可。
 
 ## 输出内容
 
-使用 `assets/templates/design-requirements.md` 作为基础模板，输出到：
+使用 `assets/templates/ui-requirements.md` 作为基础模板，输出到：
 
-- active OpenSpec change 存在时：`openspec/changes/<change-id>/docs/design-requirements.md`
-- 否则：`docs/ai/design-requirements.md`
+- active OpenSpec change 存在时：`openspec/changes/<change-id>/docs/ui-requirements.md`
+- 否则：`docs/ai/ui-requirements.md`
 
 文档只沉淀以下内容：
 
@@ -62,29 +62,29 @@ description: Use when 沉淀前端 UI 设计拆解；从 Figma、设计稿、设
 - 画布与视觉基础：尺寸、栅格、间距、字体、颜色、圆角、阴影、图标、图片、资产。
 - UI 结构：页面可见区块、层级、布局关系和视觉备注。
 - UI 元素：可见文案、控件形态、展示元素、弹窗/抽屉、菜单、Tag、Tooltip 等。
-- 视觉状态：只记录设计源明确表达的状态变体；未表达但影响 UI 还原的状态写 `Needs design decision`。
+- 视觉状态：只记录设计源明确表达的状态变体；未表达但影响 UI 还原的状态写 `Needs UI decision`。
 - 交互表现：只记录 hover、focus、active、打开/关闭、校验、加载、反馈等可见表现，不补业务流程。
 - 视觉验收点：只写可通过截图或浏览器观察验证的视觉点。
-- 未决问题：只写 `Needs design decision`。
+- 未决问题：只写 `Needs UI decision`。
 
-如果同一页面来自多个 Figma 文件、frame 或 node，且它们只是状态变体，统一沉淀在同一份 `design-requirements.md`。只有不同完整页面、独立视觉场景或跨页面视觉规范，才拆独立文件。
+如果同一页面来自多个 Figma 文件、frame 或 node，且它们只是状态变体，统一沉淀在同一份 `ui-requirements.md`。只有不同完整页面、独立视觉场景或跨页面视觉规范，才拆独立文件。
 
 最终回复包含：
 
 - 产物文件路径
 - 设计来源和可信度
 - UI 结构、视觉元素、状态变体和视觉验收点摘要
-- `Needs design decision`
+- `Needs UI decision`
 
 ## 常见失败
 
-- 只在聊天里总结设计，没有写入 `design-requirements.md`。
+- 只在聊天里总结设计，没有写入 `ui-requirements.md`。
 - 根据页面长相推断平台、业务规则、权限或接口字段。
 - 把设计稿没有画的状态补成完整状态矩阵。
 - 把 Figma 图层名当成代码组件名或字段契约。
 - 在 UI 拆解里写推荐组件、组件库映射、adapter、接口字段或实现方案。
-- 设计拆解被指出不准后，只口头确认，不更新文件。
+- UI 拆解被指出不准后，只口头确认，不更新文件。
 
 ## 资源
 
-- `assets/templates/design-requirements.md`
+- `assets/templates/ui-requirements.md`

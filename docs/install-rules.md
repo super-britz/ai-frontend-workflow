@@ -30,7 +30,7 @@ source:
 skills:
   - frontend-project-bootstrap
   - frontend-requirements-product
-  - frontend-requirements-design
+  - frontend-requirements-ui
   - frontend-requirements-api
   - frontend-requirements-alignment
   - frontend-change-decisions

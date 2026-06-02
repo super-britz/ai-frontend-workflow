@@ -1,6 +1,6 @@
 ---
 name: frontend-code-implementation
-description: Use when 根据已确认的产品需求、设计需求、接口需求、对齐结果和前端架构设计实现页面或组件代码；适用于 Figma URL、Figma node、设计稿截图、组件库优先、Vue/React/Vite/Next/Nuxt 页面实现。
+description: Use when 根据已确认的产品需求、UI 需求、接口需求、对齐结果和前端架构设计实现页面或组件代码；适用于 Figma URL、Figma node、设计稿截图、组件库优先、Vue/React/Vite/Next/Nuxt 页面实现。
 ---
 
 # 前端代码实现
@@ -16,7 +16,7 @@ description: Use when 根据已确认的产品需求、设计需求、接口需�
 ## 硬性边界
 
 - 不在缺少 source of truth 时直接写代码。
-- 不替产品、设计、接口或决策文件补事实。
+- 不替产品、UI、接口或决策文件补事实。
 - 不跳过 `design.md`、`decisions.md`、`tasks.md` 直接实现。
 - 不把聊天摘要、历史分析或临场判断当成最终依据。
 - 不把项目外的组件体系规则内嵌进本 skill。
@@ -27,7 +27,7 @@ description: Use when 根据已确认的产品需求、设计需求、接口需�
 
 1. 当前任务是否有 active OpenSpec change。
 2. 是否存在对应的 `decisions.md`、`design.md`、`tasks.md`。
-3. 产品、设计、接口和对齐事实是否已经稳定。
+3. 产品、UI、接口和对齐事实是否已经稳定。
 4. 仓库约定是否有额外限制，例如 `AGENTS.md`、`CLAUDE.md`、README、`docs/ai/`。
 5. 如果项目有单独维护的组件体系 skill，先读取那个 skill。
 
@@ -35,7 +35,7 @@ OpenSpec 场景下优先读取：
 
 - `openspec/changes/<change-id>/proposal.md`
 - `openspec/changes/<change-id>/docs/product-requirements.md`
-- `openspec/changes/<change-id>/docs/design-requirements.md`
+- `openspec/changes/<change-id>/docs/ui-requirements.md`
 - `openspec/changes/<change-id>/docs/api-requirements.md`，除非已明确 `api-not-required`
 - `openspec/changes/<change-id>/docs/alignment-requirements.md`
 - `openspec/changes/<change-id>/decisions.md`
@@ -45,17 +45,17 @@ OpenSpec 场景下优先读取：
 非 OpenSpec 场景优先读取：
 
 - `docs/ai/product-requirements.md`
-- `docs/ai/design-requirements.md`
+- `docs/ai/ui-requirements.md`
 - `docs/ai/api-requirements.md`
 - `docs/ai/alignment-requirements.md`
 - 项目约定路径下的 `design.md` 或等价架构设计文档
-- 用户明确提供的产品、设计、接口和对齐结论
+- 用户明确提供的产品、UI、接口和对齐结论
 
 ## 工作流
 
 1. 定位当前任务属于 OpenSpec 还是非 OpenSpec。
 2. 读取对应的事实文件、`design.md`、`decisions.md`、`tasks.md` 和仓库约定。
-3. 如果任务涉及 Figma，读取 `design-requirements.md` 或等价材料中的 UI 节点索引，再对照节点截图和结构化上下文。
+3. 如果任务涉及 Figma，读取 `ui-requirements.md` 或等价材料中的 UI 节点索引，再对照节点截图和结构化上下文。
 4. 确认实现范围、文件边界、不做范围、架构边界和待确认问题都已经明确。
 5. 按项目已有组件体系和仓库约定实现页面、组件和状态。
 6. 接入真实数据、mock、loading、empty、error、disabled 和其他必要状态。

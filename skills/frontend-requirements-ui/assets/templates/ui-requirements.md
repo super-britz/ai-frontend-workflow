@@ -1,4 +1,4 @@
-# 前端 UI 设计拆解
+# 前端 UI 拆解
 
 ## 基本信息
 
@@ -65,4 +65,4 @@
 
 | ID | 问题 | 影响 | 状态 |
 | --- | --- | --- | --- |
-| D-001 | `Needs design decision` |  | Pending |
+| D-001 | `Needs UI decision` |  | Pending |

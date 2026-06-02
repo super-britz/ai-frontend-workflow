@@ -1,6 +1,6 @@
 ---
 name: frontend-requirements-alignment
-description: Use when 对照前端产品事实、UI 设计事实和接口契约事实；读取 product-requirements、design-requirements、api-requirements，输出字段、状态、异常、查询/操作能力的交叉检查与差异清单；只暴露一致、缺失、冲突和 Needs product/design/backend decision，不做实现准入、不写 adapter/service/component 决策、不编排流程。
+description: Use when 对照前端产品事实、UI 事实和接口契约事实；读取 product-requirements、ui-requirements、api-requirements，输出字段、状态、异常、查询/操作能力的交叉检查与差异清单；只暴露一致、缺失、冲突和 Needs product/ui/backend decision，不做实现准入、不写 adapter/service/component 决策、不编排流程。
 ---
 
 # 前端对齐需求
@@ -14,7 +14,7 @@ description: Use when 对照前端产品事实、UI 设计事实和接口契约�
 - 产品事实、UI 事实、接口契约是否在描述同一件事。
 - 哪些字段、状态、异常、查询/操作能力是一致的。
 - 哪些内容缺失、冲突或来源不足。
-- 缺口应该归属为 `Needs product decision`、`Needs design decision` 或 `Needs backend decision`。
+- 缺口应该归属为 `Needs product decision`、`Needs UI decision` 或 `Needs backend decision`。
 
 它不回答怎么实现、由哪层适配、是否允许进入实现、任务怎么拆。
 
@@ -36,10 +36,10 @@ description: Use when 对照前端产品事实、UI 设计事实和接口契约�
 优先读取已经沉淀的事实文件：
 
 - `docs/ai/product-requirements.md`
-- `docs/ai/design-requirements.md`
+- `docs/ai/ui-requirements.md`
 - `docs/ai/api-requirements.md`
 - `openspec/changes/<change-id>/docs/product-requirements.md`
-- `openspec/changes/<change-id>/docs/design-requirements.md`
+- `openspec/changes/<change-id>/docs/ui-requirements.md`
 - `openspec/changes/<change-id>/docs/api-requirements.md`
 
 只在事实文件不足时读取原始 PRD、Figma、接口文档或用户补充说明，并把它们记录为补充来源。补充来源不能覆盖已确认事实；冲突时写入差异清单。
@@ -47,7 +47,7 @@ description: Use when 对照前端产品事实、UI 设计事实和接口契约�
 如果缺少某一类事实文件，不要强行完整对齐。可以输出“来源不足”的对齐文档，并把受影响项标记为：
 
 - `Needs product decision`
-- `Needs design decision`
+- `Needs UI decision`
 - `Needs backend decision`
 
 ## 输出内容
@@ -70,13 +70,13 @@ description: Use when 对照前端产品事实、UI 设计事实和接口契约�
 
 - `consistent`
 - `missing-in-product`
-- `missing-in-design`
+- `missing-in-ui`
 - `missing-in-api`
 - `conflict`
 - `source-insufficient`
 - `not-applicable`
 - `Needs product decision`
-- `Needs design decision`
+- `Needs UI decision`
 - `Needs backend decision`
 
 不要输出 `adapter`、`service`、`component`、`implementation-ready`、`allow implement` 等实现导向结论。
