@@ -1,4 +1,4 @@
 interface:
   display_name: "前端代码实现"
-  short_description: "基于已确认产品、UI、接口、对齐结果和组件体系实现前端页面"
-  default_prompt: "Use $frontend-code-implementation 根据已确认的产品需求、UI 需求、接口需求和对齐结果实现前端页面。"
+  short_description: "基于已确认事实、Ready design.md 和 tasks.md 实现前端页面"
+  default_prompt: "Use $frontend-code-implementation 根据已确认的产品需求、UI 需求、接口需求、对齐结果、Ready for tasks 的 design.md 和 tasks.md 实现前端页面；严格遵守实现边界、状态矩阵和 Do Not Implement，不补事实、不改决策、不重新设计。"

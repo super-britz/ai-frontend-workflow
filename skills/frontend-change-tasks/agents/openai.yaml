@@ -1,4 +1,4 @@
 interface:
   display_name: "维护前端任务"
-  short_description: "根据已批准的 decisions.md 和 design.md 维护 OpenSpec tasks.md"
-  default_prompt: "Use $frontend-change-tasks 根据当前 OpenSpec change 的 decisions.md 和 design.md 维护 tasks.md；只有 Implementation Gate Approved 后才生成实现任务，不补事实、不改决策、不写代码。"
+  short_description: "根据已批准 Gate 和 Ready design.md 维护 OpenSpec tasks.md"
+  default_prompt: "Use $frontend-change-tasks 根据当前 OpenSpec change 的 decisions.md 和 Ready for tasks 的 design.md 维护 tasks.md；只有 Implementation Gate Approved 后才生成实现任务，任务必须引用 design.md，不补事实、不改决策、不重新设计、不写代码。"
